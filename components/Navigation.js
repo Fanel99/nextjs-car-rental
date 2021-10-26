@@ -1,10 +1,20 @@
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { DateRangePicker } from 'react-date-range';
 
 const container = css`
   max-width: 1366px;
   margin: 0 auto;
   width: 100%;
+
+  .datePicker {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+  }
 `;
 
 const logoNav = css`
@@ -20,6 +30,14 @@ const navContainer = css`
   align-items: flex-start;
   align-content: center;
   margin-top: 50px;
+
+  input {
+    width: 350px;
+    height: 40px;
+    border-radius: 5px;
+    border-color: #c59e47;
+    padding-left: 10px;
+  }
 `;
 
 const navLinks = css`
@@ -39,7 +57,7 @@ const navLinks = css`
 const navHost = css`
   border: solid 2px #c59e47;
   font-size: 18px;
-  padding: 10px;
+  padding: 4px;
 
   &:hover {
     background-color: #c59e47;
@@ -51,6 +69,21 @@ const navHost = css`
 `;
 
 function Navigation() {
+  const [searchInput, setSearchInput] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+
+  const handleSelect = (ranges) => {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+  };
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: 'selection',
+  };
+
   return (
     <div css={container}>
       <div css={navContainer}>
@@ -61,24 +94,38 @@ function Navigation() {
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/">
+          <Link href="/deals">
             <a>Deals</a>
-          </Link>
-          <Link href="/">
-            <a>About Us</a>
           </Link>
           <Link href="/">
             <a>Contact</a>
           </Link>
         </div>
+        <div>
+          <input
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Search..."
+          />
+        </div>
+
         {/* Link to become a Host */}
         <div css={navHost}>
-          {' '}
           <Link href="/becomeahost">
             <a>Become a host</a>
           </Link>
         </div>
       </div>
+      {searchInput && (
+        <div className="datePicker">
+          <DateRangePicker
+            ranges={[selectionRange]}
+            minDate={new Date()}
+            rangeColors={['#c59e47']}
+            onChange={handleSelect}
+          />
+        </div>
+      )}
     </div>
   );
 }

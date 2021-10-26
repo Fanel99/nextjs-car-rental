@@ -132,7 +132,6 @@ function becomeahost() {
     <div css={container}>
       <Head>
         <title>Become a host </title>
-        <meta property="og:title" content="Classic Rental Cars" key="title" />
       </Head>
       <Header />
       <Navigation />
