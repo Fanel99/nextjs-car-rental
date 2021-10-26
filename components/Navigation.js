@@ -74,7 +74,7 @@ function Navigation() {
         {/* Link to become a Host */}
         <div css={navHost}>
           {' '}
-          <Link href="/">
+          <Link href="/becomeahost">
             <a>Become a host</a>
           </Link>
         </div>
