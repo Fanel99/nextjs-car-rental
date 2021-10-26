@@ -1,11 +1,8 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import pic from '../public/pictures/benz.jpg';
 import pic1 from '../public/pictures/giulia.jpeg';
 import pic2 from '../public/pictures/oldcar.jpg';
-
-// Import Swiper React components
 
 const container = css`
   max-width: 1366px;

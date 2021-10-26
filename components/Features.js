@@ -33,6 +33,12 @@ const cardWrapper = css`
   max-width: 50%;
 `;
 
+const imgWrapper = css`
+  position: relative;
+  width: 350px;
+  height: 360px;
+`;
+
 const cardText = css`
   max-width: 300px;
   border: 1px solid #c59e47;
@@ -75,12 +81,12 @@ function Features() {
       </h2>
       <div css={cardsWrapper}>
         <div css={cardWrapper}>
-          <div>
+          <div css={imgWrapper}>
             <Image
               src={porsche}
               alt="porsche model car"
-              // layout="fill"
-              // objectFit="cover"
+              layout="fill"
+              objectFit="cover"
             />
           </div>
           <div css={cardText}>
@@ -93,8 +99,13 @@ function Features() {
           </div>
         </div>
         <div css={cardWrapper}>
-          <div>
-            <Image src={mercedes} alt="mercedes model car" />
+          <div css={imgWrapper}>
+            <Image
+              src={mercedes}
+              alt="mercedes model car"
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
           <div css={cardText}>
             <h3>Car Name</h3>

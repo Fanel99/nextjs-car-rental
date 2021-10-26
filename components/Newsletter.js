@@ -21,7 +21,7 @@ const leftSide = css`
   .leftSideText {
     position: absolute;
     top: 20%;
-    margin-left: 10%;
+    margin-left: 6%;
 
     h4 {
       font-size: 28px;
@@ -33,6 +33,9 @@ const leftSide = css`
       line-height: 1.5;
     }
   }
+
+  img {
+  }
 `;
 const rightSide = css`
   margin-top: 50px;
@@ -40,10 +43,12 @@ const rightSide = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 5%;
+
+  position: relative;
 
   .rightSideText {
     position: absolute;
-    top: 50%;
     display: flex;
     flex-direction: column;
     margin-left: 10%;

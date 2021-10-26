@@ -16,6 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "@heroicons/react": "^1.0.4",
+    "embla-carousel": "^5.0.1",
     "framer-motion": "^4.1.17",
     "i": "^0.3.7",
     "next": "11.1.2",

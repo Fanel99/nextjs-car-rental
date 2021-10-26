@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Features from '../components/Features';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
@@ -7,13 +8,13 @@ import Newsletter from '../components/Newsletter';
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Header />
       <Navigation />
       <Hero />
       <Features />
       <Latestcar />
       <Newsletter />
-    </div>
+    </main>
   );
 }
