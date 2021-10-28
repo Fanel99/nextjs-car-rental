@@ -217,7 +217,7 @@ const formStyles = css`
   }
 `;
 
-function Header() {
+function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [register, setRegister] = useState(false);
 
@@ -230,6 +230,7 @@ function Header() {
   }
   return (
     <div css={container}>
+      <div>{props.greeting}</div>
       <div css={headerContainer}>
         <div css={socialIcon}>
           <ul>
@@ -270,18 +271,7 @@ function Header() {
               <div class="container">
                 <form action="">
                   <div class=" title titleRegister">Sign Up</div>
-                  <div class="input-box">
-                    <input placeholder="First Name" required />
-                    <div class="underline" />
-                  </div>
-                  <div class="input-box">
-                    <input placeholder="Last Name" required />
-                    <div class="underline" />
-                  </div>
-                  <div class="input-box">
-                    <input placeholder="Enter your Email" required />
-                    <div class="underline" />
-                  </div>
+
                   <div class="input-box">
                     <input placeholder="Username" required />
                     <div class="underline" />
