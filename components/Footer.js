@@ -82,9 +82,6 @@ export default function Footer() {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ad
             quo vel, neque enim magnam labore possimus reiciendis vero officiis
             eius incidunt saepe nam architecto iusto alias rem asperiores quia
-            exercitationem ullam nisi consequuntur esse tempore? Necessitatibus
-            maiores Dicta quis nesciunt odio nulla dolor vitae, porro saepe?
-            Laudantium, voluptatem?
           </p>
         </div>
 
@@ -101,16 +98,7 @@ export default function Footer() {
                 <a>Shop</a>
               </Link>
             </li>
-            <li>
-              <Link href="/about">
-                <a>About Us</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/galery">
-                <a>Galery</a>
-              </Link>
-            </li>
+
             <li>
               <Link href="/contact">
                 <a>Contact Us</a>

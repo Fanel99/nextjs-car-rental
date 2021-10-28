@@ -2,6 +2,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
 import Header from '../components/Header';
+import Map from '../components/Map';
 import Navigation from '../components/Navigation';
 
 const container = css`
@@ -26,8 +27,7 @@ const sectionDeals = css`
     text-align: center;
   }
   .mapDeals {
-    border: 1px solid blue;
-    width: 500px;
+    max-width: 600px;
   }
 `;
 
@@ -40,7 +40,9 @@ function Deals() {
         <div className="cards">
           <div className="card"> card1</div>
           <div className="card">card2 </div>
-          <div className="mapDeals"> map</div>
+          <div className="mapDeals">
+            <Map />
+          </div>
         </div>
       </section>
     </div>

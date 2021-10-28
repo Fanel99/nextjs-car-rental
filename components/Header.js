@@ -259,6 +259,7 @@ function Header() {
         <div css={loginPart}>
           <button onClick={toggleModal}>Login</button>
           <button onClick={toggleModalRegister}>Register</button>{' '}
+          {/* Modal for Register */}
           <Modal
             isOpen={register}
             onRequestClose={toggleModalRegister}
@@ -270,7 +271,19 @@ function Header() {
                 <form action="">
                   <div class=" title titleRegister">Sign Up</div>
                   <div class="input-box">
+                    <input placeholder="First Name" required />
+                    <div class="underline" />
+                  </div>
+                  <div class="input-box">
+                    <input placeholder="Last Name" required />
+                    <div class="underline" />
+                  </div>
+                  <div class="input-box">
                     <input placeholder="Enter your Email" required />
+                    <div class="underline" />
+                  </div>
+                  <div class="input-box">
+                    <input placeholder="Username" required />
                     <div class="underline" />
                   </div>
                   <div class="input-box">
@@ -281,21 +294,15 @@ function Header() {
                     />
                     <div class="underline" />
                   </div>
-                  <div class="input-box">
-                    <input
-                      type="password"
-                      placeholder="Confirm your Password"
-                      required
-                    />
-                    <div class="underline" />
-                  </div>
+
                   <div class="input-box button">
-                    <input type="submit" value="Continue" />
+                    <input type="submit" value="Create Account" />
                   </div>
                 </form>
               </div>
             </div>
           </Modal>
+          {/* Modal for LogIn */}
           <Modal
             isOpen={isOpen}
             onRequestClose={toggleModal}

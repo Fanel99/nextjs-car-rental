@@ -16,7 +16,7 @@ const heroWrapper = css`
   align-self: center;
   height: 100vh;
   width: 100%;
-  background-image: url(/pictures/oldcar.jpg);
+  background-image: url(/pictures/stradale.jpg);
   background-size: cover;
   margin-top: -64px;
 `;
