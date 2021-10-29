@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
 import Header from '../components/Header';
@@ -38,7 +39,7 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
   return (
     <Layout>
       <Header />
-      <h1 css={h1}>Login</h1>
+      <h2 css={h1}>Login</h2>
 
       <form
         css={formStyles}
@@ -70,7 +71,7 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
               ? router.query.returnTo
               : `/`;
 
-          // props.refreshUsername();
+          props.refreshUsername();
 
           router.push(destination);
         }}
@@ -92,7 +93,6 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
         </label>
 
         <button>Login</button>
-        <ul> {`Hello, ${props.refreshUsername}`} </ul>
       </form>
 
       <div css={errorsStyles}>
@@ -102,4 +102,42 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { getValidSessionByToken } = await import('../util/database');
+
+  // Redirect from HTTP to HTTPS on Heroku
+  if (
+    context.req.headers.host &&
+    context.req.headers['x-forwarded-proto'] &&
+    context.req.headers['x-forwarded-proto'] !== 'https'
+  ) {
+    return {
+      redirect: {
+        destination: `https://${context.req.headers.host}/login`,
+        permanent: true,
+      },
+    };
+  }
+
+  const sessionToken = context.req.cookies.sessionToken;
+
+  const session = await getValidSessionByToken(sessionToken);
+
+  if (session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

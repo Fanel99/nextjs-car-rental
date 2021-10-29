@@ -1,8 +1,5 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
-import pic from '../public/pictures/benz.jpg';
-import pic1 from '../public/pictures/giulia.jpeg';
-import pic2 from '../public/pictures/oldcar.jpg';
 
 const container = css`
   max-width: 1366px;
@@ -22,7 +19,7 @@ const heroWrapper = css`
 `;
 
 const heroHeader = css`
-  font-size: 48px;
+  font-size: 36px;
   display: flex;
   justify-content: center;
   align-self: center;

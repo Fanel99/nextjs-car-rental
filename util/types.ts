@@ -1,3 +1,3 @@
 export type Errors = {
-  message: string,
+  message: string;
 }[];

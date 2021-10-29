@@ -1,12 +1,20 @@
 import { css } from '@emotion/react';
-import { useRouter } from 'next/dist/client/router';
+import { GetServerSidePropsContext } from 'next';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Header from '../components/Header';
 import Layout from '../components/Layout';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
+type Props = { refreshUsername: () => void; csrfToken: string };
+
 const formStyles = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
   label {
     display: block;
   }
@@ -16,7 +24,7 @@ const errorsStyles = css`
   color: red;
 `;
 
-export default function RegisterPage() {
+export default function RegisterPage(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>([]);
@@ -38,6 +46,7 @@ export default function RegisterPage() {
             body: JSON.stringify({
               username: username,
               password: password,
+              csrfToken: props.csrfToken,
             }),
           });
 
@@ -49,13 +58,14 @@ export default function RegisterPage() {
             return;
           }
           {
-            /*
-          const destination =
-            typeof router.query.returnTo === 'string' && router.query.returnTo
-              ? router.query.returnTo
-              : `/register/${registerJson.user.id}`;
+            const destination =
+              typeof router.query.returnTo === 'string' && router.query.returnTo
+                ? router.query.returnTo
+                : `/users/${registerJson.user.id}`;
 
-          router.push(destination); */
+            props.refreshUsername();
+
+            router.push(destination);
           }
         }}
       >
@@ -77,7 +87,6 @@ export default function RegisterPage() {
 
         <button>Register</button>
       </form>
-
       <div css={errorsStyles}>
         {errors.map((error) => (
           <div key={`error-${error.message}`}>{error.message}</div>
@@ -85,4 +94,45 @@ export default function RegisterPage() {
       </div>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { getValidSessionByToken } = await import('../util/database');
+  const { createToken } = await import('../util/csrf');
+
+  // Redirect from HTTP to HTTPS on Heroku
+  if (
+    context.req.headers.host &&
+    context.req.headers['x-forwarded-proto'] &&
+    context.req.headers['x-forwarded-proto'] !== 'https'
+  ) {
+    return {
+      redirect: {
+        destination: `https://${context.req.headers.host}/register`,
+        permanent: true,
+      },
+    };
+  }
+
+  const sessionToken = context.req.cookies.sessionToken;
+
+  const session = await getValidSessionByToken(sessionToken);
+
+  if (session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      csrfToken: createToken(),
+    },
+  };
 }

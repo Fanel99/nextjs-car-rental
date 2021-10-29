@@ -1,8 +1,26 @@
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
+import { useCallback, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 
 function MyApp({ Component, pageProps }) {
+  const [username, setUsername] = useState();
+
+  const refreshUsername = useCallback(async () => {
+    const response = await fetch('/api/profile');
+    const profile = await response.json();
+
+    if ('errors' in profile) {
+      console.log(profile.errors);
+      return;
+    }
+    setUsername(profile.user.username);
+  }, []);
+
+  useEffect(() => {
+    refreshUsername();
+  }, []);
+
   return (
     <>
       <Head>
@@ -28,7 +46,11 @@ function MyApp({ Component, pageProps }) {
         `}
       />
 
-      <Component {...pageProps} />
+      <Component
+        {...pageProps}
+        username={username}
+        refreshUsername={refreshUsername}
+      />
       <Footer />
     </>
   );

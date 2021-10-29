@@ -221,6 +221,10 @@ function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [register, setRegister] = useState(false);
 
+  const { username } = props;
+
+  console.log(props, username);
+
   function toggleModal() {
     setIsOpen(!isOpen);
   }
@@ -228,9 +232,9 @@ function Header(props) {
   function toggleModalRegister() {
     setRegister(!register);
   }
+
   return (
     <div css={container}>
-      <div>{props.greeting}</div>
       <div css={headerContainer}>
         <div css={socialIcon}>
           <ul>
@@ -268,24 +272,24 @@ function Header(props) {
             style={customStyles}
           >
             <div css={formStyles}>
-              <div class="container">
+              <div className="container">
                 <form action="">
-                  <div class=" title titleRegister">Sign Up</div>
+                  <div className=" title titleRegister">Sign Up</div>
 
-                  <div class="input-box">
+                  <div className="input-box">
                     <input placeholder="Username" required />
-                    <div class="underline" />
+                    <div className="underline" />
                   </div>
-                  <div class="input-box">
+                  <div className="input-box">
                     <input
                       type="password"
                       placeholder="Enter your Password"
                       required
                     />
-                    <div class="underline" />
+                    <div className="underline" />
                   </div>
 
-                  <div class="input-box button">
+                  <div className="input-box button">
                     <input type="submit" value="Create Account" />
                   </div>
                 </form>
@@ -298,38 +302,39 @@ function Header(props) {
             onRequestClose={toggleModal}
             contentLabel="Sign In Form"
             style={customStyles}
+            ariaHideApp={false}
           >
             {' '}
             <div css={formStyles}>
-              <div class="container">
+              <div className="container">
                 <form action="">
-                  <div class="title">Login</div>
-                  <div class="input-box">
+                  <div className="title">Login</div>
+                  <div className="input-box">
                     <input placeholder="Enter your username" required />
-                    <div class="underline" />
+                    <div className="underline" />
                   </div>
 
-                  <div class="input-box">
+                  <div className="input-box">
                     <input
                       type="password"
                       placeholder="Enter your Password"
                       required
                     />
-                    <div class="underline" />
+                    <div className="underline" />
                   </div>
 
-                  <div class="input-box button">
+                  <div className="input-box button">
                     <input type="submit" value="Continue" />
                   </div>
                 </form>
-                <div class="option">or Connect with Social Media</div>
-                <div class="facebook">
+                <div className="option">or Connect with Social Media</div>
+                <div className="facebook">
                   <a>
                     <FontAwesomeIcon icon={faFacebook} />
                     Login with Facebook
                   </a>
                 </div>
-                <div class="twitter">
+                <div className="twitter">
                   <a>
                     <FontAwesomeIcon icon={faTwitter} />
                     Login with Twitter
@@ -338,6 +343,13 @@ function Header(props) {
               </div>
             </div>
           </Modal>
+          <div>
+            {props.username ? (
+              <>Logged in as {props.username}</>
+            ) : (
+              'Not logged in'
+            )}
+          </div>
         </div>
       </div>
     </div>
