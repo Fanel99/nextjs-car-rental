@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import { useState } from 'react';
-import Header from '../components/Header';
 import Layout from '../components/Layout';
 import { Errors } from '../util/types';
 import { LoginResponse } from './api/login';
@@ -38,7 +37,6 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
 
   return (
     <Layout>
-      <Header />
       <h2 css={h1}>Login</h2>
 
       <form

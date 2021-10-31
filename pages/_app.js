@@ -10,6 +10,8 @@ function MyApp({ Component, pageProps }) {
     const response = await fetch('/api/profile');
     const profile = await response.json();
 
+    console.log(profile);
+
     if ('errors' in profile) {
       console.log(profile.errors);
       return;
@@ -25,7 +27,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Oldie But Goodie</title>
-        <meta property="og:title" content="Classic Rental Cars" key="title" />
+        <meta content="Classic Rental Cars" key="title" />
         <html lang="en" />
       </Head>
       <Global

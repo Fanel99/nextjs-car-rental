@@ -7,7 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Modal from 'react-modal';
 
 const container = css`
@@ -218,11 +218,22 @@ const formStyles = css`
   }
 `;
 
-function Header(props) {
+const nav = css`
+  display: flex;
+  gap: 30px;
+`;
+
+const headerLogout = css`
+  color: #fff;
+`;
+
+type Props = {
+  username?: string;
+};
+
+function Header(props: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [register, setRegister] = useState(false);
-
-  console.log(props);
 
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -343,27 +354,69 @@ function Header(props) {
             </div>
           </Modal>
         </div>
-      </div>
-      <div>
-        {props.username ? (
-          <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
-        ) : (
-          'Not logged in'
-        )}
-      </div>
-      <div>
-        {!props.username && (
-          <>
-            <Link href="/register">
-              <a>Register</a>
+        <div css={headerLogout}>
+          {props.username ? (
+            <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
+          ) : (
+            'Not logged in'
+          )}
+          {!props.username && (
+            <>
+              <Link href="/register">
+                <a>Register</a>
+              </Link>
+              <Link href="/login">
+                <a>Login</a>
+              </Link>
+            </>
+          )}
+          {props.username && (
+            <Link href="/logout">
+              <a>LogOut</a>
             </Link>
-            <Link href="/login">
-              <a>Login</a>
-            </Link>
-          </>
-        )}
-        {props.username && <Link href="/logout">Logout</Link>}
+          )}
+        </div>
       </div>
+      <header>
+        <nav css={nav}>
+          <div>
+            {props.username ? (
+              <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
+            ) : (
+              'Not logged in'
+            )}
+          </div>
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+          <Link href="/about">
+            <a data-cy="header-about-link">About</a>
+          </Link>
+          <Link href="/contact">
+            <a>Contact</a>
+          </Link>
+          <Link href="/users">
+            <a>Users</a>
+          </Link>
+          <Link href="/users-protected">
+            <a>Users Protected</a>
+          </Link>
+          <Link href="/admin/users">
+            <a>Admin</a>
+          </Link>
+          {!props.username && (
+            <>
+              <Link href="/register">
+                <a>Register</a>
+              </Link>
+              <Link href="/login">
+                <a>Login</a>
+              </Link>
+            </>
+          )}
+          {props.username && <Link href="/logout">Logout </Link>}
+        </nav>
+      </header>
     </div>
   );
 }

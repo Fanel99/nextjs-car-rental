@@ -1,5 +1,5 @@
 const UserIndex = () => {
-  return <div>UserIndex</div>;
+  return <div>Users Page</div>;
 };
 
 export default UserIndex;
