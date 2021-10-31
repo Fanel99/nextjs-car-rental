@@ -53,7 +53,6 @@ function connectOneTimeToDatabase() {
 // Connect to PostgreSQL
 const sql = connectOneTimeToDatabase();
 
-// Get users  i can delete, i think so !!!!!!!!!!!!!!!!!!!!!!!!
 export async function getUsers() {
   const users = await sql<User[]>`
     SELECT
@@ -63,7 +62,6 @@ export async function getUsers() {
       users;
   `;
   return users.map((user) => {
-    // Convert the snake case favorite_color to favoriteColor
     return camelcaseKeys(user);
   });
 }

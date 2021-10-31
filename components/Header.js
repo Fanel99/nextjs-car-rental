@@ -6,6 +6,7 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import { useState } from 'react';
 import Modal from 'react-modal';
 
@@ -221,9 +222,7 @@ function Header(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [register, setRegister] = useState(false);
 
-  const { username } = props;
-
-  console.log(props, username);
+  console.log(props);
 
   function toggleModal() {
     setIsOpen(!isOpen);
@@ -343,14 +342,27 @@ function Header(props) {
               </div>
             </div>
           </Modal>
-          <div>
-            {props.username ? (
-              <>Logged in as {props.username}</>
-            ) : (
-              'Not logged in'
-            )}
-          </div>
         </div>
+      </div>
+      <div>
+        {props.username ? (
+          <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
+        ) : (
+          'Not logged in'
+        )}
+      </div>
+      <div>
+        {!props.username && (
+          <>
+            <Link href="/register">
+              <a>Register</a>
+            </Link>
+            <Link href="/login">
+              <a>Login</a>
+            </Link>
+          </>
+        )}
+        {props.username && <Link href="/logout">Logout</Link>}
       </div>
     </div>
   );

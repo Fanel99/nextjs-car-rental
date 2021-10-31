@@ -6,12 +6,10 @@ import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import Newsletter from '../components/Newsletter';
 
-const greeting = 'Hello';
-
 export default function Home() {
   return (
     <main>
-      <Layout greeting={greeting}>
+      <Layout>
         <Header />
         <Navigation />
         <Hero />
