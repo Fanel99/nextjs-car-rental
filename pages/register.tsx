@@ -7,8 +7,6 @@ import Layout from '../components/Layout';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
-type Props = { refreshUsername: () => void; csrfToken: string };
-
 const formStyles = css`
   display: flex;
   flex-direction: column;
@@ -23,6 +21,8 @@ const formStyles = css`
 const errorsStyles = css`
   color: red;
 `;
+
+type Props = { refreshUsername: () => void; csrfToken: string };
 
 export default function RegisterPage(props: Props) {
   const [username, setUsername] = useState('');

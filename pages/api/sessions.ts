@@ -8,6 +8,7 @@ export default async function sessionsHandler(
   req: NextApiRequest,
   res: NextApiResponse<SessionsResponse>,
 ) {
+  console.log('cookies', req.cookies);
   const sessionToken = req.cookies.sessionToken;
 
   if (!sessionToken) {

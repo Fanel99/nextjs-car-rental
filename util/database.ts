@@ -5,17 +5,17 @@ import postgres from 'postgres';
 export type User = {
   id: number;
   username: string;
+  name: string | null;
 };
-
-export type UserWithPasswordHash = User & {
-  passwordHash: string;
-};
-
 export type Session = {
   id: number;
   token: string;
   userId: number;
   expiryTimestamp: Date;
+};
+
+export type UserWithPasswordHash = User & {
+  passwordHash: string;
 };
 
 // Read in the environment variables
@@ -62,6 +62,7 @@ export async function getUsers() {
       users;
   `;
   return users.map((user) => {
+    // Convert the snake case favorite_color to favoriteColor
     return camelcaseKeys(user);
   });
 }
@@ -110,7 +111,6 @@ export async function getUserBySessionToken(sessionToken: string | undefined) {
   return user && camelcaseKeys(user);
 }
 
-// I think that here i have a problem!!!!!!!!
 export async function createUser({ username }: { username: string }) {
   const users = await sql`
     INSERT INTO users
@@ -149,9 +149,6 @@ export async function updateUserById(
     username,
   }: {
     username: string;
-    name: string;
-    mail: string;
-    address: string;
   },
 ) {
   const users = await sql`
@@ -164,6 +161,7 @@ export async function updateUserById(
     RETURNING
       id,
       username
+
   `;
   return camelcaseKeys(users[0]);
 }
@@ -179,22 +177,6 @@ export async function deleteUserById(id: number) {
       username
   `;
   return camelcaseKeys(users[0]);
-}
-
-export async function getValidSessionByToken(token: string) {
-  if (!token) return undefined;
-
-  const [session] = await sql<[Session | undefined]>`
-    SELECT
-      *
-    FROM
-      sessions
-    WHERE
-      token = ${token} AND
-      expiry_timestamp > NOW()
-  `;
-
-  return session && camelcaseKeys(session);
 }
 
 export async function createSession(token: string, userId: number) {
@@ -216,7 +198,7 @@ export async function deleteExpiredSession() {
   WHERE expiry_timestamp < NOW()
   RETURNING *
   `;
-  return sessions.map((session) => camelcaseKeys(session));
+  return sessions.map((session) => camelcaseKeys(session))[0];
 }
 
 export async function deleteSessionByToken(token: string) {
@@ -228,4 +210,31 @@ export async function deleteSessionByToken(token: string) {
     RETURNING *
   `;
   return sessions.map((session) => camelcaseKeys(session))[0];
+}
+
+export async function getValidSessionByToken(token: string) {
+  if (!token) return undefined;
+
+  const [session] = await sql<[Session | undefined]>`
+    SELECT
+    *
+    FROM
+    sessions
+    WHERE
+    token = ${token} and
+    expiry_timestamp > NOW()
+  `;
+  return session && camelcaseKeys(session);
+}
+
+export async function deleteExpiredSessions() {
+  const sessions = await sql<Session[]>`
+    DELETE FROM
+      sessions
+    WHERE
+      expiry_timestamp < NOW()
+    RETURNING *
+  `;
+
+  return sessions.map((session) => camelcaseKeys(session));
 }
