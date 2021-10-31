@@ -32,7 +32,6 @@ export default function RegisterPage(props: Props) {
 
   return (
     <Layout>
-      <Header />
       <form
         css={formStyles}
         onSubmit={async (event) => {

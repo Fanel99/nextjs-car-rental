@@ -50,19 +50,7 @@ const callItems = css`
 const loginPart = css`
   color: #e7e7e7;
   margin-bottom: 0px;
-  padding-right: 12%;
   margin-top: 3px;
-
-  button {
-    padding: 4px;
-    font-size: 16px;
-    margin-right: 10px;
-
-    &:hover {
-      color: #c59e47;
-      transform: scale(1.1);
-    }
-  }
 `;
 
 const customStyles = {
@@ -218,13 +206,23 @@ const formStyles = css`
   }
 `;
 
-const nav = css`
-  display: flex;
-  gap: 30px;
+const headerLogout = css`
+  color: #e7e7e7;
+  margin-top: 5px;
+
+  a {
+    color: #e7e7e7;
+    margin-right: 30px;
+  }
 `;
 
-const headerLogout = css`
-  color: #fff;
+const registerLogout = css`
+  margin-top: 5px;
+
+  a {
+    color: #e7e7e7;
+    padding: 10px;
+  }
 `;
 
 type Props = {
@@ -272,8 +270,6 @@ function Header(props: Props) {
         {/* Login & Sign Up Part  */}
 
         <div css={loginPart}>
-          <button onClick={toggleModal}>Login</button>
-          <button onClick={toggleModalRegister}>Register</button>{' '}
           {/* Modal for Register */}
           <Modal
             isOpen={register}
@@ -356,67 +352,29 @@ function Header(props: Props) {
         </div>
         <div css={headerLogout}>
           {props.username ? (
-            <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
+            <>Logged in as {props.username} &nbsp;&nbsp;</>
           ) : (
-            'Not logged in'
+            ''
           )}
           {!props.username && (
-            <>
-              <Link href="/register">
-                <a>Register</a>
-              </Link>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </>
+            <div>
+              <div css={registerLogout}>
+                <Link href="/register">
+                  <a>Register</a>
+                </Link>
+                <Link href="/login">
+                  <a>Login</a>
+                </Link>
+              </div>
+            </div>
           )}
           {props.username && (
             <Link href="/logout">
-              <a>LogOut</a>
+              <a>Logout</a>
             </Link>
           )}
         </div>
       </div>
-      <header>
-        <nav css={nav}>
-          <div>
-            {props.username ? (
-              <>Logged in as {props.username} &nbsp;&nbsp;&nbsp;</>
-            ) : (
-              'Not logged in'
-            )}
-          </div>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/about">
-            <a data-cy="header-about-link">About</a>
-          </Link>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
-          <Link href="/users">
-            <a>Users</a>
-          </Link>
-          <Link href="/users-protected">
-            <a>Users Protected</a>
-          </Link>
-          <Link href="/admin/users">
-            <a>Admin</a>
-          </Link>
-          {!props.username && (
-            <>
-              <Link href="/register">
-                <a>Register</a>
-              </Link>
-              <Link href="/login">
-                <a>Login</a>
-              </Link>
-            </>
-          )}
-          {props.username && <Link href="/logout">Logout </Link>}
-        </nav>
-      </header>
     </div>
   );
 }
