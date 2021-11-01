@@ -1,17 +1,9 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
-import video from '../public/video/classic.mp4';
 
 const containerFullWidth = css`
   max-width: 1920px;
   background-color: #191919;
   position: relative;
-`;
-
-const container = css`
-  max-width: 1366px;
-  margin: 0 auto;
-  width: 100%;
 `;
 
 const heroWrapper = css`
@@ -48,7 +40,7 @@ function Hero() {
         />
       </div>
       <div css={heroHeader}>
-        <h1>Text text text</h1>
+        <h1>Oldie but goodie</h1>
       </div>
     </div>
   );

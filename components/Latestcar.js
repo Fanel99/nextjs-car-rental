@@ -11,18 +11,15 @@ import car8 from '../public/pictures/car8.jpg';
 
 const container = css`
   max-width: 1366px;
-  margin: 0 auto 100px;
+  margin: 0 auto;
   width: 100%;
 
   h2 {
     color: #020243;
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 50px;
     letter-spacing: 3px;
     font-size: 50px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 75px 0;
     span {
       margin-left: 20px;
     }

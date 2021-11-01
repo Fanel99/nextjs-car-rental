@@ -52,6 +52,7 @@ const cardText = css`
   }
   p {
     margin-bottom: 30px;
+    text-align: center;
   }
 
   button {
@@ -88,7 +89,7 @@ function Features() {
             />
           </div>
           <div css={cardText}>
-            <h3>Car Name</h3>
+            <h3>Porche 911</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
               amet ipsum magni ratione esse? Molestias, enim!{' '}
@@ -106,12 +107,12 @@ function Features() {
             />
           </div>
           <div css={cardText}>
-            <h3>Car Name</h3>
+            <h3>Mclaren</h3>
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi,
               amet ipsum magni ratione esse? Molestias, enim!{' '}
             </p>
-            <button>See more info</button>
+            <button>Read More</button>
           </div>
         </div>
       </div>

@@ -220,6 +220,8 @@ const headerLogout = css`
 `;
 
 const registerLogout = css`
+  display: flex;
+  gap: 20px;
   a {
     color: #e7e7e7;
   }

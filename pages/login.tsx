@@ -3,7 +3,9 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useState } from 'react';
+import Hero from '../components/Hero';
 import Layout from '../components/Layout';
+import Navigation from '../components/Navigation';
 import { Errors } from '../util/types';
 import { LoginResponse } from './api/login';
 
@@ -25,11 +27,6 @@ const errorsStyles = css`
   color: red;
 `;
 
-const h1 = css`
-  text-align: center;
-  margin-top: 100px;
-`;
-
 export default function LoginPage(props: {
   refreshUsername: () => void;
   username?: string;
@@ -41,10 +38,11 @@ export default function LoginPage(props: {
 
   return (
     <Layout username={props.username}>
-      <h2 css={h1}>Login</h2>
       <Head>
         <title>Login | Oldie but goodie</title>
       </Head>
+      <Navigation />
+      <Hero />
       <form
         css={formStyles}
         onSubmit={async (event) => {
