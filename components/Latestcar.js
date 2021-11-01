@@ -221,7 +221,7 @@ function Latestcar() {
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
                 <span className="spanTop" />
-                <h3>Meclaren</h3>
+                <h3>Mercedes 300 SL</h3>
                 <p>
                   Lorem ipsum dolor sit amet <br /> consectetur adipisicing
                   elit.
