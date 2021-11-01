@@ -7,9 +7,13 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 
+const containerFullWidth = css`
+  max-width: 1920px;
+  background-color: #191919;
+`;
 const container = css`
   max-width: 1366px;
   margin: 0 auto;
@@ -19,7 +23,9 @@ const container = css`
 const headerContainer = css`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #191919;
+  padding: 5px 0;
 
   ul {
     display: flex;
@@ -37,20 +43,17 @@ const headerContainer = css`
 `;
 const socialIcon = css`
   margin: 0px;
-  padding-left: 12%;
   color: #e7e7e7;
 `;
 
 const callItems = css`
   color: #e7e7e7;
   letter-spacing: 1;
-  margin-top: 3px;
 `;
 
 const loginPart = css`
   color: #e7e7e7;
   margin-bottom: 0px;
-  margin-top: 3px;
 `;
 
 const customStyles = {
@@ -206,22 +209,19 @@ const formStyles = css`
   }
 `;
 
+// Last parte with login and hide, need to make it nicer!
+
 const headerLogout = css`
   color: #e7e7e7;
-  margin-top: 5px;
 
   a {
     color: #e7e7e7;
-    margin-right: 30px;
   }
 `;
 
 const registerLogout = css`
-  margin-top: 5px;
-
   a {
     color: #e7e7e7;
-    padding: 10px;
   }
 `;
 
@@ -242,137 +242,140 @@ function Header(props: Props) {
   }
 
   return (
-    <div css={container}>
-      <div css={headerContainer}>
-        <div css={socialIcon}>
-          <ul>
-            <li>
-              <FontAwesomeIcon icon={faFacebook} />
-            </li>
-            <li>
-              {' '}
-              <FontAwesomeIcon icon={faInstagram} />
-            </li>
-            <li>
-              {' '}
-              <FontAwesomeIcon icon={faTwitter} />
-            </li>
-            <li>
-              {' '}
-              <FontAwesomeIcon icon={faYoutube} />
-            </li>
-          </ul>
-        </div>
-        <div css={callItems}>
-          <p>Call Us: +43 6677766767</p>
-        </div>
+    <div css={containerFullWidth}>
+      <div css={container}>
+        <div css={headerContainer}>
+          <div css={socialIcon}>
+            <ul>
+              <li>
+                <FontAwesomeIcon icon={faFacebook} />
+              </li>
+              <li>
+                {' '}
+                <FontAwesomeIcon icon={faInstagram} />
+              </li>
+              <li>
+                {' '}
+                <FontAwesomeIcon icon={faTwitter} />
+              </li>
+              <li>
+                {' '}
+                <FontAwesomeIcon icon={faYoutube} />
+              </li>
+            </ul>
+          </div>
+          <div css={callItems}>
+            <p>Call Us: +43 6677766767</p>
+          </div>
 
-        {/* Login & Sign Up Part  */}
+          {/* Login & Sign Up Part  */}
 
-        <div css={loginPart}>
-          {/* Modal for Register */}
-          <Modal
-            isOpen={register}
-            onRequestClose={toggleModalRegister}
-            contentLabel="Register Form"
-            style={customStyles}
-          >
-            <div css={formStyles}>
-              <div className="container">
-                <form action="">
-                  <div className=" title titleRegister">Sign Up</div>
+          {/*
+          <div css={loginPart}>
+            <Modal
+              isOpen={register}
+              onRequestClose={toggleModalRegister}
+              contentLabel="Register Form"
+              style={customStyles}
+            >
+              <div css={formStyles}>
+                <div className="container">
+                  <form action="">
+                    <div className=" title titleRegister">Sign Up</div>
 
-                  <div className="input-box">
-                    <input placeholder="Username" required />
-                    <div className="underline" />
-                  </div>
-                  <div className="input-box">
-                    <input
-                      type="password"
-                      placeholder="Enter your Password"
-                      required
-                    />
-                    <div className="underline" />
-                  </div>
+                    <div className="input-box">
+                      <input placeholder="Username" required />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        type="password"
+                        placeholder="Enter your Password"
+                        required
+                      />
+                      <div className="underline" />
+                    </div>
 
-                  <div className="input-box button">
-                    <input type="submit" value="Create Account" />
-                  </div>
-                </form>
-              </div>
-            </div>
-          </Modal>
-          {/* Modal for LogIn */}
-          <Modal
-            isOpen={isOpen}
-            onRequestClose={toggleModal}
-            contentLabel="Sign In Form"
-            style={customStyles}
-            ariaHideApp={false}
-          >
-            {' '}
-            <div css={formStyles}>
-              <div className="container">
-                <form action="">
-                  <div className="title">Login</div>
-                  <div className="input-box">
-                    <input placeholder="Enter your username" required />
-                    <div className="underline" />
-                  </div>
-
-                  <div className="input-box">
-                    <input
-                      type="password"
-                      placeholder="Enter your Password"
-                      required
-                    />
-                    <div className="underline" />
-                  </div>
-
-                  <div className="input-box button">
-                    <input type="submit" value="Continue" />
-                  </div>
-                </form>
-                <div className="option">or Connect with Social Media</div>
-                <div className="facebook">
-                  <a>
-                    <FontAwesomeIcon icon={faFacebook} />
-                    Login with Facebook
-                  </a>
-                </div>
-                <div className="twitter">
-                  <a>
-                    <FontAwesomeIcon icon={faTwitter} />
-                    Login with Twitter
-                  </a>
+                    <div className="input-box button">
+                      <input type="submit" value="Create Account" />
+                    </div>
+                  </form>
                 </div>
               </div>
-            </div>
-          </Modal>
-        </div>
-        <div css={headerLogout}>
-          {props.username ? (
-            <>Logged in as {props.username} &nbsp;&nbsp;</>
-          ) : (
-            ''
-          )}
-          {!props.username && (
-            <div>
-              <div css={registerLogout}>
-                <Link href="/register">
-                  <a>Register</a>
-                </Link>
-                <Link href="/login">
-                  <a>Login</a>
-                </Link>
+            </Modal>
+
+            <Modal
+              isOpen={isOpen}
+              onRequestClose={toggleModal}
+              contentLabel="Sign In Form"
+              style={customStyles}
+              ariaHideApp={false}
+            >
+              {' '}
+              <div css={formStyles}>
+                <div className="container">
+                  <form action="">
+                    <div className="title">Login</div>
+                    <div className="input-box">
+                      <input placeholder="Enter your username" required />
+                      <div className="underline" />
+                    </div>
+
+                    <div className="input-box">
+                      <input
+                        type="password"
+                        placeholder="Enter your Password"
+                        required
+                      />
+                      <div className="underline" />
+                    </div>
+
+                    <div className="input-box button">
+                      <input type="submit" value="Continue" />
+                    </div>
+                  </form>
+                  <div className="option">or Connect with Social Media</div>
+                  <div className="facebook">
+                    <a>
+                      <FontAwesomeIcon icon={faFacebook} />
+                      Login with Facebook
+                    </a>
+                  </div>
+                  <div className="twitter">
+                    <a>
+                      <FontAwesomeIcon icon={faTwitter} />
+                      Login with Twitter
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
-          {props.username && (
-            <Link href="/logout">
-              <a>Logout</a>
-            </Link>
-          )}
+            </Modal>
+          </div>
+          */}
+          <div css={headerLogout}>
+            {props.username ? (
+              <>Logged in as {props.username} &nbsp;&nbsp;</>
+            ) : (
+              ''
+            )}
+            {!props.username && (
+              <div>
+                <div css={registerLogout}>
+                  <Link href="/register">
+                    <a>Register</a>
+                  </Link>
+                  <Link href="/login">
+                    <a>Login</a>
+                  </Link>
+                </div>
+              </div>
+            )}
+            {props.username && (
+              <Link href="/logout">
+                <a>Logout</a>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </div>

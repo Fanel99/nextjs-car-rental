@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
+import Head from 'next/head';
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import { Errors } from '../util/types';
@@ -29,16 +30,21 @@ const h1 = css`
   margin-top: 100px;
 `;
 
-export default function LoginPage(props: { refreshUsername: () => void }) {
+export default function LoginPage(props: {
+  refreshUsername: () => void;
+  username?: string;
+}) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<Errors>([]);
   const router = useRouter();
 
   return (
-    <Layout>
+    <Layout username={props.username}>
       <h2 css={h1}>Login</h2>
-
+      <Head>
+        <title>Login | Oldie but goodie</title>
+      </Head>
       <form
         css={formStyles}
         onSubmit={async (event) => {
@@ -67,7 +73,7 @@ export default function LoginPage(props: { refreshUsername: () => void }) {
           const destination =
             typeof router.query.returnTo === 'string' && router.query.returnTo
               ? router.query.returnTo
-              : `/`;
+              : `/users/${loginJson.user.id}`; // change the route and create a new page for welcome user
 
           props.refreshUsername();
 

@@ -1,5 +1,12 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
+import video from '../public/video/classic.mp4';
+
+const containerFullWidth = css`
+  max-width: 1920px;
+  background-color: #191919;
+  position: relative;
+`;
 
 const container = css`
   max-width: 1366px;
@@ -11,79 +18,39 @@ const heroWrapper = css`
   display: flex;
   justify-content: center;
   align-self: center;
-  height: 100vh;
-  width: 100%;
-  background-image: url(/pictures/stradale.jpg);
-  background-size: cover;
-  margin-top: -64px;
+  height: calc(100vh - 128px);
+  video {
+    object-fit: cover;
+    width: 100%;
+  }
 `;
 
 const heroHeader = css`
   font-size: 36px;
   display: flex;
-  justify-content: center;
-  align-self: center;
-  align-items: center;
   text-align: center;
   line-height: 1.5;
   color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
-
-const line1 = ' Welcome to ';
-const line2 = 'oldie but goodie ';
-
-const sentence = {
-  hidden: { opacity: 1 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delay: 0.9,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const letter = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
-
-let count = 0;
 
 function Hero() {
   return (
-    <main css={container}>
+    <div css={containerFullWidth}>
       <div css={heroWrapper}>
-        <div css={heroHeader}>
-          <motion.h1 variants={sentence} initial="hidden" animate="visible">
-            {line1.split('').map((char) => {
-              return (
-                <motion.span
-                  key={char + 'animation' + count++}
-                  variants={letter}
-                >
-                  {char}
-                </motion.span>
-              );
-            })}
-            <br />
-            {line2.split('').map((char) => {
-              return (
-                <motion.span
-                  key={char + 'animation' + count++}
-                  variants={letter}
-                >
-                  {char}
-                </motion.span>
-              );
-            })}
-          </motion.h1>
-        </div>
+        <video
+          autoplay="autoplay"
+          muted
+          src={require('/public/video/classic.mp4')}
+        />
       </div>
-    </main>
+      <div css={heroHeader}>
+        <h1>Text text text</h1>
+      </div>
+    </div>
   );
 }
 

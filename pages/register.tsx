@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import Header from '../components/Header';
 import Layout from '../components/Layout';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
@@ -22,7 +22,10 @@ const errorsStyles = css`
   color: red;
 `;
 
-type Props = { refreshUsername: () => void; csrfToken: string };
+type Props = {
+  refreshUsername: () => void;
+  csrfToken: string;
+};
 
 export default function RegisterPage(props: Props) {
   const [username, setUsername] = useState('');
@@ -32,6 +35,9 @@ export default function RegisterPage(props: Props) {
 
   return (
     <Layout>
+      <Head>
+        <title>Registration | Oldie but goodie</title>
+      </Head>
       <form
         css={formStyles}
         onSubmit={async (event) => {

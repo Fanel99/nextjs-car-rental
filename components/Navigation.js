@@ -1,14 +1,17 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
+import logo from '../public/pictures/logo.png';
 
 const container = css`
   max-width: 1366px;
   margin: 0 auto;
   width: 100%;
+  position: relative;
 
   .datePicker {
     display: flex;
@@ -18,18 +21,18 @@ const container = css`
 `;
 
 const logoNav = css`
-  background-image: url(/pictures/logo.png);
-  width: 130px;
-  height: 130px;
-  background-size: cover;
+  z-index: 3;
+  position: absolute;
+  left: 0;
 `;
 
 const navContainer = css`
   display: flex;
   justify-content: space-evenly;
-  align-items: flex-start;
+  align-items: center;
   align-content: center;
-  margin-top: 50px;
+  margin: 20px 0;
+  position: relative;
 
   input {
     width: 350px;
@@ -43,7 +46,6 @@ const navContainer = css`
 const navLinks = css`
   display: flex;
   gap: 20px;
-  padding: 10px;
   font-size: 18px;
 
   a:hover {
@@ -86,15 +88,17 @@ function Navigation() {
 
   return (
     <div css={container}>
+      {/* logo  */}
+      <div css={logoNav}>
+        <Image src={logo} />
+      </div>
       <div css={navContainer}>
-        {/* logo  */}
-        <div css={logoNav} />
         {/* Navigation Links  */}
         <div css={navLinks}>
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/deals">
+          <Link href="/contact">
             <a>Deals</a>
           </Link>
           <Link href="/">

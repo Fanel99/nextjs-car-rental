@@ -5,23 +5,27 @@ import cobra from '../public/pictures/newsletter.jpg';
 
 const container = css`
   max-width: 1366px;
-  margin: 0 auto;
+  margin: 0 auto 100px;
   width: 100%;
 `;
 
 const containerNewsletter = css`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  position: relative;
 `;
 const leftSide = css`
-  margin-top: 7%;
-  margin-left: 8.1%;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  z-index: 3;
 
   .leftSideText {
     position: absolute;
     top: 20%;
-    margin-left: 6%;
+    left: 10%;
 
     h4 {
       font-size: 28px;
@@ -38,12 +42,11 @@ const leftSide = css`
   }
 `;
 const rightSide = css`
-  margin-top: 50px;
+  flex: 0 1 50%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5%;
 
   position: relative;
 
@@ -89,7 +92,7 @@ const rightSide = css`
 
 function Newsletter() {
   return (
-    <div const={container}>
+    <div css={container}>
       <div css={containerNewsletter}>
         <div css={leftSide}>
           <Image src={border} height={400} alt="frame for news" />

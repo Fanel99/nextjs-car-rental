@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Features from '../components/Features';
 import Hero from '../components/Hero';
 import Latestcar from '../components/Latestcar';
@@ -8,6 +9,9 @@ import Newsletter from '../components/Newsletter';
 export default function Home(props) {
   return (
     <main>
+      <Head>
+        <title>Home | Oldie but goodie</title>
+      </Head>
       <Layout username={props.username}>
         <Navigation />
         <Hero />

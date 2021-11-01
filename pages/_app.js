@@ -16,19 +16,27 @@ function MyApp({ Component, pageProps }) {
       console.log(profile.errors);
       return;
     }
-    setUsername(profile.user.username);
+    setUsername(profile.user?.username);
   }, []);
 
   useEffect(() => {
     refreshUsername();
-  }, []);
+  }, [refreshUsername]); // need to search for a solution for  my  refresh problem
 
   return (
     <>
       <Head>
-        <title>Oldie But Goodie</title>
-        <meta content="Classic Rental Cars" key="title" />
         <html lang="en" />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <meta name="description" content="Description" />
+        <meta name="keywords" content="Keywords" />
+        <title>Oldie but goodie</title>
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Global
         styles={css`

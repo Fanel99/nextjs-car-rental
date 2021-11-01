@@ -11,14 +11,14 @@ import car8 from '../public/pictures/car8.jpg';
 
 const container = css`
   max-width: 1366px;
-  margin: 0 auto;
+  margin: 0 auto 100px;
   width: 100%;
 
   h2 {
     color: #020243;
     text-align: center;
-    margin-top: 50 px;
-    margin-bottom: 50 px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     letter-spacing: 3px;
     font-size: 50px;
     margin-top: 50px;
@@ -33,10 +33,73 @@ const imageWrapper = css`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin: 10px;
+  margin: 10px 0;
+`;
 
-  img:hover {
-    transform: scale(1);
+const imageText = css`
+  position: relative;
+  :hover .opacity {
+    opacity: 1;
+  }
+  .translate {
+    transition: 0.5s;
+    transition-delay: 0.2s;
+  }
+  :hover .translate {
+    transform: translateY(0);
+  }
+
+  div {
+    height: 100%;
+  }
+`;
+
+const imageTextHover = css`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgba(12, 12, 12, 0.7);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 0.5s;
+`;
+
+const imageTextHoverText = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition-delay: 2s;
+
+  .spanTop {
+    border: 1px solid #e7e7e7;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+  .spanBottom {
+    border: 1px solid #e7e7e7;
+    width: 80%;
+    margin-top: 30px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    margin-bottom: 10px;
   }
 `;
 
@@ -48,17 +111,129 @@ function Latestcar() {
       </h2>
       <div>
         <div css={imageWrapper}>
-          <Image src={car1} width="300" height="360" alt="classic car" />
-          <Image src={car2} width="300" height="360" alt="classic car" />
-          <Image src={car3} width="300" height="360" alt="classic car" />
-          <Image src={car4} width="300" height="360" alt="classic car" />
+          <div css={imageText}>
+            <Image src={car1} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Rolls Royce</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 200€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car2} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Renault</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 150€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car3} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Ford Mustang</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 220€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car4} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Rover</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 120€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
         </div>
 
         <div css={imageWrapper}>
-          <Image src={car5} width="300" height="360" alt="classic car" />
-          <Image src={car6} width="300" height="360" alt="classic car" />
-          <Image src={car7} width="300" height="360" alt="classic car" />
-          <Image src={car8} width="300" height="360" alt="classic car" />
+          <div css={imageText}>
+            <Image src={car5} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Porche</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 170€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car6} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Porche 911</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 190€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car7} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Chevrolet SS</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 140€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
+          <div css={imageText}>
+            <Image src={car8} alt="classic car" />
+            <div css={imageTextHover} className="opacity">
+              <div css={imageTextHoverText} className="translate">
+                <span className="spanTop" />
+                <h3>Meclaren</h3>
+                <p>
+                  Lorem ipsum dolor sit amet <br /> consectetur adipisicing
+                  elit.
+                </p>
+                <p>Only 230€ /day</p>
+                <span className="spanBottom" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
