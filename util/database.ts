@@ -270,7 +270,7 @@ export async function getCarsData() {
 }
 
 export async function getCarData(id: number) {
-  console.log(id);
+  // console.log(id);
   const cardatas = await sql<CarData[]>`
 
     SELECT
@@ -282,4 +282,41 @@ export async function getCarData(id: number) {
   `;
 
   return cardatas.map((cardata) => camelcaseKeys(cardata))[0];
+}
+
+export async function createAds({
+  userId,
+  car_name,
+  description,
+  day_price,
+  pick_up_adress,
+  city,
+  image_url,
+  phone,
+}: {
+  userId: number;
+  car_name: string;
+  description: string;
+  day_price: string;
+  pick_up_adress: string;
+  city: string;
+  image_url: string;
+  phone: string;
+}) {
+  const [cardata] = await sql`
+    INSERT INTO carsdata
+      (userId, car_name, description, day_price, pick_up_adress,city, image_url,phone)
+    VALUES
+      (${userId},${car_name}, ${description}, ${day_price}, ${pick_up_adress},${city}, ${image_url}, ${phone})
+    RETURNING
+      id,
+      car_name,
+      description,
+      day_price,
+      pick_up_adress,
+      city,
+      image_url,
+      phone
+  `;
+  return camelcaseKeys(cardata);
 }

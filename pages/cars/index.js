@@ -63,24 +63,20 @@ function Cars(props) {
         <div css={container}>
           {props.carsdata.map((item) => {
             return (
-              <div key={`carsId-${item}`}>
-                <div>
-                  <div>
-                    <Link href={`/carsId/${item.id}`} passhref>
-                      <a>
-                        <h2>{item.carName}</h2>
-                        <div css={imgWrapper}>
-                          <Image
-                            src={`/cardcars/${item.id}.jpeg`}
-                            alt="cars"
-                            objectFit="cover"
-                            layout="fill"
-                          />{' '}
-                        </div>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
+              <div key={`cars-${item.id}`}>
+                <Link href={`/cars/${item.id}`}>
+                  <a>
+                    <h2>{item.carName}</h2>
+                    <div css={imgWrapper}>
+                      <Image
+                        src={`/cardcars/${item.id}.jpeg`}
+                        alt="cars"
+                        objectFit="cover"
+                        layout="fill"
+                      />{' '}
+                    </div>
+                  </a>
+                </Link>
               </div>
             );
           })}
