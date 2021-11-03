@@ -17,6 +17,26 @@ export type Session = {
 export type UserWithPasswordHash = User & {
   passwordHash: string;
 };
+export type CarsData = {
+  id: number;
+  car_name: string;
+  description: string;
+  day_price: string;
+  pick_up_adress: string;
+  image_url: string;
+  city: string;
+  phone: string;
+};
+export type CarData = {
+  id: number;
+  car_name: string;
+  description: string;
+  day_price: string;
+  pick_up_adress: string;
+  image_url: string;
+  city: string;
+  phone: string;
+};
 
 // Read in the environment variables
 // in the .env file, making it possible
@@ -62,7 +82,6 @@ export async function getUsers() {
       users;
   `;
   return users.map((user) => {
-    // Convert the snake case favorite_color to favoriteColor
     return camelcaseKeys(user);
   });
 }
@@ -237,4 +256,30 @@ export async function deleteExpiredSessions() {
   `;
 
   return sessions.map((session) => camelcaseKeys(session));
+}
+
+// API ROUTES FUNCTIONS FOR CRUD
+
+export async function getCarsData() {
+  const cardatas = await sql<CarsData[]>`
+    SELECT * FROM  carsdata;
+  `;
+  return cardatas.map((cardata) => {
+    return camelcaseKeys(cardata);
+  });
+}
+
+export async function getCarData(id: number) {
+  console.log(id);
+  const cardatas = await sql<CarData[]>`
+
+    SELECT
+      *
+    FROM
+      carsdata
+    WHERE
+      id = ${id};
+  `;
+
+  return cardatas.map((cardata) => camelcaseKeys(cardata))[0];
 }

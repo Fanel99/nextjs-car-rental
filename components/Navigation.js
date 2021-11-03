@@ -3,6 +3,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import router from 'next/router';
 import { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import logo from '../public/pictures/logo.png';
@@ -15,8 +16,38 @@ const container = css`
 
   .datePicker {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-top: 0;
+    align-items: center;
+  }
+
+  .wrapperButtons {
+    display: flex;
+    justify-content: center;
+  }
+  .cancel {
+    padding: 5px 15px;
+    border: 1px solid #c59e47;
+    margin-bottom: 20px;
+    margin-right: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: #c59e47;
+      color: #fff;
+    }
+  }
+  .search {
+    padding: 5px 15px;
+    border: 1px solid #c59e47;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: #c59e47;
+      color: #fff;
+    }
   }
 `;
 
@@ -86,19 +117,34 @@ function Navigation() {
     key: 'selection',
   };
 
+  const resetInput = () => {
+    setSearchInput('');
+  };
+
+  const search = () => {
+    router.push({
+      pathname: '/cars',
+      query: {
+        location: searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString,
+      },
+    });
+  };
+
   return (
     <div css={container}>
       {/* logo  */}
-      <div css={logoNav}>
+      <div data-aos="fade-down" css={logoNav}>
         <Image src={logo} />
       </div>
-      <div css={navContainer}>
+      <div data-aos="fade-down" css={navContainer}>
         {/* Navigation Links  */}
         <div css={navLinks}>
           <Link href="/">
             <a>Home</a>
           </Link>
-          <Link href="/contact">
+          <Link href="/cars">
             <a>Deals</a>
           </Link>
           <Link href="/">
@@ -114,7 +160,7 @@ function Navigation() {
         </div>
 
         {/* Link to become a Host */}
-        <div css={navHost}>
+        <div data-aos="fade-down" css={navHost}>
           <Link href="/becomeahost">
             <a>Become a host</a>
           </Link>
@@ -128,6 +174,15 @@ function Navigation() {
             rangeColors={['#c59e47']}
             onChange={handleSelect}
           />
+
+          <div className="wrapperButtons">
+            <button onClick={resetInput} className="cancel">
+              Cancel
+            </button>
+            <button onClick={search} className="search">
+              Search
+            </button>
+          </div>
         </div>
       )}
     </div>

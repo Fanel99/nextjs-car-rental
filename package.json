@@ -10,6 +10,7 @@
     "migrate": "dotenv ley"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -21,6 +22,7 @@
     "@types/cookie": "^0.4.1",
     "@types/dotenv-safe": "^8.1.2",
     "@types/react-modal": "^3.13.1",
+    "aos": "^2.3.4",
     "bcrypt": "^5.0.1",
     "camelcase-keys": "^7.0.1",
     "cookie": "^0.4.1",

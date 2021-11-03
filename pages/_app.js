@@ -1,7 +1,23 @@
+import ProgressBar from '@badrap/bar-of-progress';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
+import { Router } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
+
+// create the progress bar
+const progress = new ProgressBar({
+  size: 4,
+  color: '#c59e47',
+  className: 'z-50',
+  delay: 100,
+});
+
+// detectd when router change and action(stop) the progress bar
+
+Router.events.on('routeChangeStart', progress.start);
+Router.events.on('routeChangeComplete', progress.finish);
+Router.events.on('routeChangeError', progress.finish);
 
 function MyApp({ Component, pageProps }) {
   const [username, setUsername] = useState();
@@ -10,13 +26,13 @@ function MyApp({ Component, pageProps }) {
     const response = await fetch('/api/profile');
     const profile = await response.json();
 
-    console.log(profile);
+    // console.log(profile);
 
     if ('errors' in profile) {
-      console.log(profile.errors);
+      // console.log(profile.errors);
       return;
     }
-    setUsername(profile.user?.username);
+    setUsername(profile.user.username);
   }, []);
 
   useEffect(() => {

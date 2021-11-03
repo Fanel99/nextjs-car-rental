@@ -76,7 +76,7 @@ export default function Footer() {
   return (
     <footer css={footer}>
       <div css={containerFooter}>
-        <div css={firstDiv}>
+        <div data-aos="fade-left" css={firstDiv}>
           <h4>Oldie But Goodie</h4>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam ad
@@ -85,7 +85,7 @@ export default function Footer() {
           </p>
         </div>
 
-        <div css={secondDiv}>
+        <div data-aos="fade-down" css={secondDiv}>
           <h4>Useful Link</h4>
           <ul>
             <li>
@@ -94,7 +94,7 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/deals">
+              <Link href="/cars">
                 <a>Deals</a>
               </Link>
             </li>
@@ -107,7 +107,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div css={thirdDiv}>
+        <div data-aos="fade-right" css={thirdDiv}>
           <h4>Contact</h4>
           <p>Adress: Wolfengasse 3, Viena</p>
           <p>Phone: +43 1 515 23</p>

@@ -108,7 +108,7 @@ function Latestcar() {
       </h2>
       <div>
         <div css={imageWrapper}>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car1} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -123,7 +123,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car2} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -138,7 +138,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car3} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -153,7 +153,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car4} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -171,7 +171,7 @@ function Latestcar() {
         </div>
 
         <div css={imageWrapper}>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car5} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -186,7 +186,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car6} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -201,7 +201,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car7} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">
@@ -216,7 +216,7 @@ function Latestcar() {
               </div>
             </div>
           </div>
-          <div css={imageText}>
+          <div data-aos="zoom-in" data-aos-offset="300" css={imageText}>
             <Image src={car8} alt="classic car" />
             <div css={imageTextHover} className="opacity">
               <div css={imageTextHoverText} className="translate">

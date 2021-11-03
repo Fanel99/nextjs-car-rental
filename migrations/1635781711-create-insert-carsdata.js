@@ -67,16 +67,15 @@ const carsdata = [
   },
 ];
 
-// Todo: Create the functions
 exports.up = async function up(sql) {
   console.log('Inserting carsdata...');
-  // Looping over the array and INSERTing each user_course
+  // Looping over the array and INSERTing data in tabel
   for (const cars of carsdata) {
     await sql`
       INSERT INTO carsdata
         (car_name, description, day_price, pick_up_adress, city, image_url, phone)
       VALUES
-			(${cars.car_name}, ${cars.description},${cars.day_price}, ${cars.pick_up_adress},${cars.image_url},${cars.city}, ${cars.phone});
+			(${cars.car_name}, ${cars.description},${cars.day_price}, ${cars.pick_up_adress},${cars.city},${cars.image_url}, ${cars.phone});
     `;
   }
 };

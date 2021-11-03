@@ -1,5 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// Creating the end point
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+import { getCarsData } from '../../util/database';
+
+export default async function handler(req, res) {
+  const carsdata = await getCarsData();
+  // console.log('from api routes', await getCarsData());
+
+  res.status(200).json(carsdata);
 }

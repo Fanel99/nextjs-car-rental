@@ -42,7 +42,6 @@ export default function LoginPage(props: {
         <title>Login | Oldie but goodie</title>
       </Head>
       <Navigation />
-      <Hero />
       <form
         css={formStyles}
         onSubmit={async (event) => {
@@ -126,7 +125,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const sessionToken = context.req.cookies.sessionToken;
 
   const session = await getValidSessionByToken(sessionToken);
-  console.log(session);
+  // console.log(session);
 
   if (session) {
     // Redirect the user when they have a session

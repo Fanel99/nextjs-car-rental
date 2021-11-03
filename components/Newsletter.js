@@ -14,6 +14,7 @@ const containerNewsletter = css`
   align-items: center;
   justify-content: flex-end;
   position: relative;
+  overflow: hidden;
 `;
 const leftSide = css`
   position: absolute;
@@ -105,7 +106,7 @@ function Newsletter() {
             </p>
           </div>
         </div>
-        <div css={rightSide}>
+        <div data-aos="fade-left" css={rightSide}>
           <Image src={cobra} height={500} alt="cobra car as background" />
           <div className="rightSideText">
             <input placeholder="Enter your email" className="newsInput" />

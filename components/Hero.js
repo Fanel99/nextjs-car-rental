@@ -34,13 +34,13 @@ function Hero() {
     <div css={containerFullWidth}>
       <div css={heroWrapper}>
         <video
-          autoplay="autoplay"
+          autoPlay="autoplay"
           muted
           src={require('/public/video/classic.mp4')}
         />
       </div>
       <div css={heroHeader}>
-        <h1>Oldie but goodie</h1>
+        <h1 data-aos="fade-up">Oldie but goodie</h1>
       </div>
     </div>
   );

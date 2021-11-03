@@ -24,6 +24,7 @@ const container = css`
 const cardsWrapper = css`
   display: flex;
   border: 1px solid #000;
+  overflow: hidden;
 `;
 
 const cardWrapper = css`
@@ -79,7 +80,7 @@ function Features() {
         Features <span> Cars</span>
       </h2>
       <div css={cardsWrapper}>
-        <div css={cardWrapper}>
+        <div data-aos="fade-right" css={cardWrapper}>
           <div css={imgWrapper}>
             <Image
               src={porsche}
@@ -97,7 +98,7 @@ function Features() {
             <button>Read More</button>
           </div>
         </div>
-        <div css={cardWrapper}>
+        <div data-aos="fade-left" css={cardWrapper}>
           <div css={imgWrapper}>
             <Image
               src={mercedes}

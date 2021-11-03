@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
-import React from 'react';
 import Layout from '../../components/Layout';
 import { User } from '../../util/database';
 
@@ -23,6 +22,7 @@ const SingleUser = (props: Props) => {
       <div css={singleUserWrapper}>
         <h1>Welcome {props.username}!</h1>
         <Link href="/logout">Logout</Link>
+        <button>Delete Account</button>
       </div>
     </Layout>
   );
