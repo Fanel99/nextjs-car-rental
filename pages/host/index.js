@@ -7,7 +7,6 @@ const containerHost = css`
   align-items: center;
   flex-direction: column;
   height: 100vh;
-
   h2 {
     margin-bottom: 50px;
   }
@@ -23,7 +22,7 @@ export default function PrivatePage(props) {
   const [phone, setPhone] = useState('');
   const [createObjectURL, setCreateObjectURL] = useState('');
 
-  //Save Image in Specific Folder and Save Path to SQL Database ??
+  // Save Image in Specific Folder and Save Path to SQL Database
 
   const uploadToClient = (event) => {
     if (event.target.files && event.target.files[0]) {
@@ -34,13 +33,13 @@ export default function PrivatePage(props) {
     }
   };
 
-  async function createAds(userName, userColor) {
-    const usersResponse = await fetch(`${props.baseUrl}/api/users`, {
+  async function createAds(par, par1) {
+    const usersResponse = await fetch(`${props.baseUrl}/api/cars`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ userName, userColor }),
+      body: JSON.stringify({ par, par1 }),
     });
     const user = await usersResponse.json();
     // const newSate = [...userList, user];
@@ -88,7 +87,7 @@ export default function PrivatePage(props) {
         />
         <img alt="" src={createObjectURL} />
 
-        <button>Send to server</button>
+        <button onClick={() => createAds()}>Send to server</button>
       </div>
     </div>
   );

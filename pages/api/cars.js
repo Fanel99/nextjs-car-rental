@@ -9,7 +9,6 @@ export default async function handler(req, res) {
 
     return res.status(200).json(carsdata);
   } else if (req.method === 'POST') {
-    // Need also some code
     const body = req.body;
 
     const creatdAds = await createAds({

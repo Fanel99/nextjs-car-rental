@@ -286,28 +286,28 @@ export async function getCarData(id: number) {
 
 export async function createAds({
   userId,
-  car_name,
+  carName,
   description,
-  day_price,
-  pick_up_adress,
+  dayPrice,
+  pickUpAdress,
   city,
-  image_url,
+  imageUrl,
   phone,
 }: {
   userId: number;
-  car_name: string;
+  carName: string;
   description: string;
-  day_price: string;
-  pick_up_adress: string;
+  dayPrice: string;
+  pickUpAdress: string;
   city: string;
-  image_url: string;
+  imageUrl: string;
   phone: string;
 }) {
   const [cardata] = await sql`
     INSERT INTO carsdata
-      (userId, car_name, description, day_price, pick_up_adress,city, image_url,phone)
+      (userId, car_name, description, dayPrice, pickUpAdress,city, imageUrl,phone)
     VALUES
-      (${userId},${car_name}, ${description}, ${day_price}, ${pick_up_adress},${city}, ${image_url}, ${phone})
+      (${userId},${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone})
     RETURNING
       id,
       car_name,
