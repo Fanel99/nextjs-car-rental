@@ -12,7 +12,7 @@ const containerHost = css`
   }
 `;
 
-export default function PrivatePage(props) {
+function CreateAds() {
   const [carName, setCarName] = useState('');
   const [description, setDescription] = useState('');
   const [dayPrice, setDayPrice] = useState('');
@@ -20,75 +20,80 @@ export default function PrivatePage(props) {
   const [city, setCity] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [phone, setPhone] = useState('');
-  const [createObjectURL, setCreateObjectURL] = useState('');
 
-  // Save Image in Specific Folder and Save Path to SQL Database
-
-  const uploadToClient = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const i = event.target.files[0];
-
-      setImageUrl(i);
-      setCreateObjectURL(URL.createObjectURL(i));
-    }
-  };
-
-  async function createAds(par, par1) {
-    const usersResponse = await fetch(`${props.baseUrl}/api/cars`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ par, par1 }),
-    });
-    const user = await usersResponse.json();
-    // const newSate = [...userList, user];
-    // setUserList(newSate);
-  }
   return (
     <div>
       <div css={containerHost}>
-        <h2>Form For Adding New Cars</h2>
-        <input
-          placeholder="Car Name"
-          value={carName}
-          onChange={(e) => setCarName(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Price for a day"
-          value={dayPrice}
-          onChange={(e) => setDayPrice(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Pick up adress"
-          value={pickUpAdress}
-          onChange={(e) => setPickUpAdress(e.currentTarget.value)}
-        />
-        <input
-          placeholder="City"
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Enter your phone number"
-          value={phone}
-          onChange={(e) => setPhone(e.currentTarget.value)}
-        />
-        <input
-          type="file"
-          name="myImage"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.currentTarget.value)}
-        />
-        <img alt="" src={createObjectURL} />
-
-        <button onClick={() => createAds()}>Send to server</button>
+        <h2>Form for adding new car</h2>
+        <span>
+          Car
+          <input
+            placeholder="Car Name"
+            value={carName}
+            onChange={(e) => setCarName(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            placeholder="description"
+            value={description}
+            onChange={(e) => setDescription(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            placeholder="Day Price"
+            value={dayPrice}
+            onChange={(e) => setDayPrice(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            placeholder="Pick Up Adress"
+            value={pickUpAdress}
+            onChange={(e) => setPickUpAdress(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            placeholder="Enter a city"
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            type="file"
+            placeholder="Upload an image"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Phone
+          <input
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.currentTarget.value)}
+          />
+        </span>
+        <span>
+          Car
+          <input
+            type="file"
+            placeholder="Upload an image"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.currentTarget.value)}
+          />
+        </span>
       </div>
     </div>
   );
 }
+
+export default CreateAds;

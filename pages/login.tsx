@@ -3,7 +3,6 @@ import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
 import { useState } from 'react';
-import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import { Errors } from '../util/types';
