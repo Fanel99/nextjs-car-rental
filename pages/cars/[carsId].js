@@ -6,10 +6,15 @@ function singleCar() {
 
 export default singleCar;
 
-export async function getServerSideProps() {
-  const carResponse = await fetch('http://localhost:3000/api/carsId');
-  // const cardata = await carResponse.json();
-  // console.log('from gSSP', carsdata);
+// Make it work with a single IDDDDD
+
+export async function getServerSideProps(context) {
+  const { getCarData } = await import('../../util/database');
+
+  // const car = await getCarData(Number(context.query.carsId));
+  // console.log(car);
+
+  //console.log('from gSSP', cardata);
   return {
     props: {
       // cardata,

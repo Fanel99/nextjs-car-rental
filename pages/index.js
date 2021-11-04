@@ -11,6 +11,7 @@ import Newsletter from '../components/Newsletter';
 
 export default function Home(props) {
   useEffect(() => {
+    props.refreshUsername();
     AOS.init({
       //  once: true,
       easing: 'ease-in-sine',

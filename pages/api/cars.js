@@ -11,17 +11,19 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     const body = req.body;
 
-    const creatdAds = await createAds({
-      carName: body.carName,
-      description: body.description,
-      dayPrice: body.dayPrice,
-      pickUpAdress: body.pickUpAdress,
-      city: body.city,
-      imageUrl: body.imageUrl,
-      phone: body.phone,
+    // It's supose to work, at least i think so
+    const createCardata = await createAds({
+      carName: body.carname,
+
+      description: body.descript,
+      dayPrice: body.price,
+      pickUpAdress: body.adress,
+      city: body.cityy,
+      imageUrl: body.imgpath,
+      phone: body.telephone,
     });
 
-    return res.status(200).json(creatdAds);
+    return res.status(200).json(createCardata);
   }
   return res.status(405);
 }

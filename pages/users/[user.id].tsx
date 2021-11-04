@@ -4,9 +4,9 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import { User } from '../../util/database';
 
-type Props = {
-  username: User;
-};
+// type Props = {
+//   username: User;
+// };
 
 const singleUserWrapper = css`
   height: 100vh;
@@ -16,9 +16,9 @@ const singleUserWrapper = css`
   justify-content: center;
 `;
 
-const SingleUser = (props: Props) => {
+const SingleUser = (props) => {
   return (
-    <Layout>
+    <Layout username={props.username}>
       <div css={singleUserWrapper}>
         <h1>Welcome {props.username}!</h1>
         <Link href="/logout">Logout</Link>

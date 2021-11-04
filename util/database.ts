@@ -261,7 +261,7 @@ export async function deleteExpiredSessions() {
 // API ROUTES FUNCTIONS FOR CRUD
 
 export async function getCarsData() {
-  const cardatas = await sql<CarsData[]>`
+  const cardatas = await sql`
     SELECT * FROM  carsdata;
   `;
   return cardatas.map((cardata) => {
@@ -271,7 +271,7 @@ export async function getCarsData() {
 
 export async function getCarData(id: number) {
   // console.log(id);
-  const cardatas = await sql<CarData[]>`
+  const cardatas = await sql`
 
     SELECT
       *
@@ -285,7 +285,6 @@ export async function getCarData(id: number) {
 }
 
 export async function createAds({
-  userId,
   carName,
   description,
   dayPrice,
@@ -294,7 +293,6 @@ export async function createAds({
   imageUrl,
   phone,
 }: {
-  userId: number;
   carName: string;
   description: string;
   dayPrice: string;
@@ -305,11 +303,10 @@ export async function createAds({
 }) {
   const [cardata] = await sql`
     INSERT INTO carsdata
-      (userId, car_name, description, dayPrice, pickUpAdress,city, imageUrl,phone)
+      ( car_name, description, day_price, pick_up_adress,city, image_url,phone)
     VALUES
-      (${userId},${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone})
+      (${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone})
     RETURNING
-      id,
       car_name,
       description,
       day_price,
