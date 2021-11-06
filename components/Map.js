@@ -9,6 +9,9 @@ function Map() {
     longitude: 16.363449,
     zoom: 11,
   });
+
+  // Add the control to the map.
+
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/fanel/ckv8ixlse9lz714o3xc7i5mdg"

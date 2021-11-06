@@ -21,6 +21,145 @@ const formStyles = css`
 const errorsStyles = css`
   color: red;
 `;
+const formStyless = css`
+  .container {
+    background: #fff;
+    max-width: 350px;
+    width: 100%;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  .container form .title {
+    font-size: 30px;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    position: relative;
+  }
+
+  .container form .title:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 33px;
+    bottom: 3px;
+    left: 0;
+    border-radius: 5px;
+    background: linear-gradient(to right, #000000 0%, #403d3e 100%);
+  }
+  .container form .titleRegister:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 27px;
+    bottom: 3px;
+    left: 0;
+    border-radius: 5px;
+    background: linear-gradient(to right, #000000 0%, #403d3e 100%);
+  }
+
+  .container form .input-box {
+    width: 100%;
+    height: 45px;
+    margin-top: 25px;
+    position: relative;
+  }
+
+  .container form .input-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    border: none;
+  }
+
+  .container form .underline:before {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    left: 0;
+    bottom: 0;
+  }
+
+  .container form .underline:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #000000 0%, #403d3e 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.3s ease;
+  }
+  .container form .input-box input:focus ~ .underline:after,
+  .container form .input-box input:valid ~ .underline:after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .container form .button {
+    margin: 40px 0 20px 0;
+  }
+
+  .container form .input-box input[type='submit'] {
+    font-size: 17px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(to right, #000000 0%, #403d3e 100%);
+    transition: all 0.3s ease;
+  }
+
+  .container form .input-box input[type='submit']:hover {
+    letter-spacing: 1px;
+    background: linear-gradient(to left, #000000 0%, #403d3e 100%);
+  }
+
+  .container .option {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .container .twitter a,
+  .container .facebook a {
+    display: block;
+    width: 100%;
+    height: 45px;
+    font-size: 17px;
+    text-decoration: none;
+    padding-left: 20px;
+    color: #fff;
+    line-height: 45px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .container .twitter a {
+    margin: 20px 0 15px 0;
+    background: linear-gradient(to left, #00acee 0%, #1abeff 100%);
+  }
+
+  .container .twitter a:hover {
+    background: linear-gradient(to right, #00acee 0%, #1abeff 100%);
+  }
+
+  .container .facebook a {
+    background: linear-gradient(to left, #3b5998 0%, #476bb8 100%);
+  }
+
+  .container .facebook a:hover {
+    background: linear-gradient(to right, #3b5998 0%, #476bb8 100%);
+  }
+`;
 
 type Props = {
   refreshUsername: () => void;
@@ -91,6 +230,73 @@ export default function RegisterPage(props: Props) {
         </label>
 
         <button>Register</button>
+        {/* <div css={formStyless}>
+          <div className="container">
+            <form
+              onSubmit={async (event) => {
+                event.preventDefault();
+
+                const registerResponse = await fetch('/api/register', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    csrfToken: props.csrfToken,
+                  }),
+                });
+
+                const registerJson =
+                  (await registerResponse.json()) as RegisterResponse;
+
+                if ('errors' in registerJson) {
+                  setErrors(registerJson.errors);
+                  return;
+                }
+                {
+                  const destination =
+                    typeof router.query.returnTo === 'string' &&
+                    router.query.returnTo
+                      ? router.query.returnTo
+                      : `/login`;
+
+                  props.refreshUsername();
+
+                  router.push(destination);
+                }
+              }}
+            >
+              <div className=" title titleRegister">Sign Up</div>
+
+              <div className="input-box">
+                <input
+                  placeholder="Username"
+                  required
+                  value={username}
+                  onChange={(event) => setUsername(event.currentTarget.value)}
+                />
+                <div className="underline" />
+              </div>
+              <div className="input-box">
+                <input
+                  value={password}
+                  onChange={(event) => setPassword(event.currentTarget.value)}
+                  type="password"
+                  placeholder="Enter your Password"
+                  required
+                />
+                <div className="underline" />
+              </div>
+
+              <div className="input-box button">
+                <input type="submit" value="Create Account" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </form> */}
       </form>
       <div css={errorsStyles}>
         {errors.map((error) => (

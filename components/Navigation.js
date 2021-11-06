@@ -127,7 +127,7 @@ function Navigation() {
       query: {
         location: searchInput,
         startDate: startDate.toISOString(),
-        endDate: endDate.toISOString,
+        endDate: endDate.toISOString(),
       },
     });
   };

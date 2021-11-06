@@ -47,7 +47,7 @@ function Cars(props) {
   const router = useRouter();
 
   // destructuring from URL and  combine start and end Date
-  // for displaying dynamic from search bar
+  // for displaying dynamic  info from search bar and  format the data
   const { location, startDate, endDate } = router.query;
 
   //    <p>Search results for {location} from {startDate} to {endDate} </p>

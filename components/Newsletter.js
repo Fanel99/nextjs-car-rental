@@ -7,6 +7,7 @@ const container = css`
   max-width: 1366px;
   margin: 0 auto 100px;
   width: 100%;
+  margin-top: 100px;
 `;
 
 const containerNewsletter = css`

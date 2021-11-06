@@ -10,10 +10,10 @@ const progress = new ProgressBar({
   size: 4,
   color: '#c59e47',
   className: 'z-50',
-  delay: 100,
+  delay: 150,
 });
 
-// detectd when router change and action(stop) the progress bar
+// detectd when router change and action the progress bar
 
 Router.events.on('routeChangeStart', progress.start);
 Router.events.on('routeChangeComplete', progress.finish);
@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     refreshUsername();
-  }, [refreshUsername]); // need to search for a solution for  my  refresh problem
+  }, [refreshUsername]);
 
   return (
     <>

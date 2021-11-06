@@ -197,6 +197,20 @@ export async function deleteUserById(id: number) {
   `;
   return camelcaseKeys(users[0]);
 }
+export async function getValidSessionByToken(token: string) {
+  if (!token) return undefined;
+
+  const [session] = await sql<[Session | undefined]>`
+    SELECT
+    *
+    FROM
+    sessions
+    WHERE
+    token = ${token} and
+    expiry_timestamp > NOW()
+  `;
+  return session && camelcaseKeys(session);
+}
 
 export async function createSession(token: string, userId: number) {
   const [session] = await sql<[Session]>`
@@ -220,32 +234,6 @@ export async function deleteExpiredSession() {
   return sessions.map((session) => camelcaseKeys(session))[0];
 }
 
-export async function deleteSessionByToken(token: string) {
-  const sessions = await sql<Session[]>`
-    DELETE FROM
-      sessions
-    WHERE
-      token = ${token}
-    RETURNING *
-  `;
-  return sessions.map((session) => camelcaseKeys(session))[0];
-}
-
-export async function getValidSessionByToken(token: string) {
-  if (!token) return undefined;
-
-  const [session] = await sql<[Session | undefined]>`
-    SELECT
-    *
-    FROM
-    sessions
-    WHERE
-    token = ${token} and
-    expiry_timestamp > NOW()
-  `;
-  return session && camelcaseKeys(session);
-}
-
 export async function deleteExpiredSessions() {
   const sessions = await sql<Session[]>`
     DELETE FROM
@@ -256,6 +244,16 @@ export async function deleteExpiredSessions() {
   `;
 
   return sessions.map((session) => camelcaseKeys(session));
+}
+export async function deleteSessionByToken(token: string) {
+  const sessions = await sql<Session[]>`
+    DELETE FROM
+      sessions
+    WHERE
+      token = ${token}
+    RETURNING *
+  `;
+  return sessions.map((session) => camelcaseKeys(session))[0];
 }
 
 // API ROUTES FUNCTIONS FOR CRUD
@@ -270,18 +268,19 @@ export async function getCarsData() {
 }
 
 export async function getCarData(id: number) {
-  // console.log(id);
-  const cardatas = await sql`
+  const [cardatas] = await sql`
 
     SELECT
-      *
+     *
     FROM
       carsdata
     WHERE
-      id = ${id};
+      id = ${id}
+
   `;
 
-  return cardatas.map((cardata) => camelcaseKeys(cardata))[0];
+  console.log('from DB', cardatas);
+  return camelcaseKeys(cardatas);
 }
 
 export async function createAds({

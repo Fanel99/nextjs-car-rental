@@ -2,11 +2,11 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import { User } from '../../util/database';
+import Navigation from '../../components/Navigation';
 
-// type Props = {
-//   username: User;
-// };
+type Props = {
+  username: string;
+};
 
 const singleUserWrapper = css`
   height: 100vh;
@@ -14,11 +14,13 @@ const singleUserWrapper = css`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
-const SingleUser = (props) => {
+const SingleUser = (props: Props) => {
   return (
     <Layout username={props.username}>
+      <Navigation />
       <div css={singleUserWrapper}>
         <h1>Welcome {props.username}!</h1>
         <Link href="/logout">Logout</Link>
