@@ -1,5 +1,8 @@
 import { css } from '@emotion/react';
+import Head from 'next/head';
 import { useState } from 'react';
+import Layout from '../../components/Layout';
+import Navigation from '../../components/Navigation';
 
 const containerHost = css`
   display: flex;
@@ -68,62 +71,77 @@ function CreateAds(props) {
 
   return (
     <div>
-      <div css={containerHost}>
-        <h2>Form for adding new car</h2>
-        <input
-          placeholder="Car Name"
-          value={carName}
-          onChange={(e) => setCarName(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Model"
-          value={description}
-          onChange={(e) => setDescription(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Day Price"
-          value={dayPrice}
-          onChange={(e) => setDayPrice(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Pick Up Adress"
-          value={pickUpAdress}
-          onChange={(e) => setPickUpAdress(e.currentTarget.value)}
-        />
-        <input
-          placeholder="Enter a city"
-          value={city}
-          onChange={(e) => setCity(e.currentTarget.value)}
-        />
+      <Layout username={props.username}>
+        <Head>
+          <title>Host | Oldie but goodie</title>
+        </Head>
+        <Navigation />
+        <div css={containerHost}>
+          <h2>Become a host </h2>
+          <input
+            required
+            placeholder="Car Name"
+            value={carName}
+            onChange={(e) => setCarName(e.currentTarget.value)}
+          />
+          <input
+            required
+            placeholder="Day Price"
+            value={dayPrice}
+            onChange={(e) => setDayPrice(e.currentTarget.value)}
+          />
+          <input
+            required
+            placeholder="Pick Up Adress"
+            value={pickUpAdress}
+            onChange={(e) => setPickUpAdress(e.currentTarget.value)}
+          />
+          <input
+            required
+            placeholder="Enter a city"
+            value={city}
+            onChange={(e) => setCity(e.currentTarget.value)}
+          />
 
-        <input
-          type="file"
-          placeholder="Upload an image"
-          onChange={uploadImage}
-        />
-        <input
-          placeholder="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.currentTarget.value)}
-        />
-        <button
-          onClick={() =>
-            createCar(
-              carName,
-              description,
-              dayPrice,
-              pickUpAdress,
-              city,
-              imageUrl,
-              phone,
-            )
-          }
-        >
-          {' '}
-          {/*  all good with values from controled components*/}
-          Send to server
-        </button>
-      </div>
+          <input
+            required
+            placeholder="Phone"
+            value={phone}
+            onChange={(e) => setPhone(e.currentTarget.value)}
+          />
+          <input
+            required
+            type="file"
+            placeholder="Upload an image"
+            onChange={uploadImage}
+          />
+          <textarea
+            required
+            cols="50"
+            rows="6"
+            placeholder="Write a small description about the car..."
+            value={description}
+            onChange={(e) => setDescription(e.currentTarget.value)}
+          />
+          <button
+            onClick={() =>
+              createCar(
+                carName,
+                description,
+                dayPrice,
+                pickUpAdress,
+                city,
+                imageUrl,
+                phone,
+              )
+            }
+          >
+            {' '}
+            {/*  all good with values from controled components*/}
+            Send to server
+          </button>
+        </div>
+      </Layout>
     </div>
   );
 }

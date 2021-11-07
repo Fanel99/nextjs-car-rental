@@ -279,7 +279,7 @@ export async function getCarData(id: number) {
 
   `;
 
-  console.log('from DB', cardatas);
+  // console.log('from DB', cardatas);
   return camelcaseKeys(cardatas);
 }
 

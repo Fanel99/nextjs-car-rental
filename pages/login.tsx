@@ -125,45 +125,6 @@ const formStyless = css`
     letter-spacing: 1px;
     background: linear-gradient(to left, #000000 0%, #403d3e 100%);
   }
-
-  .container .option {
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .container .twitter a,
-  .container .facebook a {
-    display: block;
-    width: 100%;
-    height: 45px;
-    font-size: 17px;
-    text-decoration: none;
-    padding-left: 20px;
-    color: #fff;
-    line-height: 45px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .container .twitter a {
-    margin: 20px 0 15px 0;
-    background: linear-gradient(to left, #00acee 0%, #1abeff 100%);
-  }
-
-  .container .twitter a:hover {
-    background: linear-gradient(to right, #00acee 0%, #1abeff 100%);
-  }
-
-  .container .facebook a {
-    background: linear-gradient(to left, #3b5998 0%, #476bb8 100%);
-  }
-
-  .container .facebook a:hover {
-    background: linear-gradient(to right, #3b5998 0%, #476bb8 100%);
-  }
 `;
 
 export default function LoginPage(props: {

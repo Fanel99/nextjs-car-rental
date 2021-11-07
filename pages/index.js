@@ -22,17 +22,17 @@ export default function Home(props) {
   }, []);
 
   return (
-    <main>
-      <Head>
-        <title>Home | Oldie but goodie</title>
-      </Head>
-      <Layout username={props.username}>
+    <Layout username={props.username}>
+      <main>
+        <Head>
+          <title>Home | Oldie but goodie</title>
+        </Head>
         <Navigation />
         <Hero />
         <Features />
         <Latestcar />
         <Newsletter />
-      </Layout>
-    </main>
+      </main>
+    </Layout>
   );
 }

@@ -1,6 +1,17 @@
-module.exports = {
-  reactStrictMode: true,
-};
-
 const withVideos = require('next-videos');
-module.exports = withVideos();
+
+const nextConfig = {
+  images: {
+    domains: [
+      'imgix.ranker.com',
+      'rennlist.com',
+      ' www.autozeitung.de',
+      'images.cdn.circlesix.co',
+      'i0.wp.com',
+      'd39a3h63xew422.cloudfront.net',
+      'res.cloudinary.com',
+      'www.autozeitung.de',
+    ], // your domain
+  },
+};
+module.exports = withVideos(nextConfig);

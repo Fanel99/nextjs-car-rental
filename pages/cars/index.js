@@ -43,7 +43,7 @@ const imgWrapper = css`
   height: 250px;
 `;
 
-function Cars(props) {
+function Cars({ carsdata, username }) {
   const router = useRouter();
 
   // destructuring from URL and  combine start and end Date
@@ -53,15 +53,16 @@ function Cars(props) {
   //    <p>Search results for {location} from {startDate} to {endDate} </p>
 
   return (
-    <Layout>
+    <Layout username={username}>
       <Head>
-        <title>Cars | Oldie but goodie</title>
+        <title>Deals | Oldie but goodie</title>
       </Head>
       <Navigation />
 
       <div css={containerAll}>
         <div css={container}>
-          {props.carsdata.map((item) => {
+          {carsdata.map((item) => {
+            console.log(item);
             return (
               <div key={`cars-${item.id}`}>
                 <Link href={`/cars/${item.id}`}>
@@ -69,7 +70,7 @@ function Cars(props) {
                     <h2>{item.carName}</h2>
                     <div css={imgWrapper}>
                       <Image
-                        src={`/cardcars/${item.id}.jpeg`}
+                        src={item.imageUrl}
                         alt="cars"
                         objectFit="cover"
                         layout="fill"
