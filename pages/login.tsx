@@ -1,11 +1,4 @@
 import { css } from '@emotion/react';
-import {
-  faFacebook,
-  faInstagram,
-  faTwitter,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import Head from 'next/head';
@@ -31,21 +24,9 @@ const formStyles = css`
 
 const errorsStyles = css`
   color: red;
+  text-align: center;
 `;
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    width: '400px',
-    marginRight: '-50%',
-    border: 'none',
-    background: 'none',
-    transform: 'translate(-50%, -50%)',
-  },
-};
 const formStyless = css`
   .container {
     background: #fff;
@@ -56,14 +37,14 @@ const formStyless = css`
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .container form .title {
+  .container .title {
     font-size: 30px;
     font-weight: 600;
     margin: 20px 0 10px 0;
     position: relative;
   }
 
-  .container form .title:before {
+  .container .title:before {
     content: '';
     position: absolute;
     height: 4px;
@@ -73,7 +54,7 @@ const formStyless = css`
     border-radius: 5px;
     background: linear-gradient(to right, #000000 0%, #403d3e 100%);
   }
-  .container form .titleRegister:before {
+  .container .titleRegister:before {
     content: '';
     position: absolute;
     height: 4px;
@@ -84,14 +65,14 @@ const formStyless = css`
     background: linear-gradient(to right, #000000 0%, #403d3e 100%);
   }
 
-  .container form .input-box {
+  .container .input-box {
     width: 100%;
     height: 45px;
     margin-top: 25px;
     position: relative;
   }
 
-  .container form .input-box input {
+  .container .input-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -99,7 +80,7 @@ const formStyless = css`
     border: none;
   }
 
-  .container form .underline:before {
+  .container .underline:before {
     position: absolute;
     content: '';
     height: 2px;
@@ -109,7 +90,7 @@ const formStyless = css`
     bottom: 0;
   }
 
-  .container form .underline:after {
+  .container .underline:after {
     position: absolute;
     content: '';
     height: 2px;
@@ -121,17 +102,17 @@ const formStyless = css`
     transform-origin: left;
     transition: all 0.3s ease;
   }
-  .container form .input-box input:focus ~ .underline:after,
-  .container form .input-box input:valid ~ .underline:after {
+  .container .input-box input:focus ~ .underline:after,
+  .container .input-box input:valid ~ .underline:after {
     transform: scaleX(1);
     transform-origin: left;
   }
 
-  .container form .button {
+  .container .button {
     margin: 40px 0 20px 0;
   }
 
-  .container form .input-box input[type='submit'] {
+  .container .input-box input[type='submit'] {
     font-size: 17px;
     color: #fff;
     border-radius: 5px;
@@ -140,7 +121,7 @@ const formStyless = css`
     transition: all 0.3s ease;
   }
 
-  .container form .input-box input[type='submit']:hover {
+  .container .input-box input[type='submit']:hover {
     letter-spacing: 1px;
     background: linear-gradient(to left, #000000 0%, #403d3e 100%);
   }
@@ -150,7 +131,6 @@ const formStyless = css`
     text-align: center;
     margin-bottom: 20px;
   }
-
   .container .twitter a,
   .container .facebook a {
     display: block;
@@ -229,14 +209,14 @@ export default function LoginPage(props: {
           const destination =
             typeof router.query.returnTo === 'string' && router.query.returnTo
               ? router.query.returnTo
-              : `/users/${loginJson.user.id}`; // change the route and create a new page for welcome user
+              : `/users/${loginJson.user.id}`;
 
           props.refreshUsername();
 
           router.push(destination);
         }}
       >
-        <label>
+        {/* <label>
           Username
           <input
             value={username}
@@ -252,8 +232,8 @@ export default function LoginPage(props: {
           />
         </label>
 
-        <button>Login</button>
-        {/* <div css={formStyless}>
+        <button>Login</button> */}
+        <div css={formStyless}>
           <div className="container">
             <div className="title">Login</div>
             <div className="input-box">
@@ -280,7 +260,7 @@ export default function LoginPage(props: {
               <input type="submit" value="Continue" />
             </div>
           </div>
-        </div> */}
+        </div>
       </form>
 
       <div css={errorsStyles}>

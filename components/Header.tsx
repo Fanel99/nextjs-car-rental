@@ -79,17 +79,6 @@ type Props = {
 };
 
 function Header(props: Props) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [register, setRegister] = useState(false);
-
-  function toggleModal() {
-    setIsOpen(!isOpen);
-  }
-
-  function toggleModalRegister() {
-    setRegister(!register);
-  }
-
   return (
     <div css={containerFullWidth}>
       <div css={container}>
@@ -117,100 +106,6 @@ function Header(props: Props) {
             <p>Call Us: +43 6677766767</p>
           </div>
 
-          {/* Login & Sign Up Part  */}
-
-          {/*
-          <div css={loginPart}>
-            <Modal
-              isOpen={register}
-              onRequestClose={toggleModalRegister}
-              contentLabel="Register Form"
-              style={customStyles}
-            >
-              <div css={formStyless}>
-                <div className="container">
-                  <form action="">
-                    <div className=" title titleRegister">Sign Up</div>
-
-                    <div className="input-box">
-                      <input placeholder="Username" required
-                      value={username}
-                      onChange={(event) => setUsername(event.currentTarget.value)}
-                      />
-                      <div className="underline" />
-                    </div>
-                    <div className="input-box">
-                      <input
-                       value={password}
-                       onChange={(event) => setPassword(event.currentTarget.value)}
-                        type="password"
-                        placeholder="Enter your Password"
-                        required
-                      />
-                      <div className="underline" />
-                    </div>
-
-                    <div className="input-box button">
-                      <input type="submit" value="Create Account" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </Modal>
-
-            <Modal
-              isOpen={isOpen}
-              onRequestClose={toggleModal}
-              contentLabel="Sign In Form"
-              style={customStyles}
-              ariaHideApp={false}
-            >
-              {' '}
-              <div css={formStyles}>
-                <div className="container">
-                  <form action="">
-                    <div className="title">Login</div>
-                    <div className="input-box">
-                      <input placeholder="Enter your username" required
-                       value={username}
-                       onChange={(event) => setUsername(event.currentTarget.value)}
-                      />
-                      <div className="underline" />
-                    </div>
-
-                    <div className="input-box">
-                      <input
-                        type="password"
-                        placeholder="Enter your Password"
-                        required
-                         value={password}
-                         onChange={(event) => setPassword(event.currentTarget.value)}
-                      />
-                      <div className="underline" />
-                    </div>
-
-                    <div className="input-box button">
-                      <input type="submit" value="Continue" />
-                    </div>
-                  </form>
-                  <div className="option">or Connect with Social Media</div>
-                  <div className="facebook">
-                    <a>
-                      <FontAwesomeIcon icon={faFacebook} />
-                      Login with Facebook
-                    </a>
-                  </div>
-                  <div className="twitter">
-                    <a>
-                      <FontAwesomeIcon icon={faTwitter} />
-                      Login with Twitter
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </Modal>
-          </div>
-          */}
           <div css={headerLogout}>
             {props.username ? (
               <>Logged in as {props.username} &nbsp;&nbsp;</>

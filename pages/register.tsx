@@ -12,7 +12,7 @@ const formStyles = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh;
+  height: 80vh;
   label {
     display: block;
   }
@@ -20,6 +20,7 @@ const formStyles = css`
 
 const errorsStyles = css`
   color: red;
+  text-align: center;
 `;
 const formStyless = css`
   .container {
@@ -31,14 +32,14 @@ const formStyless = css`
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15);
   }
 
-  .container form .title {
+  .container .title {
     font-size: 30px;
     font-weight: 600;
     margin: 20px 0 10px 0;
     position: relative;
   }
 
-  .container form .title:before {
+  .container .title:before {
     content: '';
     position: absolute;
     height: 4px;
@@ -48,7 +49,7 @@ const formStyless = css`
     border-radius: 5px;
     background: linear-gradient(to right, #000000 0%, #403d3e 100%);
   }
-  .container form .titleRegister:before {
+  .container .titleRegister:before {
     content: '';
     position: absolute;
     height: 4px;
@@ -59,14 +60,14 @@ const formStyless = css`
     background: linear-gradient(to right, #000000 0%, #403d3e 100%);
   }
 
-  .container form .input-box {
+  .container .input-box {
     width: 100%;
     height: 45px;
     margin-top: 25px;
     position: relative;
   }
 
-  .container form .input-box input {
+  .container .input-box input {
     height: 100%;
     width: 100%;
     outline: none;
@@ -74,7 +75,7 @@ const formStyless = css`
     border: none;
   }
 
-  .container form .underline:before {
+  .container .underline:before {
     position: absolute;
     content: '';
     height: 2px;
@@ -84,7 +85,7 @@ const formStyless = css`
     bottom: 0;
   }
 
-  .container form .underline:after {
+  .container .underline:after {
     position: absolute;
     content: '';
     height: 2px;
@@ -96,17 +97,17 @@ const formStyless = css`
     transform-origin: left;
     transition: all 0.3s ease;
   }
-  .container form .input-box input:focus ~ .underline:after,
-  .container form .input-box input:valid ~ .underline:after {
+  .container .input-box input:focus ~ .underline:after,
+  .container .input-box input:valid ~ .underline:after {
     transform: scaleX(1);
     transform-origin: left;
   }
 
-  .container form .button {
+  .container .button {
     margin: 40px 0 20px 0;
   }
 
-  .container form .input-box input[type='submit'] {
+  .container .input-box input[type='submit'] {
     font-size: 17px;
     color: #fff;
     border-radius: 5px;
@@ -115,7 +116,7 @@ const formStyless = css`
     transition: all 0.3s ease;
   }
 
-  .container form .input-box input[type='submit']:hover {
+  .container .input-box input[type='submit']:hover {
     letter-spacing: 1px;
     background: linear-gradient(to left, #000000 0%, #403d3e 100%);
   }
@@ -213,7 +214,7 @@ export default function RegisterPage(props: Props) {
           }
         }}
       >
-        <label>
+        {/* <label>
           Username
           <input
             value={username}
@@ -229,74 +230,36 @@ export default function RegisterPage(props: Props) {
           />
         </label>
 
-        <button>Register</button>
-        {/* <div css={formStyless}>
+        <button>Register</button> */}
+        <div css={formStyless}>
           <div className="container">
-            <form
-              onSubmit={async (event) => {
-                event.preventDefault();
+            <div className=" title titleRegister">Sign Up</div>
 
-                const registerResponse = await fetch('/api/register', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    username: username,
-                    password: password,
-                    csrfToken: props.csrfToken,
-                  }),
-                });
+            <div className="input-box">
+              <input
+                placeholder="Username"
+                required
+                value={username}
+                onChange={(event) => setUsername(event.currentTarget.value)}
+              />
+              <div className="underline" />
+            </div>
+            <div className="input-box">
+              <input
+                value={password}
+                onChange={(event) => setPassword(event.currentTarget.value)}
+                type="password"
+                placeholder="Enter your Password"
+                required
+              />
+              <div className="underline" />
+            </div>
 
-                const registerJson =
-                  (await registerResponse.json()) as RegisterResponse;
-
-                if ('errors' in registerJson) {
-                  setErrors(registerJson.errors);
-                  return;
-                }
-                {
-                  const destination =
-                    typeof router.query.returnTo === 'string' &&
-                    router.query.returnTo
-                      ? router.query.returnTo
-                      : `/login`;
-
-                  props.refreshUsername();
-
-                  router.push(destination);
-                }
-              }}
-            >
-              <div className=" title titleRegister">Sign Up</div>
-
-              <div className="input-box">
-                <input
-                  placeholder="Username"
-                  required
-                  value={username}
-                  onChange={(event) => setUsername(event.currentTarget.value)}
-                />
-                <div className="underline" />
-              </div>
-              <div className="input-box">
-                <input
-                  value={password}
-                  onChange={(event) => setPassword(event.currentTarget.value)}
-                  type="password"
-                  placeholder="Enter your Password"
-                  required
-                />
-                <div className="underline" />
-              </div>
-
-              <div className="input-box button">
-                <input type="submit" value="Create Account" />
-              </div>
-            </form>
+            <div className="input-box button">
+              <input type="submit" value="Create Account" />
+            </div>
           </div>
         </div>
-      </form> */}
       </form>
       <div css={errorsStyles}>
         {errors.map((error) => (

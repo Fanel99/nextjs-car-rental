@@ -1,7 +1,7 @@
 import ProgressBar from '@badrap/bar-of-progress';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
-import { Router } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 
@@ -21,6 +21,7 @@ Router.events.on('routeChangeError', progress.finish);
 
 function MyApp({ Component, pageProps }) {
   const [username, setUsername] = useState();
+  const router = useRouter();
 
   const refreshUsername = useCallback(async () => {
     const response = await fetch('/api/profile');
@@ -37,7 +38,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     refreshUsername();
-  }, [refreshUsername]);
+  }, [refreshUsername, router.pathname]);
 
   return (
     <>
