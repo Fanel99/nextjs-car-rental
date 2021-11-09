@@ -14,7 +14,6 @@ export default async function handler(req, res) {
     // It's supose to work, at least i think so
     const createCardata = await createAds({
       carName: body.carname,
-
       description: body.descript,
       dayPrice: body.price,
       pickUpAdress: body.adress,

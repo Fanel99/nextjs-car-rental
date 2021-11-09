@@ -195,8 +195,10 @@ export async function deleteUserById(id: number) {
       id,
       username
   `;
-  return camelcaseKeys(users[0]);
+
+  return users.map((user) => camelcaseKeys(user))[0];
 }
+
 export async function getValidSessionByToken(token: string) {
   if (!token) return undefined;
 
@@ -315,4 +317,17 @@ export async function createAds({
       phone
   `;
   return camelcaseKeys(cardata);
+}
+
+export async function deleteUserByUsername(username: string) {
+  const users = await sql`
+    DELETE FROM
+      users
+    WHERE
+      username = ${username}
+    RETURNING
+      username
+  `;
+  console.log('from DB ', users);
+  return users.map((user) => camelcaseKeys(user))[0];
 }

@@ -7,8 +7,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import { useState } from 'react';
-import Modal from 'react-modal';
 
 const containerFullWidth = css`
   max-width: 1920px;
@@ -49,11 +47,6 @@ const socialIcon = css`
 const callItems = css`
   color: #e7e7e7;
   letter-spacing: 1;
-`;
-
-const loginPart = css`
-  color: #e7e7e7;
-  margin-bottom: 0px;
 `;
 
 // Last parte with login and hide, need to make it nicer!
@@ -124,11 +117,7 @@ function Header(props: Props) {
                 </div>
               </div>
             )}
-            {props.username && (
-              <Link href="/logout">
-                <a>Logout</a>
-              </Link>
-            )}
+            {props.username && <Link href="/logout">Logout</Link>}
           </div>
         </div>
       </div>

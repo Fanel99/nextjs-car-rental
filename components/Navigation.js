@@ -173,6 +173,7 @@ function Navigation() {
             minDate={new Date()}
             rangeColors={['#c59e47']}
             onChange={handleSelect}
+            dateFormat="dd MMM yy"
           />
 
           <div className="wrapperButtons">

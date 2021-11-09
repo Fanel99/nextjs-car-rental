@@ -1,6 +1,7 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
+import { format } from 'date-fns';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,8 +50,12 @@ function Cars({ carsdata, username }) {
   // destructuring from URL and  combine start and end Date
   // for displaying dynamic  info from search bar and  format the data
   const { location, startDate, endDate } = router.query;
+  // const formattedStartDate = format(new Date(startDate), 'dd MMM yy');
 
-  //    <p>Search results for {location} from {startDate} to {endDate} </p>
+  // const formattedEddate = format(new Date(endDate), 'dd MMM yy');
+  // const range = `${formattedStartDate} -  ${formattedEddate} `;
+
+  //    <p>Search results for {location} from {range} </p>
 
   return (
     <Layout username={username}>
@@ -62,12 +67,10 @@ function Cars({ carsdata, username }) {
       <div css={containerAll}>
         <div css={container}>
           {carsdata.map((item) => {
-            console.log(item);
             return (
               <div key={`cars-${item.id}`}>
                 <Link href={`/cars/${item.id}`}>
                   <a>
-                    <h2>{item.carName}</h2>
                     <div css={imgWrapper}>
                       <Image
                         src={item.imageUrl}
@@ -78,6 +81,7 @@ function Cars({ carsdata, username }) {
                     </div>
                   </a>
                 </Link>
+                <h2>{item.carName}</h2>
               </div>
             );
           })}

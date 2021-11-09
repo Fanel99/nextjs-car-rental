@@ -11,7 +11,7 @@ const nextConfig = {
       'd39a3h63xew422.cloudfront.net',
       'res.cloudinary.com',
       'www.autozeitung.de',
-    ], // your domain
+    ],
   },
 };
 module.exports = withVideos(nextConfig);

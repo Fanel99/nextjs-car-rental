@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../components/Layout';
+import Navigation from '../components/Navigation';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
@@ -175,6 +176,7 @@ export default function RegisterPage(props: Props) {
 
   return (
     <Layout>
+      <Navigation />
       <Head>
         <title>Registration | Oldie but goodie</title>
       </Head>
@@ -214,23 +216,6 @@ export default function RegisterPage(props: Props) {
           }
         }}
       >
-        {/* <label>
-          Username
-          <input
-            value={username}
-            onChange={(event) => setUsername(event.currentTarget.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
-          />
-        </label>
-
-        <button>Register</button> */}
         <div css={formStyless}>
           <div className="container">
             <div className=" title titleRegister">Sign Up</div>

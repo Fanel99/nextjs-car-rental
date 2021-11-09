@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import Navigation from '../../components/Navigation';
 
@@ -14,8 +13,8 @@ const singleCarContainer = css`
 
 const imgWrapper = css`
   position: relative;
-  width: 600px;
-  height: 300px;
+  width: 700px;
+  height: 400px;
 `;
 
 function singleCar({ cardata, username }) {
@@ -30,7 +29,7 @@ function singleCar({ cardata, username }) {
             <Image src={cardata.imageUrl} layout="fill" objectFit="cover" />
           </div>
           <p>{cardata.description} </p>
-          <p>{cardata.dayPrice} </p>
+          <p>{cardata.dayPrice} € </p>
           <p>{cardata.city} </p>
           <p>{cardata.phone} </p>
         </div>

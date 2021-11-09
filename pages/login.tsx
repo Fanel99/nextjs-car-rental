@@ -177,23 +177,6 @@ export default function LoginPage(props: {
           router.push(destination);
         }}
       >
-        {/* <label>
-          Username
-          <input
-            value={username}
-            onChange={(event) => setUsername(event.currentTarget.value)}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.currentTarget.value)}
-          />
-        </label>
-
-        <button>Login</button> */}
         <div css={formStyless}>
           <div className="container">
             <div className="title">Login</div>
