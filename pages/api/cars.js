@@ -1,6 +1,6 @@
 // Creating the end point
 
-import { createAds, getCarsData } from '../../util/database';
+import { createAds, getCarsData, updateAddById } from '../../util/database';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
@@ -22,8 +22,25 @@ export default async function handler(req, res) {
       seats: body.seatss,
       fuel: body.fuell,
     });
-
     return res.status(200).json(createCardata);
+  } else if (req.method === 'PATCH') {
+    const body = req.body;
+
+    const updateCardata = await updateAddById({
+      carName: body.carname,
+      description: body.descript,
+      dayPrice: body.price,
+      pickUpAdress: body.adress,
+      city: body.cityy,
+      imageUrl: body.imgpath,
+      phone: body.telephone,
+      seats: body.seatss,
+      fuel: body.fuell,
+    });
+
+    console.log('from API Update', updateCardata);
+
+    return res.status(200).json(updateCardata);
   }
   return res.status(405);
 }

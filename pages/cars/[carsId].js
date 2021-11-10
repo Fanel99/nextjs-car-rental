@@ -32,6 +32,8 @@ function singleCar({ cardata, username }) {
           <p>{cardata.dayPrice} € </p>
           <p>{cardata.city} </p>
           <p>{cardata.phone} </p>
+          <p>{cardata.seats} </p>
+          <p>{cardata.fuel} </p>
         </div>
       </Layout>
     </div>

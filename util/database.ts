@@ -313,26 +313,27 @@ export async function createAds({
 }: {
   carName: string;
   description: string;
-  dayPrice: string;
+  dayPrice: number;
   pickUpAdress: string;
   city: string;
   imageUrl: string;
-  phone: string;
-  seats: string;
+  phone: number;
+  seats: number;
   fuel: string;
 }) {
-  console.log(
-    'from DB',
-    carName,
-    description,
-    dayPrice,
-    pickUpAdress,
-    city,
-    imageUrl,
-    phone,
-    seats,
-    fuel,
-  );
+  // console.log(
+  //   'from DB',
+  //   carName,
+
+  //   description,
+  //   dayPrice,
+  //   pickUpAdress,
+  //   city,
+  //   imageUrl,
+  //   phone,
+  //   seats,
+  //   fuel,
+  // );
 
   const [cardata] = await sql`
     INSERT INTO carsdata
@@ -365,4 +366,60 @@ export async function deleteUserByUsername(id: number) {
   console.log('from DB', users);
   // return user && camelcaseKeys(user);
   return users.map((user) => camelcaseKeys(user))[0];
+}
+
+export async function updateAddById(
+  id: number,
+  {
+    carName,
+    description,
+    dayPrice,
+    pickUpAdress,
+    city,
+    imageUrl,
+    phone,
+    seats,
+    fuel,
+  }: {
+    carName: string;
+    description: string;
+    dayPrice: number;
+    pickUpAdress: string;
+    city: string;
+    imageUrl: string;
+    phone: number;
+    seats: number;
+    fuel: string;
+  },
+) {
+  const cardata = await sql`
+    UPDATE
+      carsdata
+
+    SET
+    carName = ${carName},
+    description = ${description},
+    dayPrice = ${dayPrice},
+    pickUpAdress = ${pickUpAdress},
+    city = ${city},
+    imageUrl = ${imageUrl},
+    phone = ${phone},
+    seats = ${seats},
+    fuel = ${fuel}
+
+    WHERE
+      id = ${id}
+    RETURNING
+      id,
+      carName,
+      description,
+      dayPrice,
+      pickUpAdress,
+      city,
+      imageUrl,
+      phone,
+      seats,
+      fuel
+  `;
+  return camelcaseKeys(cardata[0]);
 }

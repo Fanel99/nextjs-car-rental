@@ -135,6 +135,10 @@ const formStyless = css`
 `;
 
 function CreateAds(props) {
+  // console.log(props.car);
+
+  const [carList, setCarList] = useState(props.car);
+
   const [carName, setCarName] = useState('');
   const [description, setDescription] = useState('');
   const [dayPrice, setDayPrice] = useState('');
@@ -144,6 +148,20 @@ function CreateAds(props) {
   const [phone, setPhone] = useState('');
   const [seats, setSeats] = useState('');
   const [fuel, setFuel] = useState('');
+
+  // update States variables
+
+  const [updateCarName, setUpdateCarName] = useState('');
+  const [updateDescription, setUpdateDescription] = useState('');
+  const [updateDayPrice, setUpdateDayPrice] = useState('');
+  const [updatePickUpAdress, setupdatePickUpAdress] = useState('');
+  const [updateCity, setUpdateCity] = useState('');
+  const [updateImageUrl, setUpdateImageUrl] = useState('');
+  const [updatePhone, setUpdatePhone] = useState('');
+  const [updateSeats, setUpdateSeats] = useState('');
+  const [updateFuel, setUpdateFuel] = useState('');
+
+  // const userId = props.userId;
 
   const uploadImage = async (event) => {
     const files = event.currentTarget.files;
@@ -160,6 +178,7 @@ function CreateAds(props) {
     const file = await res.json();
 
     setImageUrl(file.secure_url);
+    setUpdateImageUrl(file.secure_url);
   };
 
   async function createCar(
@@ -173,18 +192,18 @@ function CreateAds(props) {
     seatss,
     fuell,
   ) {
-    console.log(
-      'from host',
-      carname,
-      descript,
-      price,
-      adress,
-      cityy,
-      imgpath,
-      telephone,
-      seatss,
-      fuell,
-    );
+    // console.log(
+    //   'from host',
+    //   carname,
+    //   descript,
+    //   price,
+    //   adress,
+    //   cityy,
+    //   imgpath,
+    //   telephone,
+    //   seatss,
+    //   fuell,
+    // );
     const carsResponse = await fetch(`${props.baseUrl}/api/cars`, {
       method: 'POST',
       headers: {
@@ -204,6 +223,67 @@ function CreateAds(props) {
     });
     const car = carsResponse.json();
     console.log(car);
+  }
+
+  async function updateCar(
+    id,
+    newCarName,
+    newDescript,
+    newPrice,
+    newAdress,
+    newCityy,
+    newImgpath,
+    newTelephone,
+    newSeatss,
+    newFuell,
+  ) {
+    console.log(
+      'from Update',
+      newCarName,
+      newDescript,
+      newPrice,
+      newAdress,
+      newCityy,
+      newImgpath,
+      newTelephone,
+      newSeatss,
+      newFuell,
+    );
+
+    const carsResponse = await fetch(`${props.baseUrl}/api/cars/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        carname: newCarName,
+        price: newPrice,
+        adress: newAdress,
+        seatss: newSeatss,
+        cityy: newCityy,
+        telephone: newTelephone,
+        fuell: newFuell,
+        imgpath: newImgpath,
+        descript: newDescript,
+      }),
+    });
+    console.log(id);
+    const updateNewCar = carsResponse.json();
+    const newState = [...carList];
+    console.log('new State', newState);
+
+    const outdateCar = newState.find((car) => car.id === updateNewCar.id);
+
+    outdateCar.carName = updateNewCar.carName;
+    outdateCar.description = updateNewCar.description;
+    outdateCar.pickUpAdress = updateNewCar.pickUpAdress;
+    outdateCar.city = updateNewCar.city;
+    outdateCar.imageUrl = updateNewCar.imageUrl;
+    outdateCar.phone = updateNewCar.phone;
+    outdateCar.seats = updateNewCar.seats;
+    outdateCar.fuel = updateNewCar.fuel;
+
+    setCarList(newState);
   }
 
   return (
@@ -323,6 +403,125 @@ function CreateAds(props) {
               >
                 Money Maker
               </button>
+            </div>
+          </div>
+        </div>
+        {/* Update Car SECTION */}
+
+        <div>
+          <div css={formStyless}>
+            <div className="container">
+              <div className="title">Update your car</div>
+              <div className="input-box-wrapper-container">
+                <div className="input-box-wrapper">
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update Car Name"
+                      value={updateCarName}
+                      onChange={(e) => setUpdateCarName(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update Day Price"
+                      value={updateDayPrice}
+                      onChange={(e) => setUpdateDayPrice(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update Pick Up Adress"
+                      value={updatePickUpAdress}
+                      onChange={(e) =>
+                        setupdatePickUpAdress(e.currentTarget.value)
+                      }
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update Seats"
+                      value={updateSeats}
+                      onChange={(e) => setUpdateSeats(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                </div>
+                <div className="input-box-wrapper">
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update City"
+                      value={updateCity}
+                      onChange={(e) => setUpdateCity(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Update Phone"
+                      value={updatePhone}
+                      onChange={(e) => setUpdatePhone(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      placeholder="Fuel"
+                      value={updateFuel}
+                      onChange={(e) => setUpdateFuel(e.currentTarget.value)}
+                    />
+                    <div className="underline" />
+                  </div>
+                  <div className="input-box">
+                    <input
+                      required
+                      type="file"
+                      placeholder="Update  Image"
+                      onChange={uploadImage}
+                    />
+                    <div className="underline" />
+                  </div>
+                </div>
+              </div>
+              <div className="input-box textarea">
+                <textarea
+                  required
+                  cols="80"
+                  rows="6"
+                  placeholder="update description about your car..."
+                  value={updateDescription}
+                  onChange={(e) => setUpdateDescription(e.currentTarget.value)}
+                />
+              </div>
+
+              <div className="input-box button">
+                <button
+                  onClick={() =>
+                    updateCar(
+                      updateCarName,
+                      updateDescription,
+                      updateDayPrice,
+                      updatePickUpAdress,
+                      updateCity,
+                      updateImageUrl,
+                      updatePhone,
+                      updateSeats,
+                      updateFuel,
+                    )
+                  }
+                >
+                  Update It
+                </button>
+              </div>
             </div>
           </div>
         </div>
