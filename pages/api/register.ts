@@ -15,6 +15,7 @@ import { Errors } from '../../util/types';
 export type RegisterRequest = {
   username: string;
   password: string;
+  email: string;
 };
 
 export type RegisterResponse = { errors: Errors } | { user: User };
@@ -23,9 +24,11 @@ export default async function registerHandler(
   req: NextApiRequest,
   res: NextApiResponse<RegisterResponse>,
 ) {
-  if (!req.body.username || !req.body.password) {
+  if (!req.body.username || !req.body.password || !req.body.email) {
     res.status(400).send({
-      errors: [{ message: 'Request does not contain username and password' }],
+      errors: [
+        { message: 'Request does not contain username, password and e-mail' },
+      ],
     });
     return;
   }
@@ -39,6 +42,7 @@ export default async function registerHandler(
 
   try {
     const username = req.body.username;
+    const email = req.body.email;
 
     const existingUser = await getUserWithPasswordHashByUsername(username);
 
@@ -54,6 +58,7 @@ export default async function registerHandler(
     const user = await insertUser({
       username: username,
       passwordHash: passwordHash,
+      email: email,
     });
 
     // clean old sessions

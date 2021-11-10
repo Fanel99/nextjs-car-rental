@@ -26,7 +26,7 @@ const errorsStyles = css`
 const formStyless = css`
   .container {
     background: #fff;
-    max-width: 350px;
+    max-width: 450px;
     width: 100%;
     padding: 25px 30px;
     border-radius: 5px;
@@ -171,6 +171,7 @@ type Props = {
 export default function RegisterPage(props: Props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [errors, setErrors] = useState<Errors>([]);
   const router = useRouter();
 
@@ -193,6 +194,7 @@ export default function RegisterPage(props: Props) {
             body: JSON.stringify({
               username: username,
               password: password,
+              email: email,
               csrfToken: props.csrfToken,
             }),
           });
@@ -219,7 +221,15 @@ export default function RegisterPage(props: Props) {
         <div css={formStyless}>
           <div className="container">
             <div className=" title titleRegister">Sign Up</div>
-
+            <div className="input-box">
+              <input
+                placeholder="E-mail"
+                required
+                value={email}
+                onChange={(event) => setEmail(event.currentTarget.value)}
+              />
+              <div className="underline" />
+            </div>
             <div className="input-box">
               <input
                 placeholder="Username"

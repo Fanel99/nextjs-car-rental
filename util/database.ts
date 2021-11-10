@@ -77,7 +77,8 @@ export async function getUsers() {
   const users = await sql<User[]>`
     SELECT
       id,
-      username
+      username,
+      email
     FROM
       users;
   `;
@@ -90,7 +91,8 @@ export async function getUser(id: number) {
   const [user] = await sql<[User]>`
     SELECT
       id,
-      username
+      username,
+      email
     FROM
       users
     WHERE
@@ -131,15 +133,22 @@ export async function getUserBySessionToken(sessionToken: string | undefined) {
   return user && camelcaseKeys(user);
 }
 
-export async function createUser({ username }: { username: string }) {
+export async function createUser({
+  username,
+  email,
+}: {
+  username: string;
+  email: string;
+}) {
   const users = await sql`
     INSERT INTO users
-      (username)
+      (username,  email)
     VALUES
-      (${username})
+      (${username}, ${email})
     RETURNING
       id,
-      username
+      username,
+      email
   `;
   return camelcaseKeys(users[0]);
 }
@@ -147,18 +156,22 @@ export async function createUser({ username }: { username: string }) {
 export async function insertUser({
   username,
   passwordHash,
+  email,
 }: {
   username: string;
   passwordHash: string;
+  email: string;
 }) {
   const [user] = await sql<[User]>`
     INSERT INTO users
-      (username, password_hash)
+      (username, password_hash, email)
     VALUES
-      (${username}, ${passwordHash})
+      (${username}, ${passwordHash}, ${email})
     RETURNING
       id,
-      username;
+      username,
+      email;
+
   `;
   return camelcaseKeys(user);
 }
@@ -167,21 +180,24 @@ export async function updateUserById(
   id: number,
   {
     username,
+    email,
   }: {
     username: string;
+    email: string;
   },
 ) {
   const users = await sql`
     UPDATE
       users
     SET
-      username = ${username}
+      username = ${username},
+      email = ${email}
     WHERE
       id = ${id}
     RETURNING
       id,
-      username
-
+      username,
+      email
   `;
   return camelcaseKeys(users[0]);
 }
@@ -193,9 +209,7 @@ export async function deleteUserById(id: number) {
     WHERE
       id = ${id}
     RETURNING
-      id,
-      name,
-      favorite_color;
+      id
   `;
   return user && camelcaseKeys(user);
 }
