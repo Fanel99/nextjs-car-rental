@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }) {
     // console.log(profile);
 
     if ('errors' in profile) {
+      setUsername(undefined);
       // console.log(profile.errors);
       return;
     }

@@ -11,7 +11,6 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     const body = req.body;
 
-    // It's supose to work, at least i think so
     const createCardata = await createAds({
       carName: body.carname,
       description: body.descript,
@@ -20,6 +19,8 @@ export default async function handler(req, res) {
       city: body.cityy,
       imageUrl: body.imgpath,
       phone: body.telephone,
+      seats: body.seatss,
+      fuel: body.fuell,
     });
 
     return res.status(200).json(createCardata);

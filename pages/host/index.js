@@ -142,6 +142,8 @@ function CreateAds(props) {
   const [city, setCity] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [phone, setPhone] = useState('');
+  const [seats, setSeats] = useState('');
+  const [fuel, setFuel] = useState('');
 
   const uploadImage = async (event) => {
     const files = event.currentTarget.files;
@@ -168,7 +170,21 @@ function CreateAds(props) {
     cityy,
     imgpath,
     telephone,
+    seatss,
+    fuell,
   ) {
+    console.log(
+      'from host',
+      carname,
+      descript,
+      price,
+      adress,
+      cityy,
+      imgpath,
+      telephone,
+      seatss,
+      fuell,
+    );
     const carsResponse = await fetch(`${props.baseUrl}/api/cars`, {
       method: 'POST',
       headers: {
@@ -182,6 +198,8 @@ function CreateAds(props) {
         cityy,
         imgpath,
         telephone,
+        seatss,
+        fuell,
       }),
     });
     const car = carsResponse.json();
@@ -227,6 +245,15 @@ function CreateAds(props) {
                   />
                   <div className="underline" />
                 </div>
+                <div className="input-box">
+                  <input
+                    required
+                    placeholder="Seats"
+                    value={seats}
+                    onChange={(e) => setSeats(e.currentTarget.value)}
+                  />
+                  <div className="underline" />
+                </div>
               </div>
               <div className="input-box-wrapper">
                 <div className="input-box">
@@ -244,6 +271,15 @@ function CreateAds(props) {
                     placeholder="Phone"
                     value={phone}
                     onChange={(e) => setPhone(e.currentTarget.value)}
+                  />
+                  <div className="underline" />
+                </div>
+                <div className="input-box">
+                  <input
+                    required
+                    placeholder="Fuel"
+                    value={fuel}
+                    onChange={(e) => setFuel(e.currentTarget.value)}
                   />
                   <div className="underline" />
                 </div>
@@ -280,10 +316,12 @@ function CreateAds(props) {
                     city,
                     imageUrl,
                     phone,
+                    seats,
+                    fuel,
                   )
                 }
               >
-                Send to server
+                Money Maker
               </button>
             </div>
           </div>
@@ -301,7 +339,6 @@ export async function getServerSideProps() {
   const car = await carResponse.json();
 
   // console.log('from gSSP', car);
-  // In this area  all good , data is here
 
   return {
     props: {

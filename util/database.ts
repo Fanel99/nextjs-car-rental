@@ -294,6 +294,8 @@ export async function createAds({
   city,
   imageUrl,
   phone,
+  seats,
+  fuel,
 }: {
   carName: string;
   description: string;
@@ -302,12 +304,27 @@ export async function createAds({
   city: string;
   imageUrl: string;
   phone: string;
+  seats: string;
+  fuel: string;
 }) {
+  console.log(
+    'from DB',
+    carName,
+    description,
+    dayPrice,
+    pickUpAdress,
+    city,
+    imageUrl,
+    phone,
+    seats,
+    fuel,
+  );
+
   const [cardata] = await sql`
     INSERT INTO carsdata
-      ( car_name, description, day_price, pick_up_adress,city, image_url,phone)
+      ( car_name, description, day_price, pick_up_adress,city, image_url,phone, seats, fuel)
     VALUES
-      (${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone})
+      (${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone}, ${seats}, ${fuel})
     RETURNING
       car_name,
       description,
@@ -315,7 +332,9 @@ export async function createAds({
       pick_up_adress,
       city,
       image_url,
-      phone
+      phone,
+      seats,
+      fuel
   `;
   return camelcaseKeys(cardata);
 }

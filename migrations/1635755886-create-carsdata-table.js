@@ -11,7 +11,10 @@ exports.up = async function up(sql) {
 			pick_up_adress varchar(500) NOT NULL,
 			city varchar(1000) NOT NULL,
 			image_url varchar(1000),
-			phone varchar(200) NOT NULL
+			phone varchar(200) NOT NULL,
+      seats varchar(200) NOT NULL,
+      fuel varchar(200) NOT NULL
+
     )
   `;
 };
