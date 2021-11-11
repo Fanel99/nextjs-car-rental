@@ -135,8 +135,6 @@ const formStyless = css`
 `;
 
 function CreateAds(props) {
-  // console.log(props.car);
-
   const userId = props.userId;
 
   const [carList, setCarList] = useState(props.car);
@@ -164,6 +162,7 @@ function CreateAds(props) {
   const [updateFuel, setUpdateFuel] = useState('');
 
   // const userId = props.userId;
+  console.log(updateFuel);
 
   const uploadImage = async (event) => {
     const files = event.currentTarget.files;
@@ -231,7 +230,6 @@ function CreateAds(props) {
   }
 
   async function updateCar(
-    id,
     newCarName,
     newDescript,
     newPrice,
@@ -242,25 +240,28 @@ function CreateAds(props) {
     newSeatss,
     newFuell,
   ) {
-    console.log('from Update', id);
+    console.log('from new Fuel Update', newFuell);
 
-    const carsResponse = await fetch(`${props.baseUrl}/api/1`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
+    const carsResponse = await fetch(
+      `${props.baseUrl}/api/${props.findCar.id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          carname: newCarName,
+          price: newPrice,
+          adress: newAdress,
+          seatss: newSeatss,
+          cityy: newCityy,
+          telephone: newTelephone,
+          fuell: newFuell,
+          imgpath: newImgpath,
+          descript: newDescript,
+        }),
       },
-      body: JSON.stringify({
-        carname: newCarName,
-        price: newPrice,
-        adress: newAdress,
-        seatss: newSeatss,
-        cityy: newCityy,
-        telephone: newTelephone,
-        fuell: newFuell,
-        imgpath: newImgpath,
-        descript: newDescript,
-      }),
-    });
+    );
     const updateNewCar = carsResponse.json();
     const newState = [...carList];
     console.log('new State', newState);
@@ -537,6 +538,9 @@ export async function getServerSideProps(context) {
 
   const userId = sessionUser.id;
 
+  const findCar = car.find((carr) => carr.userId === userId);
+  console.log(findCar);
+
   // console.log('from gSSP', car);
 
   return {
@@ -544,6 +548,7 @@ export async function getServerSideProps(context) {
       car,
       baseUrl,
       userId,
+      findCar,
     },
   };
 }

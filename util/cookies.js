@@ -12,7 +12,7 @@ export function createSerializedRegisterSessionTokenCookie(token) {
   return serialize('sessionToken', token, {
     maxAge: maxAge,
 
-    expires: new Date(Date.now() + maxAge * 1000),
+    expires: new Date(Date.now() + maxAge * 100000),
 
     // Important for security
     httpOnly: true,

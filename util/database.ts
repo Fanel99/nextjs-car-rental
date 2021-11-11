@@ -382,7 +382,7 @@ export async function updateAddById(
     imageUrl,
     phone,
     seats,
-    fuel,
+    fuell,
   }: {
     carName: string;
     description: string;
@@ -392,7 +392,7 @@ export async function updateAddById(
     imageUrl: string;
     phone: number;
     seats: number;
-    fuel: string;
+    fuell: string;
   },
 ) {
   console.log(
@@ -405,34 +405,34 @@ export async function updateAddById(
     imageUrl,
     phone,
     seats,
-    fuel,
+    fuell,
   );
   const cardata = await sql`
     UPDATE
       carsdata
 
     SET
-    carName = ${carName},
+    car_name = ${carName},
     description = ${description},
-    dayPrice = ${dayPrice},
-    pickUpAdress = ${pickUpAdress},
+    day_price = ${dayPrice},
+    pick_up_adress = ${pickUpAdress},
     city = ${city},
-    imageUrl = ${imageUrl},
+    image_url = ${imageUrl},
     phone = ${phone},
     seats = ${seats},
-    fuel = ${fuel}
+    fuel = ${fuell}
 
     WHERE
       id = ${id}
 
     RETURNING
       id,
-      carName,
+      car_name,
       description,
-      dayPrice,
-      pickUpAdress,
+      day_price,
+      pick_up_adress,
       city,
-      imageUrl,
+      image_url,
       phone,
       seats,
       fuel

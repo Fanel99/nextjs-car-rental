@@ -11,9 +11,10 @@ export default async function handler(req, res) {
   } else if (req.method === 'PATCH') {
     const body = req.body;
 
-    console.log('from api body', req.body);
+    console.log('from api body', req.body.fuell);
 
-    const updateCardata = await updateAddById('1', {
+    // schau mal
+    const updateCardata = await updateAddById(Number(req.query.carsId), {
       carName: body.carname,
       description: body.descript,
       dayPrice: body.price,
@@ -22,7 +23,7 @@ export default async function handler(req, res) {
       imageUrl: body.imgpath,
       phone: body.telephone,
       seats: body.seatss,
-      fuel: body.fuell,
+      fuell: body.fuell,
     });
 
     return res.status(200).json(updateCardata);
