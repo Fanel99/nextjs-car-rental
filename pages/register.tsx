@@ -26,7 +26,7 @@ const errorsStyles = css`
 const formStyless = css`
   .container {
     background: #fff;
-    max-width: 450px;
+    max-width: 550px;
     width: 100%;
     padding: 25px 30px;
     border-radius: 5px;

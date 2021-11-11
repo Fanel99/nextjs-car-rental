@@ -136,7 +136,7 @@ function Navigation() {
     <div css={container}>
       {/* logo  */}
       <div data-aos="fade-down" css={logoNav}>
-        <Image src={logo} />
+        <Image src={logo} alt="logo" />
       </div>
       <div data-aos="fade-down" css={navContainer}>
         {/* Navigation Links  */}

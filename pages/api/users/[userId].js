@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'DELETE') {
     // console.log('query', req.query);
     const deletedUser = await deleteUserByUsername(req.query.userId);
-    console.log('from API', deleteUserByUsername());
+    // console.log('from API', deleteUserByUsername());
     return res.status(200).json(deletedUser);
   }
 

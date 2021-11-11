@@ -81,7 +81,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // Authorization: Allow only specific user
   const sessionUser = await getUserBySessionToken(sessionToken);
 
-  console.log('from sessionToken', sessionUser);
+  // console.log('from sessionToken', sessionUser);
 
   if (!sessionUser) {
     return {
@@ -106,7 +106,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const user = await getUser(Number(context.query.userId));
-  // console.log('from gSSP', user);
+  console.log('from gSSP', user);
 
   return {
     props: {

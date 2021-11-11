@@ -137,6 +137,8 @@ const formStyless = css`
 function CreateAds(props) {
   // console.log(props.car);
 
+  const userId = props.userId;
+
   const [carList, setCarList] = useState(props.car);
 
   const [carName, setCarName] = useState('');
@@ -182,6 +184,7 @@ function CreateAds(props) {
   };
 
   async function createCar(
+    iduser,
     carname,
     descript,
     price,
@@ -192,24 +195,26 @@ function CreateAds(props) {
     seatss,
     fuell,
   ) {
-    // console.log(
-    //   'from host',
-    //   carname,
-    //   descript,
-    //   price,
-    //   adress,
-    //   cityy,
-    //   imgpath,
-    //   telephone,
-    //   seatss,
-    //   fuell,
-    // );
+    console.log(
+      'from host',
+      carname,
+      iduser,
+      descript,
+      price,
+      adress,
+      cityy,
+      imgpath,
+      telephone,
+      seatss,
+      fuell,
+    );
     const carsResponse = await fetch(`${props.baseUrl}/api/cars`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        iduser,
         carname,
         descript,
         price,
@@ -237,20 +242,9 @@ function CreateAds(props) {
     newSeatss,
     newFuell,
   ) {
-    console.log(
-      'from Update',
-      newCarName,
-      newDescript,
-      newPrice,
-      newAdress,
-      newCityy,
-      newImgpath,
-      newTelephone,
-      newSeatss,
-      newFuell,
-    );
+    console.log('from Update', id);
 
-    const carsResponse = await fetch(`${props.baseUrl}/api/cars/${id}`, {
+    const carsResponse = await fetch(`${props.baseUrl}/api/1`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -267,21 +261,20 @@ function CreateAds(props) {
         descript: newDescript,
       }),
     });
-    console.log(id);
     const updateNewCar = carsResponse.json();
     const newState = [...carList];
     console.log('new State', newState);
 
     const outdateCar = newState.find((car) => car.id === updateNewCar.id);
 
-    outdateCar.carName = updateNewCar.carName;
-    outdateCar.description = updateNewCar.description;
-    outdateCar.pickUpAdress = updateNewCar.pickUpAdress;
-    outdateCar.city = updateNewCar.city;
-    outdateCar.imageUrl = updateNewCar.imageUrl;
-    outdateCar.phone = updateNewCar.phone;
-    outdateCar.seats = updateNewCar.seats;
-    outdateCar.fuel = updateNewCar.fuel;
+    // outdateCar.carName = updateNewCar.carName;
+    // outdateCar.description = updateNewCar.description;
+    // outdateCar.pickUpAdress = updateNewCar.pickUpAdress;
+    // outdateCar.city = updateNewCar.city;
+    // outdateCar.imageUrl = updateNewCar.imageUrl;
+    // outdateCar.phone = updateNewCar.phone;
+    // outdateCar.seats = updateNewCar.seats;
+    // outdateCar.fuel = updateNewCar.fuel;
 
     setCarList(newState);
   }
@@ -389,6 +382,7 @@ function CreateAds(props) {
               <button
                 onClick={() =>
                   createCar(
+                    userId,
                     carName,
                     description,
                     dayPrice,
@@ -406,6 +400,7 @@ function CreateAds(props) {
             </div>
           </div>
         </div>
+
         {/* Update Car SECTION */}
 
         <div>
@@ -532,10 +527,15 @@ function CreateAds(props) {
 
 export default CreateAds;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const baseUrl = process.env.BASE_URL;
   const carResponse = await fetch(`${baseUrl}/api/cars`);
   const car = await carResponse.json();
+  const { getUserBySessionToken } = await import('../../util/database');
+  const sessionToken = context.req.cookies.sessionToken;
+  const sessionUser = await getUserBySessionToken(sessionToken);
+
+  const userId = sessionUser.id;
 
   // console.log('from gSSP', car);
 
@@ -543,6 +543,7 @@ export async function getServerSideProps() {
     props: {
       car,
       baseUrl,
+      userId,
     },
   };
 }

@@ -302,6 +302,7 @@ export async function getCarData(id: number) {
 
 export async function createAds({
   carName,
+  userid,
   description,
   dayPrice,
   pickUpAdress,
@@ -312,6 +313,7 @@ export async function createAds({
   fuel,
 }: {
   carName: string;
+  userid: number;
   description: string;
   dayPrice: number;
   pickUpAdress: string;
@@ -321,27 +323,28 @@ export async function createAds({
   seats: number;
   fuel: string;
 }) {
-  // console.log(
-  //   'from DB',
-  //   carName,
-
-  //   description,
-  //   dayPrice,
-  //   pickUpAdress,
-  //   city,
-  //   imageUrl,
-  //   phone,
-  //   seats,
-  //   fuel,
-  // );
+  console.log(
+    'from DB',
+    carName,
+    userid,
+    description,
+    dayPrice,
+    pickUpAdress,
+    city,
+    imageUrl,
+    phone,
+    seats,
+    fuel,
+  );
 
   const [cardata] = await sql`
     INSERT INTO carsdata
-      ( car_name, description, day_price, pick_up_adress,city, image_url,phone, seats, fuel)
+      ( car_name, user_id, description, day_price, pick_up_adress,city, image_url,phone, seats, fuel)
     VALUES
-      (${carName}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone}, ${seats}, ${fuel})
+      (${carName}, ${userid}, ${description}, ${dayPrice}, ${pickUpAdress},${city}, ${imageUrl}, ${phone}, ${seats}, ${fuel})
     RETURNING
       car_name,
+      user_id
       description,
       day_price,
       pick_up_adress,
@@ -363,7 +366,7 @@ export async function deleteUserByUsername(id: number) {
     RETURNING
       id
   `;
-  console.log('from DB', users);
+  // console.log('from DB', users);
   // return user && camelcaseKeys(user);
   return users.map((user) => camelcaseKeys(user))[0];
 }
@@ -392,6 +395,18 @@ export async function updateAddById(
     fuel: string;
   },
 ) {
+  console.log(
+    'From DB Update',
+    carName,
+    description,
+    dayPrice,
+    pickUpAdress,
+    city,
+    imageUrl,
+    phone,
+    seats,
+    fuel,
+  );
   const cardata = await sql`
     UPDATE
       carsdata
@@ -409,6 +424,7 @@ export async function updateAddById(
 
     WHERE
       id = ${id}
+
     RETURNING
       id,
       carName,
