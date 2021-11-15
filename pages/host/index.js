@@ -137,7 +137,10 @@ const formStyless = css`
 function CreateAds(props) {
   const userId = props.userId;
 
+  // console.log(userId);
+
   const [carList, setCarList] = useState(props.car);
+  console.log(carList);
 
   const [carName, setCarName] = useState('');
   const [description, setDescription] = useState('');
@@ -161,8 +164,7 @@ function CreateAds(props) {
   const [updateSeats, setUpdateSeats] = useState('');
   const [updateFuel, setUpdateFuel] = useState('');
 
-  // const userId = props.userId;
-  console.log(updateFuel);
+  // console.log(updateFuel);
 
   const uploadImage = async (event) => {
     const files = event.currentTarget.files;
@@ -182,6 +184,7 @@ function CreateAds(props) {
     setUpdateImageUrl(file.secure_url);
   };
 
+  // Create a car
   async function createCar(
     iduser,
     carname,
@@ -194,19 +197,6 @@ function CreateAds(props) {
     seatss,
     fuell,
   ) {
-    console.log(
-      'from host',
-      carname,
-      iduser,
-      descript,
-      price,
-      adress,
-      cityy,
-      imgpath,
-      telephone,
-      seatss,
-      fuell,
-    );
     const carsResponse = await fetch(`${props.baseUrl}/api/cars`, {
       method: 'POST',
       headers: {
@@ -229,6 +219,29 @@ function CreateAds(props) {
     console.log(car);
   }
 
+  // Delete a car Add
+  // async function deleteCar(id) {
+  //   const carsResponse = await fetch(
+  //     `${props.baseUrl}/api/cars/${carList.id}`,
+  //     {
+  //       method: 'DELETE',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({}),
+  //     },
+  //   );
+  //   const deletedCar = carsResponse.json();
+
+  //   const newState = carList.filter();
+  //   console.log('new State', newState);
+  //   console.log(id);
+
+  // const outdateCar = newState.find((car) => car.id === updateNewCar.id);
+  //   setCarList(newState);
+  // }
+
+  //  Updating the car specs
   async function updateCar(
     newCarName,
     newDescript,
@@ -240,8 +253,6 @@ function CreateAds(props) {
     newSeatss,
     newFuell,
   ) {
-    console.log('from new Fuel Update', newFuell);
-
     const carsResponse = await fetch(
       `${props.baseUrl}/api/${props.findCar.id}`,
       {
@@ -263,10 +274,10 @@ function CreateAds(props) {
       },
     );
     const updateNewCar = carsResponse.json();
-    const newState = [...carList];
-    console.log('new State', newState);
 
-    const outdateCar = newState.find((car) => car.id === updateNewCar.id);
+    // console.log('new State', newState);
+
+    // const outdateCar = newState.find((car) => car.id === updateNewCar.id);
 
     // outdateCar.carName = updateNewCar.carName;
     // outdateCar.description = updateNewCar.description;
@@ -276,8 +287,6 @@ function CreateAds(props) {
     // outdateCar.phone = updateNewCar.phone;
     // outdateCar.seats = updateNewCar.seats;
     // outdateCar.fuel = updateNewCar.fuel;
-
-    setCarList(newState);
   }
 
   return (
@@ -400,6 +409,7 @@ function CreateAds(props) {
               </button>
             </div>
           </div>
+          {/* <button onClick={deleteCar}>Delete</button> */}
         </div>
 
         {/* Update Car SECTION */}
@@ -532,14 +542,36 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.BASE_URL;
   const carResponse = await fetch(`${baseUrl}/api/cars`);
   const car = await carResponse.json();
+
+  // extract userId from the cookie and match it with the add id
+
   const { getUserBySessionToken } = await import('../../util/database');
   const sessionToken = context.req.cookies.sessionToken;
   const sessionUser = await getUserBySessionToken(sessionToken);
 
+  if (!sessionUser) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: `/login?returnTo=${context.req.url}`,
+      },
+    };
+  }
+
   const userId = sessionUser.id;
 
   const findCar = car.find((carr) => carr.userId === userId);
-  console.log(findCar);
+  if (!findCar) {
+    return {
+      props: {
+        car,
+        baseUrl,
+        userId,
+        findCar: null,
+      },
+    };
+  }
+  // console.log(findCar);
 
   // console.log('from gSSP', car);
 

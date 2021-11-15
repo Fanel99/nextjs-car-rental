@@ -13,6 +13,7 @@ const container = css`
   margin: 0 auto;
   width: 100%;
   position: relative;
+  padding: 0 20px;
 
   .datePicker {
     display: flex;
@@ -53,13 +54,18 @@ const container = css`
 
 const logoNav = css`
   z-index: 3;
-  position: absolute;
-  left: 0;
+  position: relative;
+  flex: 1 1 33%;
+  .logoNavImage {
+    position: absolute;
+    top: -20px;
+  }
 `;
 
 const navContainer = css`
+  z-index: 3;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   align-content: center;
   margin: 20px 0;
@@ -69,7 +75,7 @@ const navContainer = css`
     width: 350px;
     height: 40px;
     border-radius: 5px;
-    border-color: #c59e47;
+    border: 2px solid #c59e47;
     padding-left: 10px;
   }
 `;
@@ -78,22 +84,46 @@ const navLinks = css`
   display: flex;
   gap: 20px;
   font-size: 18px;
+  flex: 1 1 33%;
+  justify-content: center;
+  a {
+    position: relative;
+    transition: 0.4s;
+  }
+  a:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #c59e47;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  a:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 
   a:hover {
     color: #c59e47;
-    transform: scale(1.2);
-    padding-top: 5px;
-    border-bottom: 2px solid #c59e47;
   }
 `;
 
 const navHost = css`
-  border: solid 2px #c59e47;
-  font-size: 18px;
-  padding: 4px;
-
-  &:hover {
-    background-color: #c59e47;
+  flex: 1 1 33%;
+  display: flex;
+  justify-content: flex-end;
+  a {
+    border: solid 2px #c59e47;
+    font-size: 18px;
+    padding: 4px;
+    display: inline-block;
+    &:hover {
+      background-color: #c59e47;
+    }
   }
 
   a:hover {
@@ -135,11 +165,14 @@ function Navigation() {
   return (
     <div css={container}>
       {/* logo  */}
-      <div data-aos="fade-down" css={logoNav}>
-        <Image src={logo} alt="logo" />
-      </div>
+
       <div data-aos="fade-down" css={navContainer}>
         {/* Navigation Links  */}
+        <div data-aos="fade-down" css={logoNav}>
+          <div className="logoNavImage">
+            <Image src={logo} alt="logo" />
+          </div>
+        </div>
         <div css={navLinks}>
           <Link href="/">
             <a>Home</a>
@@ -151,41 +184,12 @@ function Navigation() {
             <a>Contact</a>
           </Link>
         </div>
-        <div>
-          <input
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="Search..."
-          />
-        </div>
 
         {/* Link to become a Host */}
         <div data-aos="fade-down" css={navHost}>
-          <Link href="/becomeahost">
-            <a>Become a host</a>
-          </Link>
+          <Link href="/becomeahost">Become a host</Link>
         </div>
       </div>
-      {searchInput && (
-        <div className="datePicker">
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={new Date()}
-            rangeColors={['#c59e47']}
-            onChange={handleSelect}
-            dateFormat="dd MMM yy"
-          />
-
-          <div className="wrapperButtons">
-            <button onClick={resetInput} className="cancel">
-              Cancel
-            </button>
-            <button onClick={search} className="search">
-              Search
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -13,13 +13,14 @@ const container = css`
   max-width: 1366px;
   margin: 0 auto;
   width: 100%;
+  padding: 0 20px;
 
   h2 {
     color: #020243;
     text-align: center;
     letter-spacing: 3px;
     font-size: 50px;
-    margin: 75px 0;
+    margin: 75px 0 30px;
     span {
       margin-left: 20px;
     }
@@ -31,6 +32,9 @@ const imageWrapper = css`
   justify-content: center;
   gap: 10px;
   margin: 10px 0;
+  @media (max-width: 769px) {
+    flex-direction: column;
+  }
 `;
 
 const imageText = css`

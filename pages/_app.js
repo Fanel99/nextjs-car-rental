@@ -44,7 +44,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <html lang="en" />
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,6 +52,7 @@ function MyApp({ Component, pageProps }) {
         <title>Oldie but goodie</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <Global
         styles={css`
           @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');

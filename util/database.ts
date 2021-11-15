@@ -323,19 +323,19 @@ export async function createAds({
   seats: number;
   fuel: string;
 }) {
-  console.log(
-    'from DB',
-    carName,
-    userid,
-    description,
-    dayPrice,
-    pickUpAdress,
-    city,
-    imageUrl,
-    phone,
-    seats,
-    fuel,
-  );
+  // console.log(
+  //   'from DB',
+  //   carName,
+  //   userid,
+  //   description,
+  //   dayPrice,
+  //   pickUpAdress,
+  //   city,
+  //   imageUrl,
+  //   phone,
+  //   seats,
+  //   fuel,
+  // );
 
   const [cardata] = await sql`
     INSERT INTO carsdata
@@ -395,18 +395,6 @@ export async function updateAddById(
     fuell: string;
   },
 ) {
-  console.log(
-    'From DB Update',
-    carName,
-    description,
-    dayPrice,
-    pickUpAdress,
-    city,
-    imageUrl,
-    phone,
-    seats,
-    fuell,
-  );
   const cardata = await sql`
     UPDATE
       carsdata

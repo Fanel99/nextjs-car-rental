@@ -1,6 +1,10 @@
 const withVideos = require('next-videos');
 
 const nextConfig = {
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
+  },
   images: {
     domains: [
       'imgix.ranker.com',

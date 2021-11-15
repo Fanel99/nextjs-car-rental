@@ -8,6 +8,7 @@ const container = css`
   margin: 0 auto 100px;
   width: 100%;
   margin-top: 100px;
+  padding: 0 20px;
 `;
 
 const containerNewsletter = css`
@@ -16,6 +17,9 @@ const containerNewsletter = css`
   justify-content: flex-end;
   position: relative;
   overflow: hidden;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 const leftSide = css`
   position: absolute;
@@ -23,11 +27,39 @@ const leftSide = css`
   left: 5%;
   transform: translateY(-50%);
   z-index: 3;
+  @media (max-width: 1200px) {
+    max-width: 600px;
+  }
+  @media (max-width: 1024px) {
+    position: relative;
+    top: auto;
+    transform: none;
+    left: auto;
+    img {
+      transform: rotate(90deg);
+    }
+    span span {
+      height: 400px !important;
+      width: 400px !important;
+    }
+  }
+  @media (max-width: 769px) {
+    span span {
+      height: 300px !important;
+      width: 300px !important;
+    }
+  }
 
   .leftSideText {
     position: absolute;
     top: 20%;
     left: 10%;
+    @media (max-width: 1024px) {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
 
     h4 {
       font-size: 28px;

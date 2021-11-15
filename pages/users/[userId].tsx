@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import Layout from '../../components/Layout';
 import Navigation from '../../components/Navigation';
 
@@ -25,8 +24,6 @@ const singleUserWrapper = css`
 
 const SingleUser = (props: Props) => {
   const router = useRouter();
-  const [user, setUser] = useState(props.user);
-  // console.log('from state', user);
 
   return (
     <Layout username={props.user.username}>
@@ -55,7 +52,7 @@ const SingleUser = (props: Props) => {
               },
             );
 
-            const user = await response.json();
+            await response.json();
 
             router.push(`/`);
           }}
@@ -74,14 +71,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     '../../util/database'
   );
 
-  // console.log('from gSSP', context.query.userId);
   const sessionToken = context.req.cookies.sessionToken;
-  // console.log('from sessionToken', sessionToken);
 
   // Authorization: Allow only specific user
   const sessionUser = await getUserBySessionToken(sessionToken);
-
-  // console.log('from sessionToken', sessionUser);
 
   if (!sessionUser) {
     return {
@@ -92,11 +85,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
 
-  console.log(
-    'from true or false',
-    sessionUser.id !== Number(context.query.userId),
-  );
-
   if (sessionUser.id !== Number(context.query.userId)) {
     return {
       props: {
@@ -106,7 +94,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const user = await getUser(Number(context.query.userId));
-  console.log('from gSSP', user);
+  // console.log('from gSSP', user);
 
   return {
     props: {

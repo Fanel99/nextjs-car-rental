@@ -1,3 +1,4 @@
+import { Elements } from '@stripe/react-stripe-js';
 import { ReactNode } from 'react';
 import Header from './Header';
 

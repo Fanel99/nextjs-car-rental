@@ -7,13 +7,14 @@ const container = css`
   max-width: 1366px;
   margin: 0 auto 100px;
   width: 100%;
+  padding: 0 20px;
 
   h2 {
     color: #020243;
     text-align: center;
     letter-spacing: 3px;
     font-size: 50px;
-    margin: 75px 0;
+    margin: 75px 0 30px;
 
     span {
       margin-left: 20px;
@@ -25,17 +26,33 @@ const cardsWrapper = css`
   display: flex;
   border: 1px solid #000;
   overflow: hidden;
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    border: none;
+  }
 `;
 
 const cardWrapper = css`
   display: flex;
   max-width: 50%;
+  @media (max-width: 1024px) {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 769px) {
+    flex-direction: column;
+  }
 `;
 
 const imgWrapper = css`
   position: relative;
   width: 350px;
   height: 360px;
+  @media (max-width: 769px) {
+    max-width: 100%;
+    min-height: 400px;
+    width: auto;
+  }
 `;
 
 const cardText = css`
@@ -47,6 +64,14 @@ const cardText = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1024px) {
+    border-left: none;
+    margin: 0 20px 0 0;
+  }
+  @media (max-width: 769px) {
+    border: 1px solid #c59e47;
+    margin: 0%;
+  }
 
   h3 {
     margin-bottom: 30px;

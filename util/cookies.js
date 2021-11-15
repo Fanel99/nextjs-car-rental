@@ -1,4 +1,17 @@
 import { serialize } from 'cookie';
+import Cookies from 'js-cookie';
+
+export function getParsedCookie(key) {
+  try {
+    return JSON.parse(Cookies.get(key));
+  } catch (err) {
+    return undefined;
+  }
+}
+
+export function setParsedCookie(key, value) {
+  Cookies.set(key, JSON.stringify(value));
+}
 
 export function createSerializedRegisterSessionTokenCookie(token) {
   // check if we are in production e.g. Heroku
@@ -7,7 +20,7 @@ export function createSerializedRegisterSessionTokenCookie(token) {
   // Save the token in a cookie on the user's machine
   // (cookies get sent automatically to the server every time
   // a user makes a request)
-  const maxAge = 600 * 5; // 5 minutes  (now i have 300 minutes)
+  const maxAge = 6000 * 5; // 5 minutes
 
   return serialize('sessionToken', token, {
     maxAge: maxAge,

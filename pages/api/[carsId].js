@@ -11,9 +11,8 @@ export default async function handler(req, res) {
   } else if (req.method === 'PATCH') {
     const body = req.body;
 
-    console.log('from api body', req.body.fuell);
+    //  console.log('from api body', req.body);
 
-    // schau mal
     const updateCardata = await updateAddById(Number(req.query.carsId), {
       carName: body.carname,
       description: body.descript,

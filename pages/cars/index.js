@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import Map from '../../components/Map';
 import Navigation from '../../components/Navigation';
+import { setParsedCookie } from '../../util/cookies';
 
 const containerMap = css`
   height: 800px;
@@ -51,8 +52,10 @@ function Cars({ carsdata, username }) {
   // for displaying dynamic  info from search bar and  format the data
   const { location, startDate, endDate } = router.query;
   // const formattedStartDate = format(new Date(startDate), 'dd MMM yy');
+  // setParsedCookie('startDate', formattedStartDate);
 
   // const formattedEddate = format(new Date(endDate), 'dd MMM yy');
+  // setParsedCookie('endDate', formattedEddate);
   // const range = `${formattedStartDate} -  ${formattedEddate} `;
 
   //    <p>Search results for {location} from {range} </p>
@@ -86,6 +89,9 @@ function Cars({ carsdata, username }) {
             );
           })}
         </div>
+        {/* <p>
+          Search results for {location} from {range}{' '}
+        </p> */}
         <div css={containerMap}>
           <Map />
         </div>

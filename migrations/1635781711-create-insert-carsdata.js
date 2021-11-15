@@ -29,7 +29,7 @@ const carsdata = [
     car_name: 'Alfa Romeo Stradale',
     description:
       'The Alfa Romeo 33 Stradale is a mid-engined sports car built by Italian car manufacturer Alfa Romeo. It is one of the world first supercars; it was the fastest commercially available car for the standing kilometer when introduced.',
-    day_price: '210',
+    day_price: '300',
     pick_up_adress: 'Mautner Strase 49',
     city: 'Vienna',
     image_url:
@@ -42,7 +42,7 @@ const carsdata = [
     car_name: 'BMW 35CSI',
     description:
       'If there is one model in the history of BMW M that represents its most significant era, it is the BMW M635CSi. In 1984, the four-seater continued the concept of high-performance 6-cylinder in-line engines that the legendary BMW M1 had established just a few years earlier. ',
-    day_price: '210',
+    day_price: '230',
     pick_up_adress: 'Simmeringer Strase 49',
     city: 'Vienna',
     image_url:
@@ -55,7 +55,7 @@ const carsdata = [
     car_name: 'Lamborghini Miura',
     description:
       'The Lamborghini Miura is a sports car produced by Italian automaker Lamborghini between 1966 and 1973. The car was the first supercar with a rear mid-engined two-seat layout, although the concept was first seen in a production road car with René Bonnets Matra Djet, introduced in 1964.',
-    day_price: '220',
+    day_price: '280',
     pick_up_adress: 'MarkHof Strase 49',
     city: 'Vienna',
     image_url:
