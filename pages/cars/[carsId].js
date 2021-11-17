@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
+import CommentsRatings from '../../components/CommentsRatings';
 import Layout from '../../components/Layout';
 import Map from '../../components/Map';
 import Navigation from '../../components/Navigation';
@@ -116,11 +117,18 @@ const stripePromise = loadStripe(
 );
 
 function SingleCar({ cardata, username }) {
-  console.log(cardata);
+  // console.log(cardata);
 
-  const [searchInput, setSearchInput] = useState('');
+  // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+
+  // console.log(diffDays);
+  // console.log(startDate);
+  // console.log(endDate);
 
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
@@ -132,7 +140,7 @@ function SingleCar({ cardata, username }) {
     endDate: endDate,
     key: 'selection',
   };
-  const todalSelectedDays = startDate + endDate;
+  // const todalSelectedDays = Number(startDate) + Number(endDate);
   // console.log(todalSelectedDays);
 
   // stripe
@@ -210,7 +218,6 @@ function SingleCar({ cardata, username }) {
               minDate={new Date()}
               rangeColors={['#c59e47']}
               onChange={handleSelect}
-              dateFormat="dd MMM yy"
             />
             <div>
               {' '}
@@ -250,7 +257,10 @@ function SingleCar({ cardata, username }) {
             </div>
           </div>
         </div>
-        <div>Review Section</div>
+        <div>
+          Review Section
+          <CommentsRatings />
+        </div>
         <div css={mapContainer}>
           <Map />
         </div>

@@ -51,10 +51,24 @@ function Cars({ carsdata, username }) {
   // destructuring from URL and  combine start and end Date
   // for displaying dynamic  info from search bar and  format the data
   const { location, startDate, endDate } = router.query;
-  // const formattedStartDate = format(new Date(startDate), 'dd MMM yy');
-  // setParsedCookie('startDate', formattedStartDate);
 
-  // const formattedEddate = format(new Date(endDate), 'dd MMM yy');
+  // if (typeof startDate !== 'undefined') {
+  //   startDate = new Date();
+  // }
+
+  // if (typeof endDate !== 'undefined') {
+  //   endDate = new Date();
+  // }
+
+  // console.log(startDate);
+  // console.log(endDate);
+  // console.log(location);
+
+  // const formattedStartDate = format(new Date(startDate), 'dd MMM yyyy');
+  // console.log(formattedStartDate);
+
+  // const formattedEddate = format(new Date(endDate), 'dd MMM yyyy');
+  // console.log(formattedEddate);
   // setParsedCookie('endDate', formattedEddate);
   // const range = `${formattedStartDate} -  ${formattedEddate} `;
 
@@ -93,7 +107,7 @@ function Cars({ carsdata, username }) {
           Search results for {location} from {range}{' '}
         </p> */}
         <div css={containerMap}>
-          <Map />
+          <Map carsdata={carsdata} />
         </div>
       </div>
     </Layout>

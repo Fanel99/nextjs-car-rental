@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         ],
         payment_method_types: ['card', 'eps', 'sofort'],
         mode: 'payment',
-        success_url: `${req.headers.origin}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
+        success_url: `${req.headers.origin}/succes`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
       res.redirect(303, session.url);

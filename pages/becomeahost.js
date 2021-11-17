@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
 import Image from 'next/image';
-import Header from '../components/Header';
 import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 import bg5 from '../public/pictures/bg5.jpeg';

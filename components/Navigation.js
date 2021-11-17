@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import router from 'next/router';
 import { useState } from 'react';
-import { DateRangePicker } from 'react-date-range';
 import logo from '../public/pictures/logo.png';
 
 const container = css`
@@ -180,7 +179,7 @@ function Navigation() {
           <Link href="/cars">
             <a>Deals</a>
           </Link>
-          <Link href="/">
+          <Link href="contact">
             <a>Contact</a>
           </Link>
         </div>
