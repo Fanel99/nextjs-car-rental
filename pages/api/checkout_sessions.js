@@ -8,13 +8,13 @@ export default async function handler(req, res) {
         line_items: [
           {
             price: 'price_1Jve4mIHfsqDJpNU3lUNdMUN',
-            quantity: 1,
+            quantity: 3,
           },
         ],
-        payment_method_types: ['card', 'eps', 'sofort'],
+        payment_method_types: ['card', 'sofort'],
         mode: 'payment',
         success_url: `${req.headers.origin}/succes`,
-        cancel_url: `${req.headers.origin}/?canceled=true`,
+        cancel_url: `${req.headers.origin}/cars`,
       });
       res.redirect(303, session.url);
     } catch (err) {

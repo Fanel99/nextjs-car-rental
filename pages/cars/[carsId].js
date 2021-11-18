@@ -28,6 +28,10 @@ const container = css`
     gap: 50px;
     align-items: flex-start;
     margin-top: 100px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 
   .datePickerWrapper {
@@ -37,6 +41,14 @@ const container = css`
     flex-direction: column;
     position: sticky;
     top: 40px;
+    @media (max-width: 1024px) {
+      width: 378px;
+      padding: 20px;
+
+      .rdrDefinedRangesWrapper {
+        display: none;
+      }
+    }
   }
   p {
     margin-bottom: 20px;
@@ -47,6 +59,12 @@ const singleCarContainer = css`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   h4 {
     font-size: 30px;
@@ -62,6 +80,10 @@ const singleCarContainer = css`
     width: 100%;
     flex-direction: column;
     margin-top: 20px;
+
+    @media (max-width: 1024px) {
+      padding: 20px;
+    }
 
     p {
       display: flex;
@@ -89,6 +111,12 @@ const singleCarContainer = css`
     flex-direction: column;
     gap: 30px;
     max-width: 100%;
+
+    @media (max-width: 1024px) {
+      padding: 20px;
+      text-align: center;
+      margin-top: 30px;
+    }
     h3 {
       color: #556cd6;
     }
@@ -100,6 +128,11 @@ const imgWrapper = css`
   width: 700px;
   height: 400px;
 
+  @media (max-width: 1024px) {
+    width: 350px;
+    height: 250px;
+  }
+
   p {
     display: flex;
     align-items: center;
@@ -108,13 +141,17 @@ const imgWrapper = css`
 
 const mapContainer = css`
   height: 300px;
-  width: 100%;
+  max-width: 100%;
   margin-top: 100px;
+
+  @media (max-width: 1024px) {
+    width: 300px;
+    height: 400px;
+    margin: 0 auto;
+  }
 `;
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
-);
+let stripePromise = null;
 
 function SingleCar({ cardata, username }) {
   // console.log(cardata);
@@ -259,7 +296,7 @@ function SingleCar({ cardata, username }) {
         </div>
         <div>
           Review Section
-          <CommentsRatings />
+          {/* <CommentsRatings /> */}
         </div>
         <div css={mapContainer}>
           <Map />

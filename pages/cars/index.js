@@ -12,15 +12,21 @@ import Navigation from '../../components/Navigation';
 import { setParsedCookie } from '../../util/cookies';
 
 const containerMap = css`
-  height: 800px;
-  width: 500px;
-
+  height: 400px;
+  width: 400px;
   margin: 0 auto;
   margin-top: 250px;
+  @media (max-width: 1024px) {
+    margin-top: 50px;
+  }
 `;
 
 const containerAll = css`
   display: flex;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
 const container = css`
@@ -33,6 +39,11 @@ const container = css`
   justify-content: center;
   margin-left: 50px;
 
+  @media (max-width: 1024px) {
+    grid-template-columns: auto;
+    margin-left: 0;
+  }
+
   h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -43,6 +54,10 @@ const imgWrapper = css`
   position: relative;
   width: 400px;
   height: 250px;
+  @media (max-width: 1024px) {
+    width: 350px;
+    height: 250px;
+  }
 `;
 
 function Cars({ carsdata, username }) {

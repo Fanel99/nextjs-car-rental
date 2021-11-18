@@ -82,6 +82,12 @@ const headerContainer = css`
   padding: 10px 0;
   position: relative;
 
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   ul {
     display: flex;
     gap: 20px;
@@ -106,11 +112,6 @@ const socialIcon = css`
     width: 30px;
     height: 30px;
   }
-`;
-
-const callItems = css`
-  color: #e7e7e7;
-  letter-spacing: 1;
 `;
 
 // Last parte with login and hide, need to make it nicer!
@@ -216,7 +217,7 @@ function Header(props) {
 
           <div css={headerLogout}>
             {props.username ? (
-              <>Logged in as {props.username} &nbsp;&nbsp;</>
+              <>Logged in as {props.username} &nbsp;|| &nbsp;&nbsp;</>
             ) : (
               ''
             )}

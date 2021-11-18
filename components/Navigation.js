@@ -1,9 +1,9 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
+import { Divide as Hamburger } from 'hamburger-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import router from 'next/router';
 import { useState } from 'react';
 import logo from '../public/pictures/logo.png';
 
@@ -19,6 +19,16 @@ const container = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    /* .rdrDefinedRangesWrapper {
+      display: none;
+    } */
+
+    @media (max-width: 1024px) {
+      .rdrDateRangePickerWrapper .rdrDefinedRangesWrapper {
+        display: none;
+      }
+    }
   }
 
   .wrapperButtons {
@@ -85,6 +95,24 @@ const navLinks = css`
   font-size: 18px;
   flex: 1 1 33%;
   justify-content: center;
+
+  @media (max-width: 1024px) {
+    transform: translateX(100%);
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    padding: 15px 20px;
+    max-width: 350px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    text-align: center;
+  }
+
   a {
     position: relative;
     transition: 0.4s;
@@ -109,16 +137,29 @@ const navLinks = css`
   a:hover {
     color: #c59e47;
   }
-`;
 
+  // Tantalau de ce nu merge? :(
+
+  .open {
+    @media (max-width: 1024px) {
+      transform: translateX(0);
+      transition: 0.3s ease-in;
+    }
+    @media (max-width: 760px) {
+      max-width: 100%;
+    }
+  }
+`;
 const navHost = css`
   flex: 1 1 33%;
   display: flex;
   justify-content: flex-end;
+
   a {
     border: solid 2px #c59e47;
     font-size: 18px;
     padding: 4px;
+    border-radius: 4px;
     display: inline-block;
     &:hover {
       background-color: #c59e47;
@@ -128,43 +169,50 @@ const navHost = css`
   a:hover {
     color: #fff;
   }
+
+  .hamburger-react {
+    height: 52px;
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
 `;
 
-function Navigation() {
-  const [searchInput, setSearchInput] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+function Navigation(props) {
+  // const [searchInput, setSearchInput] = useState('');
+  // const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
 
-  const handleSelect = (ranges) => {
-    setStartDate(ranges.selection.startDate);
-    setEndDate(ranges.selection.endDate);
-  };
+  const [showMenu, setShowMenu] = useState(false);
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: 'selection',
-  };
+  // const handleSelect = (ranges) => {
+  //   setStartDate(ranges.selection.startDate);
+  //   setEndDate(ranges.selection.endDate);
+  // };
 
-  const resetInput = () => {
-    setSearchInput('');
-  };
+  // const selectionRange = {
+  //   startDate: startDate,
+  //   endDate: endDate,
+  //   key: 'selection',
+  // };
 
-  const search = () => {
-    router.push({
-      pathname: '/cars',
-      query: {
-        location: searchInput,
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
-      },
-    });
-  };
+  // const resetInput = () => {
+  //   setSearchInput('');
+  // };
+
+  // const search = () => {
+  //   router.push({
+  //     pathname: '/cars',
+  //     query: {
+  //       location: searchInput,
+  //       startDate: startDate.toISOString(),
+  //       endDate: endDate.toISOString(),
+  //     },
+  //   });
+  // };
 
   return (
     <div css={container}>
-      {/* logo  */}
-
       <div data-aos="fade-down" css={navContainer}>
         {/* Navigation Links  */}
         <div data-aos="fade-down" css={logoNav}>
@@ -172,21 +220,37 @@ function Navigation() {
             <Image src={logo} alt="logo" />
           </div>
         </div>
-        <div css={navLinks}>
+
+        <div css={navLinks} className={showMenu ? 'open' : 'closed'}>
           <Link href="/">
             <a>Home</a>
           </Link>
           <Link href="/cars">
             <a>Deals</a>
           </Link>
-          <Link href="contact">
+          <Link href="/contact">
             <a>Contact</a>
           </Link>
+          {!props.username && (
+            <div>
+              <Link href={`/users/${props.username}`}>
+                <a>Profile</a>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Link to become a Host */}
         <div data-aos="fade-down" css={navHost}>
           <Link href="/becomeahost">Become a host</Link>
+          <Hamburger
+            className="hamburger-react"
+            toggled={showMenu}
+            toggle={setShowMenu}
+            duration={0.5}
+            easing="ease-in"
+            hideOutline={false}
+          />
         </div>
       </div>
     </div>

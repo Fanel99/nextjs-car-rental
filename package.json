@@ -40,6 +40,7 @@
     "emotion": "^11.0.0",
     "framer-motion": "^4.1.17",
     "geolib": "^3.3.3",
+    "hamburger-react": "^2.4.1",
     "i": "^0.3.7",
     "js-cookie": "^3.0.1",
     "ley": "^0.7.1",
