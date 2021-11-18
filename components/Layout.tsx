@@ -1,6 +1,10 @@
-import { Elements } from '@stripe/react-stripe-js';
+import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 import Header from './Header';
+
+const main = css`
+  overflow: hidden;
+`;
 
 type Props = {
   username?: string;
@@ -13,7 +17,7 @@ export default function Layout(props: Props) {
     <div>
       <div>
         <Header username={props.username} />
-        <main>{props.children}</main>
+        <main css={main}>{props.children}</main>
       </div>
     </div>
   );

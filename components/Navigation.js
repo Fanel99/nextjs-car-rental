@@ -87,6 +87,12 @@ const navContainer = css`
     border: 2px solid #c59e47;
     padding-left: 10px;
   }
+  @media (max-width: 1024px) {
+    .open {
+      transform: translateX(0);
+      transition: 0.3s ease-in;
+    }
+  }
 `;
 
 const navLinks = css`
@@ -97,7 +103,7 @@ const navLinks = css`
   justify-content: center;
 
   @media (max-width: 1024px) {
-    transform: translateX(100%);
+    transform: translateX(110%);
     width: 100%;
     position: absolute;
     top: 50px;
@@ -138,18 +144,11 @@ const navLinks = css`
     color: #c59e47;
   }
 
-  // Tantalau de ce nu merge? :(
-
-  .open {
-    @media (max-width: 1024px) {
-      transform: translateX(0);
-      transition: 0.3s ease-in;
-    }
-    @media (max-width: 760px) {
-      max-width: 100%;
-    }
+  a:last-child {
+    display: none;
   }
 `;
+
 const navHost = css`
   flex: 1 1 33%;
   display: flex;
@@ -163,6 +162,9 @@ const navHost = css`
     display: inline-block;
     &:hover {
       background-color: #c59e47;
+    }
+    @media (max-width: 1024px) {
+      display: none;
     }
   }
 
@@ -231,13 +233,14 @@ function Navigation(props) {
           <Link href="/contact">
             <a>Contact</a>
           </Link>
-          {!props.username && (
-            <div>
-              <Link href={`/users/${props.username}`}>
-                <a>Profile</a>
-              </Link>
-            </div>
-          )}
+
+          <Link href={`/users/${props.username}`}>
+            <a>Profile</a>
+          </Link>
+
+          <Link className="lastLink" href="/becomeahost">
+            <a>Become a host</a>
+          </Link>
         </div>
 
         {/* Link to become a Host */}

@@ -30,6 +30,14 @@ const hostContainer = css`
     font-weight: 600;
     letter-spacing: 3px;
     line-height: 90px;
+
+    @media (max-width: 1024px) {
+      font-size: 35px;
+      text-align: center;
+      letter-spacing: 0.1px;
+      line-height: 50px;
+      margin-top: 50px;
+    }
   }
   p {
     margin: 0;
@@ -41,12 +49,20 @@ const hostContainer = css`
     letter-spacing: -0.2px;
     line-height: 28px;
     font-weight: 500;
+    @media (max-width: 1024px) {
+      text-align: center;
+    }
   }
 
   .buttonWrapper {
     display: flex;
     align-items: center;
     gap: 50px;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      margin-top: 30px;
+      gap: 25px;
+    }
 
     button {
       border: solid 2px #c59e47;
@@ -68,11 +84,18 @@ const mainHost = css`
     position: relative;
     height: 400px;
     margin-top: 50px;
+    @media (max-width: 1024px) {
+      margin: 15px;
+    }
   }
 
   .afterImgTextWrapper {
     display: flex;
     justify-content: center;
+    @media (max-width: 1024px) {
+      margin: 15px;
+      text-align: center;
+    }
   }
   .afterImgText {
     display: flex;
@@ -108,6 +131,10 @@ const buildBusiness = css`
   h2 {
     font-size: 50px;
     margin-bottom: 50px;
+    @media (max-width: 1024px) {
+      text-align: center;
+      font-size: 35px;
+    }
   }
 
   .businessContent {
@@ -119,6 +146,10 @@ const buildBusiness = css`
     gap: 50px;
     margin-right: 10%;
     margin-left: 10%;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      padding: 0;
+    }
 
     h4 {
       font-size: 28px;

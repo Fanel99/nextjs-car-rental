@@ -107,6 +107,7 @@ const socialIcon = css`
   color: #e7e7e7;
   li {
     font-size: 0;
+    cursor: pointer;
   }
   svg {
     width: 30px;

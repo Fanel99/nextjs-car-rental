@@ -130,6 +130,10 @@ const formStyless = css`
     textarea {
       padding-top: 10px;
       padding-left: 10px;
+
+      @media (max-width: 1024px) {
+        width: 320px;
+      }
     }
   }
 `;
@@ -274,19 +278,6 @@ function CreateAds(props) {
       },
     );
     const updateNewCar = carsResponse.json();
-
-    // console.log('new State', newState);
-
-    // const outdateCar = newState.find((car) => car.id === updateNewCar.id);
-
-    // outdateCar.carName = updateNewCar.carName;
-    // outdateCar.description = updateNewCar.description;
-    // outdateCar.pickUpAdress = updateNewCar.pickUpAdress;
-    // outdateCar.city = updateNewCar.city;
-    // outdateCar.imageUrl = updateNewCar.imageUrl;
-    // outdateCar.phone = updateNewCar.phone;
-    // outdateCar.seats = updateNewCar.seats;
-    // outdateCar.fuel = updateNewCar.fuel;
   }
 
   return (
@@ -297,164 +288,44 @@ function CreateAds(props) {
         </Head>
         <Navigation />
         <div css={formStyless}>
-          <div className="container">
-            <div className="title">Become a host</div>
-            <div className="input-box-wrapper-container">
-              <div className="input-box-wrapper">
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Car Name"
-                    value={carName}
-                    onChange={(e) => setCarName(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Day Price"
-                    value={dayPrice}
-                    onChange={(e) => setDayPrice(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Pick Up Adress"
-                    value={pickUpAdress}
-                    onChange={(e) => setPickUpAdress(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Seats"
-                    value={seats}
-                    onChange={(e) => setSeats(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-              </div>
-              <div className="input-box-wrapper">
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Enter a city"
-                    value={city}
-                    onChange={(e) => setCity(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Phone"
-                    value={phone}
-                    onChange={(e) => setPhone(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    placeholder="Fuel"
-                    value={fuel}
-                    onChange={(e) => setFuel(e.currentTarget.value)}
-                  />
-                  <div className="underline" />
-                </div>
-                <div className="input-box">
-                  <input
-                    required
-                    type="file"
-                    placeholder="Upload an image"
-                    onChange={uploadImage}
-                  />
-                  <div className="underline" />
-                </div>
-              </div>
-            </div>
-            <div className="input-box textarea">
-              <textarea
-                required
-                cols="80"
-                rows="6"
-                placeholder="Write a small description about your car..."
-                value={description}
-                onChange={(e) => setDescription(e.currentTarget.value)}
-              />
-            </div>
-
-            <div className="input-box button">
-              <button
-                onClick={() =>
-                  createCar(
-                    userId,
-                    carName,
-                    description,
-                    dayPrice,
-                    pickUpAdress,
-                    city,
-                    imageUrl,
-                    phone,
-                    seats,
-                    fuel,
-                  )
-                }
-              >
-                Money Maker
-              </button>
-            </div>
-          </div>
-          {/* <button onClick={deleteCar}>Delete</button> */}
-        </div>
-
-        {/* Update Car SECTION */}
-
-        <div>
-          <div css={formStyless}>
+          <form>
             <div className="container">
-              <div className="title">Update your car</div>
+              <div className="title">Become a host</div>
               <div className="input-box-wrapper-container">
                 <div className="input-box-wrapper">
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update Car Name"
-                      value={updateCarName}
-                      onChange={(e) => setUpdateCarName(e.currentTarget.value)}
+                      placeholder="Car Name"
+                      value={carName}
+                      onChange={(e) => setCarName(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update Day Price"
-                      value={updateDayPrice}
-                      onChange={(e) => setUpdateDayPrice(e.currentTarget.value)}
+                      placeholder="Day Price"
+                      value={dayPrice}
+                      onChange={(e) => setDayPrice(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update Pick Up Adress"
-                      value={updatePickUpAdress}
-                      onChange={(e) =>
-                        setupdatePickUpAdress(e.currentTarget.value)
-                      }
+                      placeholder="Pick Up Adress"
+                      value={pickUpAdress}
+                      onChange={(e) => setPickUpAdress(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update Seats"
-                      value={updateSeats}
-                      onChange={(e) => setUpdateSeats(e.currentTarget.value)}
+                      placeholder="Seats"
+                      value={seats}
+                      onChange={(e) => setSeats(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
@@ -463,18 +334,18 @@ function CreateAds(props) {
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update City"
-                      value={updateCity}
-                      onChange={(e) => setUpdateCity(e.currentTarget.value)}
+                      placeholder="Enter a city"
+                      value={city}
+                      onChange={(e) => setCity(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
                   <div className="input-box">
                     <input
                       required
-                      placeholder="Update Phone"
-                      value={updatePhone}
-                      onChange={(e) => setUpdatePhone(e.currentTarget.value)}
+                      placeholder="Phone"
+                      value={phone}
+                      onChange={(e) => setPhone(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
@@ -482,8 +353,8 @@ function CreateAds(props) {
                     <input
                       required
                       placeholder="Fuel"
-                      value={updateFuel}
-                      onChange={(e) => setUpdateFuel(e.currentTarget.value)}
+                      value={fuel}
+                      onChange={(e) => setFuel(e.currentTarget.value)}
                     />
                     <div className="underline" />
                   </div>
@@ -491,7 +362,7 @@ function CreateAds(props) {
                     <input
                       required
                       type="file"
-                      placeholder="Update  Image"
+                      placeholder="Upload an image"
                       onChange={uploadImage}
                     />
                     <div className="underline" />
@@ -503,32 +374,162 @@ function CreateAds(props) {
                   required
                   cols="80"
                   rows="6"
-                  placeholder="update description about your car..."
-                  value={updateDescription}
-                  onChange={(e) => setUpdateDescription(e.currentTarget.value)}
+                  placeholder="Write a small description about your car..."
+                  value={description}
+                  onChange={(e) => setDescription(e.currentTarget.value)}
                 />
               </div>
 
               <div className="input-box button">
                 <button
                   onClick={() =>
-                    updateCar(
-                      updateCarName,
-                      updateDescription,
-                      updateDayPrice,
-                      updatePickUpAdress,
-                      updateCity,
-                      updateImageUrl,
-                      updatePhone,
-                      updateSeats,
-                      updateFuel,
+                    createCar(
+                      userId,
+                      carName,
+                      description,
+                      dayPrice,
+                      pickUpAdress,
+                      city,
+                      imageUrl,
+                      phone,
+                      seats,
+                      fuel,
                     )
                   }
                 >
-                  Update It
+                  Money Maker
                 </button>
               </div>
             </div>
+          </form>
+          {/* <button onClick={deleteCar}>Delete</button> */}
+        </div>
+
+        {/* Update Car SECTION */}
+
+        <div>
+          <div css={formStyless}>
+            <form>
+              <div className="container">
+                <div className="title">Update your car</div>
+                <div className="input-box-wrapper-container">
+                  <div className="input-box-wrapper">
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update Car Name"
+                        value={updateCarName}
+                        onChange={(e) =>
+                          setUpdateCarName(e.currentTarget.value)
+                        }
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update Day Price"
+                        value={updateDayPrice}
+                        onChange={(e) =>
+                          setUpdateDayPrice(e.currentTarget.value)
+                        }
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update Pick Up Adress"
+                        value={updatePickUpAdress}
+                        onChange={(e) =>
+                          setupdatePickUpAdress(e.currentTarget.value)
+                        }
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update Seats"
+                        value={updateSeats}
+                        onChange={(e) => setUpdateSeats(e.currentTarget.value)}
+                      />
+                      <div className="underline" />
+                    </div>
+                  </div>
+                  <div className="input-box-wrapper">
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update City"
+                        value={updateCity}
+                        onChange={(e) => setUpdateCity(e.currentTarget.value)}
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Update Phone"
+                        value={updatePhone}
+                        onChange={(e) => setUpdatePhone(e.currentTarget.value)}
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        placeholder="Fuel"
+                        value={updateFuel}
+                        onChange={(e) => setUpdateFuel(e.currentTarget.value)}
+                      />
+                      <div className="underline" />
+                    </div>
+                    <div className="input-box">
+                      <input
+                        required
+                        type="file"
+                        placeholder="Update  Image"
+                        onChange={uploadImage}
+                      />
+                      <div className="underline" />
+                    </div>
+                  </div>
+                </div>
+                <div className="input-box textarea">
+                  <textarea
+                    required
+                    cols="80"
+                    rows="6"
+                    placeholder="update description about your car..."
+                    value={updateDescription}
+                    onChange={(e) =>
+                      setUpdateDescription(e.currentTarget.value)
+                    }
+                  />
+                </div>
+
+                <div className="input-box button">
+                  <button
+                    onClick={() =>
+                      updateCar(
+                        updateCarName,
+                        updateDescription,
+                        updateDayPrice,
+                        updatePickUpAdress,
+                        updateCity,
+                        updateImageUrl,
+                        updatePhone,
+                        updateSeats,
+                        updateFuel,
+                      )
+                    }
+                  >
+                    Update It
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </Layout>
