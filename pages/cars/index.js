@@ -12,10 +12,10 @@ import Navigation from '../../components/Navigation';
 import { setParsedCookie } from '../../util/cookies';
 
 const containerMap = css`
-  height: 400px;
-  width: 400px;
-  margin: 0 auto;
-  margin-top: 250px;
+  flex: 1 1 30%;
+  position: sticky;
+  top: 0;
+  height: 350px;
   @media (max-width: 1024px) {
     margin-top: 50px;
   }
@@ -23,6 +23,7 @@ const containerMap = css`
 
 const containerAll = css`
   display: flex;
+  margin-top: 200px;
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -30,14 +31,17 @@ const containerAll = css`
 `;
 
 const container = css`
-  margin-top: 200px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  max-width: 1366px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  padding: 0 20px;
+`;
+
+const wrapperItems = css`
+  display: flex;
   grid-gap: 20px;
   justify-content: center;
-  max-width: 800px;
-  justify-content: center;
-  margin-left: 50px;
 
   @media (max-width: 1024px) {
     grid-template-columns: auto;
@@ -47,6 +51,23 @@ const container = css`
   h2 {
     text-align: center;
     margin-bottom: 20px;
+  }
+`;
+
+const items = css`
+  flex: 1 1 70%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  img {
+    width: 100%;
+    min-height: 350px;
+    object-fit: cover;
+  }
+  div {
+    flex: 1 1 48%;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -98,31 +119,29 @@ function Cars({ carsdata, username }) {
 
       <div css={containerAll}>
         <div css={container}>
-          {carsdata.map((item) => {
-            return (
-              <div key={`cars-${item.id}`}>
-                <Link href={`/cars/${item.id}`}>
-                  <a>
-                    <div css={imgWrapper}>
-                      <Image
-                        src={item.imageUrl}
-                        alt="cars"
-                        objectFit="cover"
-                        layout="fill"
-                      />{' '}
-                    </div>
-                  </a>
-                </Link>
-                <h2>{item.carName}</h2>
-              </div>
-            );
-          })}
-        </div>
-        {/* <p>
+          <div css={wrapperItems}>
+            <div css={items}>
+              {carsdata.map((item) => {
+                return (
+                  <div key={`cars-${item.id}`}>
+                    <Link href={`/cars/${item.id}`}>
+                      <a>
+                        <img src={item.imageUrl} alt="cars" />{' '}
+                      </a>
+                    </Link>
+                    <h2>{item.carName}</h2>
+                  </div>
+                );
+              })}
+            </div>
+            <div css={containerMap}>
+              <Map carsdata={carsdata} />
+            </div>
+          </div>
+
+          {/* <p>
           Search results for {location} from {range}{' '}
         </p> */}
-        <div css={containerMap}>
-          <Map carsdata={carsdata} />
         </div>
       </div>
     </Layout>

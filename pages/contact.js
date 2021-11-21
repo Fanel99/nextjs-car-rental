@@ -64,7 +64,7 @@ const formContainer = css`
   margin: 0 auto;
   padding: 0 15px;
 `;
-export default function Form() {
+export default function Form(props) {
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [email, setEmail] = useState('');
@@ -148,7 +148,7 @@ export default function Form() {
   };
   return (
     <div css={formStyle}>
-      <Layout />
+      <Layout username={props.username} />
       <Navigation />
       <div css={formContainer}>
         <h2>

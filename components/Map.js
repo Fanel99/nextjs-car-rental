@@ -1,5 +1,6 @@
+import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
+import ReactMapGL, { Marker } from 'react-map-gl';
 
 function Map({ carsdata }) {
   // transform the carsdata object into the longitude and latitude
@@ -24,7 +25,21 @@ function Map({ carsdata }) {
       mapboxApiAccessToken="pk.eyJ1IjoiZmFuZWwiLCJhIjoiY2t2OGlra29mMXNkMjJwbHVyY3k1emZnZyJ9.Y1kWgTuGd7WbYRd8O63VYA"
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
-    ></ReactMapGL>
+    >
+      {/* {carsdata.map((result) => (
+        <div key={result.id}>
+          <span>
+            latitude={result.lat}
+            longitude={result.long}
+            offsetLeft={-20}
+            offsetTop={-10}
+          </span>
+          <span role="img" aria-label="push-pin">
+            📌
+          </span>
+        </div>
+      ))} */}
+    </ReactMapGL>
   );
 }
 

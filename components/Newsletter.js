@@ -38,15 +38,22 @@ const leftSide = css`
     img {
       transform: rotate(90deg);
     }
-    span span {
+    div div {
       height: 400px !important;
       width: 400px !important;
     }
   }
+  p {
+    margin-top: 30px;
+    line-height: 1.5;
+  }
   @media (max-width: 769px) {
-    span span {
+    div div {
       height: 300px !important;
       width: 300px !important;
+    }
+    p {
+      margin-top: 15px;
     }
   }
 
@@ -64,11 +71,6 @@ const leftSide = css`
     h4 {
       font-size: 28px;
       letter-spacing: 7px;
-      margin-bottom: 10%;
-    }
-    p {
-      margin-top: 30px;
-      line-height: 1.5;
     }
   }
 
@@ -88,17 +90,16 @@ const rightSide = css`
     position: absolute;
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
 
     button {
       border: 1px solid #fff;
-      font-size: 30px;
+      font-size: 22px;
       color: #fff;
       letter-spacing: 5px;
-      padding: 25px;
+      padding: 15px 25px;
       background: none;
       cursor: pointer;
-      text-transform: uppercase;
+      text-transform: capitalize;
 
       &:hover {
         background: #fff;
@@ -129,7 +130,7 @@ function Newsletter() {
     <div css={container}>
       <div css={containerNewsletter}>
         <div css={leftSide}>
-          <Image src={border} height={400} alt="frame for news" />
+          <Image src={border} alt="frame for news" />
           <div className="leftSideText">
             <h4>Newsletter</h4>
             <p>

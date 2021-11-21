@@ -5,15 +5,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
-import CommentsRatings from '../../components/CommentsRatings';
 import Layout from '../../components/Layout';
 import Map from '../../components/Map';
 import Navigation from '../../components/Navigation';
 import canister from '../../public/pictures/canister1.png';
-import city from '../../public/pictures/city1.png';
+import city from '../../public/pictures/city.png';
 import door from '../../public/pictures/door1.png';
 import fuel from '../../public/pictures/fuel1.png';
-import street from '../../public/pictures/location.png';
+import street from '../../public/pictures/location1.png';
 import seat from '../../public/pictures/seat1.png';
 
 const container = css`
@@ -27,7 +26,7 @@ const container = css`
     align-items: center;
     gap: 50px;
     align-items: flex-start;
-    margin-top: 100px;
+    margin-top: 200px;
 
     @media (max-width: 1024px) {
       flex-direction: column;
@@ -97,11 +96,12 @@ const singleCarContainer = css`
     align-items: center;
     max-width: 500px;
 
+    p {
+      flex: 1 1 50%;
+    }
+
     p span {
       margin-left: 10px;
-    }
-    .fuel {
-      margin-right: 16px;
     }
   }
 
@@ -151,10 +151,8 @@ const mapContainer = css`
   }
 `;
 
-let stripePromise = null;
-
 function SingleCar({ cardata, username }) {
-  // console.log(cardata);
+  console.log(cardata);
 
   // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
@@ -195,6 +193,9 @@ function SingleCar({ cardata, username }) {
       );
     }
   }, []);
+
+  // Map box
+
   return (
     <Layout username={username}>
       <Navigation />
@@ -223,7 +224,7 @@ function SingleCar({ cardata, username }) {
                 <p>
                   {' '}
                   <Image src={door} width={40} height={40} />
-                  <span>5 doors</span>
+                  <span>2 doors</span>
                 </p>
                 <p>
                   {' '}

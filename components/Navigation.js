@@ -104,13 +104,14 @@ const navLinks = css`
 
   @media (max-width: 1024px) {
     transform: translateX(110%);
-    width: 100%;
+    min-width: 100%;
+    left: -20px;
+    right: -20px;
     position: absolute;
     top: 50px;
-    right: 0;
     background: white;
     padding: 15px 20px;
-    max-width: 350px;
+
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     transition: 0.3s ease-out;
     display: flex;
@@ -144,8 +145,10 @@ const navLinks = css`
     color: #c59e47;
   }
 
-  a:last-child {
-    display: none;
+  @media (min-width: 1024px) {
+    a:last-child {
+      display: none;
+    }
   }
 `;
 
@@ -223,24 +226,26 @@ function Navigation(props) {
           </div>
         </div>
 
-        <div css={navLinks} className={showMenu ? 'open' : 'closed'}>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-          <Link href="/cars">
-            <a>Deals</a>
-          </Link>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
+        <div>
+          <div css={navLinks} className={showMenu ? 'open' : 'closed'}>
+            <Link href="/">
+              <a>Home</a>
+            </Link>
+            <Link href="/cars">
+              <a>Deals</a>
+            </Link>
+            <Link href="/contact">
+              <a>Contact</a>
+            </Link>
 
-          <Link href={`/users/${props.username}`}>
-            <a>Profile</a>
-          </Link>
+            <Link href={`/users/${props.username}`}>
+              <a>Profile</a>
+            </Link>
 
-          <Link className="lastLink" href="/becomeahost">
-            <a>Become a host</a>
-          </Link>
+            <Link className="lastLink" href="/becomeahost">
+              <a>Become a host</a>
+            </Link>
+          </div>
         </div>
 
         {/* Link to become a Host */}
@@ -250,7 +255,7 @@ function Navigation(props) {
             className="hamburger-react"
             toggled={showMenu}
             toggle={setShowMenu}
-            duration={0.5}
+            duration={0.2}
             easing="ease-in"
             hideOutline={false}
           />

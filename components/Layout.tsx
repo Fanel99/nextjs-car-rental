@@ -4,6 +4,9 @@ import Header from './Header';
 
 const main = css`
   overflow: hidden;
+  @media (min-width: 1024px) {
+    overflow: visible;
+  } ;
 `;
 
 type Props = {

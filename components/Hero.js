@@ -4,6 +4,7 @@ const containerFullWidth = css`
   max-width: 1920px;
   background-color: #191919;
   position: relative;
+  margin: 0 auto;
 `;
 
 const heroWrapper = css`
@@ -27,6 +28,7 @@ const heroHeader = css`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  line-height: 1;
 `;
 
 function Hero() {

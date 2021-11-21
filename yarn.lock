@@ -5325,7 +5325,7 @@ react-list@^0.8.13:
 
 react-map-gl@^6.1.17:
   version "6.1.17"
-  resolved "https://registry.npmjs.org/react-map-gl/-/react-map-gl-6.1.17.tgz"
+  resolved "https://registry.yarnpkg.com/react-map-gl/-/react-map-gl-6.1.17.tgz#3fe52ede87919080a6b8220b867e61c55be20ede"
   integrity sha512-SKuMtvs7aQpHMJehf/GzUQnEhPWRIypTX7X2wVXGME2RBKdY0PnC1YTiy8W3aA4uwcolPvCCYB+ki3xal51ZXQ==
   dependencies:
     "@babel/runtime" "^7.0.0"

@@ -16,6 +16,7 @@ import { DateRangePicker } from 'react-date-range';
 const containerFullWidth = css`
   max-width: 1920px;
   background-color: #191919;
+  margin: 0 auto;
 `;
 const container = css`
   max-width: 1366px;
