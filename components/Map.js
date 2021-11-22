@@ -1,16 +1,10 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useState } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
 function Map({ carsdata }) {
-  // transform the carsdata object into the longitude and latitude
-  // const coordinates = carsdata.map((result) => ({
-  //   longitude: result.long,
-  //   latitude: result.lat,
-  // }));
+  const [selectedLocation, setSelectedLocation] = useState({});
 
-  // const center = getCenter(coordinates);
-  // console.log(center);
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
@@ -19,26 +13,75 @@ function Map({ carsdata }) {
     zoom: 11,
   });
 
+  console.log(selectedLocation);
+
   return (
     <ReactMapGL
       mapStyle="mapbox://styles/fanel/ckv8ixlse9lz714o3xc7i5mdg"
-      mapboxApiAccessToken="pk.eyJ1IjoiZmFuZWwiLCJhIjoiY2t2OGlra29mMXNkMjJwbHVyY3k1emZnZyJ9.Y1kWgTuGd7WbYRd8O63VYA"
+      mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_PUBLISHABLE_KEY}
       {...viewport}
       onViewportChange={(nextViewport) => setViewport(nextViewport)}
     >
-      {/* {carsdata.map((result) => (
-        <div key={result.id}>
-          <span>
-            latitude={result.lat}
-            longitude={result.long}
-            offsetLeft={-20}
-            offsetTop={-10}
-          </span>
-          <span role="img" aria-label="push-pin">
-            📌
-          </span>
+      {carsdata.map((result) => (
+        <div key={result.long}>
+          <Marker latitude={Number(result.lat)} longitude={Number(result.long)}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                setSelectedLocation(result);
+              }}
+              aria-label="push-pin"
+              aria-hidden="true"
+            >
+              📌
+            </button>
+          </Marker>
+          {selectedLocation.long === result.long ? (
+            <Popup
+              onClose={() => setSelectedLocation({})}
+              closeOnClick={true}
+              latitude={Number(result.lat)}
+              longitude={Number(result.long)}
+            >
+              {result.carName}
+            </Popup>
+          ) : (
+            false
+          )}
         </div>
-      ))} */}
+      ))}
+
+      {/* {carsdata.map((result) => {
+        // console.log(result);
+        return (
+          <Marker
+            key={result.id}
+            latitude={Number(result.lat)}
+            longitude={Number(result.long)}
+          >
+            <span
+              onClick={() => setSelectedLocation(result)}
+              role="img"
+              aria-label="push-pin"
+              aria-hidden="true"
+            >
+              📌
+            </span>{' '}
+            {selectedLocation.long === Number(result.long) ? (
+              <Popup
+                onClose={() => setSelectedLocation({})}
+                closeOnClick={true}
+                latitude={Number(result.lat)}
+                longitude={Number(result.long)}
+              >
+                {result.carName}
+              </Popup>
+            ) : (
+              false
+            )}
+          </Marker>
+        );
+      })} */}
     </ReactMapGL>
   );
 }

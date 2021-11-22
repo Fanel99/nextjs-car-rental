@@ -299,9 +299,7 @@ function SingleCar({ cardata, username }) {
           Review Section
           {/* <CommentsRatings /> */}
         </div>
-        <div css={mapContainer}>
-          <Map />
-        </div>
+        <div css={mapContainer}>{/* <Map /> */}</div>
       </div>
     </Layout>
   );

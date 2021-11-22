@@ -1,65 +1,5 @@
 const carsdata = [
   {
-    car_name: 'Porche 911',
-    description:
-      'A timeless design, a contemporary interpretation. The unmistakable silhouette of the 911 is characterised by its iconic flyline. It has barely changed since 1963, and has shaped the DNA of all Porsche models. Including, of course, the 911 Cabriolet and Targa models.',
-    day_price: '170',
-    pick_up_adress: 'Herbortgasse 28',
-    city: 'Viena',
-    image_url:
-      'https://rennlist.com/wp-content/uploads/2018/07/Porsche-911.jpg',
-    phone: '06606333225',
-    seats: '2',
-    fuel: 'Gas',
-    lat: '48.170460',
-    long: '16.411840',
-  },
-  {
-    car_name: 'Mercedes 300 SL',
-    description:
-      'The Mercedes-Benz 300SL was the first iteration of the SL-Class grand tourer and fastest production car of its day. Introduced in 1954 as a two-seat coupé with distinctive gull-wing doors, it was later offered as an open roadster.',
-    day_price: '170',
-    pick_up_adress: 'Prinz Eugen-Straße 60',
-    city: 'Vienna',
-    image_url:
-      'https://imgix.ranker.com/node_img/79/1564666/original/mercedes-benz-300sl-automobile-models-photo-1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=650',
-    phone: '06606333225',
-    seats: '4',
-    fuel: 'Gas',
-    lat: '48.190750',
-    long: '16.379560',
-  },
-  {
-    car_name: 'Alfa Romeo Stradale',
-    description:
-      'The Alfa Romeo 33 Stradale is a mid-engined sports car built by Italian car manufacturer Alfa Romeo. It is one of the world first supercars; it was the fastest commercially available car for the standing kilometer when introduced.',
-    day_price: '300',
-    pick_up_adress: 'Quellenstraße 148',
-    city: 'Vienna',
-    image_url:
-      'https://www.autozeitung.de/assets/styles/article_image/public/field/image/alfa-romeo-tipo-33-stradale-cc-01.jpg?itok=IIfnrxe0',
-    phone: '06606333225',
-    seats: '4',
-    fuel: 'Gas',
-    lat: '48.176680',
-    long: '16.360150',
-  },
-  {
-    car_name: 'BMW 35CSI',
-    description:
-      'If there is one model in the history of BMW M that represents its most significant era, it is the BMW M635CSi. In 1984, the four-seater continued the concept of high-performance 6-cylinder in-line engines that the legendary BMW M1 had established just a few years earlier. ',
-    day_price: '230',
-    pick_up_adress: 'Maxingstraße 13b',
-    city: 'Berlin',
-    image_url:
-      'https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2016/05/2634aa71ba35f75a05f1429324821535.jpg',
-    phone: '06606333225',
-    seats: '2',
-    fuel: 'Gas',
-    lat: '48.182280',
-    long: '16.307120',
-  },
-  {
     car_name: 'Lamborghini Miura',
     description:
       'The Lamborghini Miura is a sports car produced by Italian automaker Lamborghini between 1966 and 1973. The car was the first supercar with a rear mid-engined two-seat layout, although the concept was first seen in a production road car with René Bonnets Matra Djet, introduced in 1964.',
@@ -71,8 +11,8 @@ const carsdata = [
     phone: '06606333225',
     seats: '2',
     fuel: 'Gas',
-    lat: '48.208087',
-    long: '16.3584649',
+    lat: 48.208087,
+    long: 16.3584649,
   },
   {
     car_name: 'Ferarri 250GT',
@@ -86,8 +26,69 @@ const carsdata = [
     phone: '06606333225',
     seats: '2',
     fuel: 'Gas',
-    lat: '48.25240131691684',
-    long: '16.46005624864806',
+    lat: 48.25240131691684,
+    long: 16.46005624864806,
+  },
+
+  {
+    car_name: 'Alfa Romeo Stradale',
+    description:
+      'The Alfa Romeo 33 Stradale is a mid-engined sports car built by Italian car manufacturer Alfa Romeo. It is one of the world first supercars; it was the fastest commercially available car for the standing kilometer when introduced.',
+    day_price: '300',
+    pick_up_adress: 'Quellenstraße 148',
+    city: 'Vienna',
+    image_url:
+      'https://www.autozeitung.de/assets/styles/article_image/public/field/image/alfa-romeo-tipo-33-stradale-cc-01.jpg?itok=IIfnrxe0',
+    phone: '06606333225',
+    seats: '4',
+    fuel: 'Gas',
+    lat: 48.17668,
+    long: 16.36015,
+  },
+  {
+    car_name: 'BMW 35CSI',
+    description:
+      'If there is one model in the history of BMW M that represents its most significant era, it is the BMW M635CSi. In 1984, the four-seater continued the concept of high-performance 6-cylinder in-line engines that the legendary BMW M1 had established just a few years earlier. ',
+    day_price: '230',
+    pick_up_adress: 'Maxingstraße 13b',
+    city: 'Berlin',
+    image_url:
+      'https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2016/05/2634aa71ba35f75a05f1429324821535.jpg',
+    phone: '06606333225',
+    seats: '2',
+    fuel: 'Gas',
+    lat: 48.18228,
+    long: 16.30712,
+  },
+  {
+    car_name: 'Porche 911',
+    description:
+      'A timeless design, a contemporary interpretation. The unmistakable silhouette of the 911 is characterised by its iconic flyline. It has barely changed since 1963, and has shaped the DNA of all Porsche models. Including, of course, the 911 Cabriolet and Targa models.',
+    day_price: '170',
+    pick_up_adress: 'Herbortgasse 28',
+    city: 'Viena',
+    image_url:
+      'https://rennlist.com/wp-content/uploads/2018/07/Porsche-911.jpg',
+    phone: '06606333225',
+    seats: '2',
+    fuel: 'Gas',
+    lat: 48.17046,
+    long: 16.41184,
+  },
+  {
+    car_name: 'Mercedes 300 SL',
+    description:
+      'The Mercedes-Benz 300SL was the first iteration of the SL-Class grand tourer and fastest production car of its day. Introduced in 1954 as a two-seat coupé with distinctive gull-wing doors, it was later offered as an open roadster.',
+    day_price: '170',
+    pick_up_adress: 'Prinz Eugen-Straße 60',
+    city: 'Vienna',
+    image_url:
+      'https://imgix.ranker.com/node_img/79/1564666/original/mercedes-benz-300sl-automobile-models-photo-1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=650',
+    phone: '06606333225',
+    seats: '4',
+    fuel: 'Gas',
+    lat: 48.19075,
+    long: 16.37956,
   },
 ];
 

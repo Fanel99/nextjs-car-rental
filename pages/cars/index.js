@@ -3,7 +3,6 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
 import { format } from 'date-fns';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
@@ -63,21 +62,12 @@ const items = css`
     width: 100%;
     min-height: 350px;
     object-fit: cover;
+    border-radius: 5px;
   }
   div {
     flex: 1 1 48%;
     display: flex;
     flex-wrap: wrap;
-  }
-`;
-
-const imgWrapper = css`
-  position: relative;
-  width: 400px;
-  height: 250px;
-  @media (max-width: 1024px) {
-    width: 350px;
-    height: 250px;
   }
 `;
 
@@ -105,7 +95,7 @@ function Cars({ carsdata, username }) {
 
   // const formattedEddate = format(new Date(endDate), 'dd MMM yyyy');
   // console.log(formattedEddate);
-  // setParsedCookie('endDate', formattedEddate);
+
   // const range = `${formattedStartDate} -  ${formattedEddate} `;
 
   //    <p>Search results for {location} from {range} </p>
@@ -140,8 +130,8 @@ function Cars({ carsdata, username }) {
           </div>
 
           {/* <p>
-          Search results for {location} from {range}{' '}
-        </p> */}
+            Search results for {location} from {range}{' '}
+          </p> */}
         </div>
       </div>
     </Layout>

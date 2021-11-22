@@ -218,9 +218,9 @@ function Navigation(props) {
 
   return (
     <div css={container}>
-      <div data-aos="fade-down" css={navContainer}>
+      <div css={navContainer}>
         {/* Navigation Links  */}
-        <div data-aos="fade-down" css={logoNav}>
+        <div css={logoNav}>
           <div className="logoNavImage">
             <Image src={logo} alt="logo" />
           </div>
@@ -249,7 +249,7 @@ function Navigation(props) {
         </div>
 
         {/* Link to become a Host */}
-        <div data-aos="fade-down" css={navHost}>
+        <div css={navHost}>
           <Link href="/becomeahost">Become a host</Link>
           <Hamburger
             className="hamburger-react"
