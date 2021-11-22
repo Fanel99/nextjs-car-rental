@@ -28,7 +28,6 @@
     "@types/dotenv-safe": "^8.1.2",
     "@types/react-modal": "^3.13.1",
     "aos": "^2.3.4",
-    "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "camelcase-keys": "^7.0.1",
     "cookie": "^0.4.1",
@@ -36,7 +35,6 @@
     "date-fns": "^2.25.0",
     "dotenv-cli": "^4.0.0",
     "dotenv-safe": "^8.2.0",
-    "embla-carousel": "^5.0.1",
     "emotion": "^11.0.0",
     "framer-motion": "^4.1.17",
     "geolib": "^3.3.3",
@@ -44,6 +42,7 @@
     "i": "^0.3.7",
     "js-cookie": "^3.0.1",
     "ley": "^0.7.1",
+    "moment": "^2.29.1",
     "next": "^11.0.3",
     "next-images": "^1.8.1",
     "next-transpile-modules": "^8.0.0",
@@ -54,12 +53,9 @@
     "react-date-range": "^1.4.0",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
-    "react-id-swiper": "^4.0.0",
     "react-map-gl": "^6.1.17",
-    "react-modal": "^3.14.3",
     "sharp": "^0.29.1",
-    "stripe": "^8.188.0",
-    "swiper": "^7.0.9"
+    "stripe": "^8.188.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.4",

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
 import Navigation from '../../components/Navigation';
@@ -140,6 +141,7 @@ const formStyless = css`
 
 function CreateAds(props) {
   const userId = props.userId;
+  const router = useRouter();
 
   // console.log(userId);
 

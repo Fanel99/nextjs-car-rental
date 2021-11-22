@@ -1,18 +1,18 @@
 const carsdata = [
   {
-    car_name: 'Lamborghini Miura',
+    car_name: 'Mercedes 300 SL',
     description:
-      'The Lamborghini Miura is a sports car produced by Italian automaker Lamborghini between 1966 and 1973. The car was the first supercar with a rear mid-engined two-seat layout, although the concept was first seen in a production road car with René Bonnets Matra Djet, introduced in 1964.',
-    day_price: '280',
-    pick_up_adress: 'Dr.-Karl-Renner-Ring 3',
+      'The Mercedes-Benz 300SL was the first iteration of the SL-Class grand tourer and fastest production car of its day. Introduced in 1954 as a two-seat coupé with distinctive gull-wing doors, it was later offered as an open roadster.',
+    day_price: '170',
+    pick_up_adress: 'Prinz Eugen-Straße 60',
     city: 'Vienna',
     image_url:
-      'https://i0.wp.com/radical-mag.com/wp-content/uploads/2018/12/img_7307_18-e1610792295437.jpg?w=3697',
+      'https://upload.wikimedia.org/wikipedia/commons/d/d0/2007-07-22_Mercedes-Benz_300_SL_Roadster_%28Foto_Sp%29.jpg',
     phone: '06606333225',
-    seats: '2',
+    seats: '4',
     fuel: 'Gas',
-    lat: 48.208087,
-    long: 16.3584649,
+    lat: 48.19075,
+    long: 16.37956,
   },
   {
     car_name: 'Ferarri 250GT',
@@ -76,19 +76,19 @@ const carsdata = [
     long: 16.41184,
   },
   {
-    car_name: 'Mercedes 300 SL',
+    car_name: 'Lamborghini Miura',
     description:
-      'The Mercedes-Benz 300SL was the first iteration of the SL-Class grand tourer and fastest production car of its day. Introduced in 1954 as a two-seat coupé with distinctive gull-wing doors, it was later offered as an open roadster.',
-    day_price: '170',
-    pick_up_adress: 'Prinz Eugen-Straße 60',
+      'The Lamborghini Miura is a sports car produced by Italian automaker Lamborghini between 1966 and 1973. The car was the first supercar with a rear mid-engined two-seat layout, although the concept was first seen in a production road car with René Bonnets Matra Djet, introduced in 1964.',
+    day_price: '280',
+    pick_up_adress: 'Dr.-Karl-Renner-Ring 3',
     city: 'Vienna',
     image_url:
-      'https://imgix.ranker.com/node_img/79/1564666/original/mercedes-benz-300sl-automobile-models-photo-1?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=650',
+      'https://i0.wp.com/radical-mag.com/wp-content/uploads/2018/12/img_7307_18-e1610792295437.jpg?w=3697',
     phone: '06606333225',
-    seats: '4',
+    seats: '2',
     fuel: 'Gas',
-    lat: 48.19075,
-    long: 16.37956,
+    lat: 48.208087,
+    long: 16.3584649,
   },
 ];
 

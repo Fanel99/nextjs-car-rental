@@ -68,6 +68,9 @@ const logoNav = css`
   .logoNavImage {
     position: absolute;
     top: -20px;
+    img {
+      border-radius: 5px;
+    }
   }
 `;
 
@@ -184,10 +187,6 @@ const navHost = css`
 `;
 
 function Navigation(props) {
-  // const [searchInput, setSearchInput] = useState('');
-  // const [startDate, setStartDate] = useState(new Date());
-  // const [endDate, setEndDate] = useState(new Date());
-
   const [showMenu, setShowMenu] = useState(false);
 
   // const handleSelect = (ranges) => {

@@ -1,7 +1,13 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { css } from '@emotion/react';
 import { useState } from 'react';
 import ReactMapGL, { Marker, Popup } from 'react-map-gl';
 
+const buttonWrapper = css`
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+`;
 function Map({ carsdata }) {
   const [selectedLocation, setSelectedLocation] = useState({});
 
@@ -10,10 +16,10 @@ function Map({ carsdata }) {
     height: '100%',
     latitude: 48.210033,
     longitude: 16.363449,
-    zoom: 11,
+    zoom: 10,
   });
 
-  console.log(selectedLocation);
+  //  console.log(selectedLocation);
 
   return (
     <ReactMapGL
@@ -26,6 +32,7 @@ function Map({ carsdata }) {
         <div key={result.long}>
           <Marker latitude={Number(result.lat)} longitude={Number(result.long)}>
             <button
+              css={buttonWrapper}
               onClick={(e) => {
                 e.preventDefault();
                 setSelectedLocation(result);
@@ -50,38 +57,6 @@ function Map({ carsdata }) {
           )}
         </div>
       ))}
-
-      {/* {carsdata.map((result) => {
-        // console.log(result);
-        return (
-          <Marker
-            key={result.id}
-            latitude={Number(result.lat)}
-            longitude={Number(result.long)}
-          >
-            <span
-              onClick={() => setSelectedLocation(result)}
-              role="img"
-              aria-label="push-pin"
-              aria-hidden="true"
-            >
-              📌
-            </span>{' '}
-            {selectedLocation.long === Number(result.long) ? (
-              <Popup
-                onClose={() => setSelectedLocation({})}
-                closeOnClick={true}
-                latitude={Number(result.lat)}
-                longitude={Number(result.long)}
-              >
-                {result.carName}
-              </Popup>
-            ) : (
-              false
-            )}
-          </Marker>
-        );
-      })} */}
     </ReactMapGL>
   );
 }

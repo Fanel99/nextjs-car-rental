@@ -2,13 +2,13 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
 import { format } from 'date-fns';
+import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import Map from '../../components/Map';
 import Navigation from '../../components/Navigation';
-import { setParsedCookie } from '../../util/cookies';
 
 const containerMap = css`
   flex: 1 1 30%;
@@ -20,9 +20,15 @@ const containerMap = css`
   }
 `;
 
+const headerWrapper = css`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
+
 const containerAll = css`
   display: flex;
-  margin-top: 200px;
+  margin-top: 130px;
 
   @media (max-width: 1024px) {
     flex-direction: column;
@@ -75,28 +81,36 @@ function Cars({ carsdata, username }) {
   const router = useRouter();
 
   // destructuring from URL and  combine start and end Date
-  // for displaying dynamic  info from search bar and  format the data
-  const { location, startDate, endDate } = router.query;
+  // for displaying dynamic  info from search bar
+  let { location, startDate, endDate } = router.query;
 
-  // if (typeof startDate !== 'undefined') {
-  //   startDate = new Date();
-  // }
+  // console.log('before', startDate);
+  // console.log('before', endDate);
+  // console.log('before', location);
 
-  // if (typeof endDate !== 'undefined') {
-  //   endDate = new Date();
-  // }
+  if (typeof startDate === 'undefined') {
+    startDate = new Date();
+  }
 
-  // console.log(startDate);
-  // console.log(endDate);
-  // console.log(location);
+  if (typeof endDate === 'undefined') {
+    endDate = new Date();
+  }
 
-  // const formattedStartDate = format(new Date(startDate), 'dd MMM yyyy');
-  // console.log(formattedStartDate);
+  if (location === 'undefined') {
+    location = 'Viena';
+  }
+  console.log('from query location', location);
+  console.log('from query', startDate);
+  console.log('from query', endDate);
 
-  // const formattedEddate = format(new Date(endDate), 'dd MMM yyyy');
-  // console.log(formattedEddate);
+  //  format the  time
+  const formattedStartDate = moment(startDate).format('MMM Do YYYY');
+  console.log('from format', formattedStartDate);
 
-  // const range = `${formattedStartDate} -  ${formattedEddate} `;
+  const formattedEnddate = moment(endDate).format('MMM Do YYYY');
+  console.log('from format', formattedEnddate);
+
+  const range = `${formattedStartDate} -  ${formattedEnddate} `;
 
   //    <p>Search results for {location} from {range} </p>
 
@@ -106,7 +120,11 @@ function Cars({ carsdata, username }) {
         <title>Deals | Oldie but goodie</title>
       </Head>
       <Navigation />
-
+      <div css={headerWrapper}>
+        <p>
+          Search results for {location} from {range}{' '}
+        </p>
+      </div>
       <div css={containerAll}>
         <div css={container}>
           <div css={wrapperItems}>
@@ -128,10 +146,6 @@ function Cars({ carsdata, username }) {
               <Map carsdata={carsdata} />
             </div>
           </div>
-
-          {/* <p>
-            Search results for {location} from {range}{' '}
-          </p> */}
         </div>
       </div>
     </Layout>

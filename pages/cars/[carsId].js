@@ -152,7 +152,7 @@ const mapContainer = css`
 `;
 
 function SingleCar({ cardata, username }) {
-  console.log(cardata);
+  // console.log(cardata);
 
   // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
@@ -175,6 +175,7 @@ function SingleCar({ cardata, username }) {
     endDate: endDate,
     key: 'selection',
   };
+
   // const todalSelectedDays = Number(startDate) + Number(endDate);
   // console.log(todalSelectedDays);
 
