@@ -92,18 +92,16 @@ const singleUserWrapper = css`
 const SingleUser = (props: Props) => {
   const router = useRouter();
 
-  console.log(props.user);
+  console.log('from dynamic page', props.user);
 
   return (
     <Layout username={props.username}>
-      <Navigation />
+      <Navigation user={props.user} />
       <div css={container}>
         <div className="containerItems">
           <div css={singleUserWrapper}>
             <h1>Welcome {props.username}!</h1>
-            <p>
-              <span> Email: </span>
-            </p>
+            <p>{/* <span> Email: {props.user.email} </span> */}</p>
 
             {/* DELETE Account */}
             <div className="buttonsWrapper">

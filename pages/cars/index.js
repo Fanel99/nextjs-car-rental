@@ -71,7 +71,7 @@ const items = css`
     border-radius: 5px;
   }
   div {
-    flex: 1 1 48%;
+    flex: 0 1 48%;
     display: flex;
     flex-wrap: wrap;
   }
@@ -99,16 +99,16 @@ function Cars({ carsdata, username }) {
   if (location === 'undefined') {
     location = 'Viena';
   }
-  console.log('from query location', location);
-  console.log('from query', startDate);
-  console.log('from query', endDate);
+  // console.log('from query location', location);
+  // console.log('from query', startDate);
+  // console.log('from query', endDate);
 
   //  format the  time
   const formattedStartDate = moment(startDate).format('MMM Do YYYY');
-  console.log('from format', formattedStartDate);
+  // console.log('from format', formattedStartDate);
 
   const formattedEnddate = moment(endDate).format('MMM Do YYYY');
-  console.log('from format', formattedEnddate);
+  // console.log('from format', formattedEnddate);
 
   const range = `${formattedStartDate} -  ${formattedEnddate} `;
 

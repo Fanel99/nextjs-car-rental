@@ -188,32 +188,9 @@ const navHost = css`
 
 function Navigation(props) {
   const [showMenu, setShowMenu] = useState(false);
-
-  // const handleSelect = (ranges) => {
-  //   setStartDate(ranges.selection.startDate);
-  //   setEndDate(ranges.selection.endDate);
-  // };
-
-  // const selectionRange = {
-  //   startDate: startDate,
-  //   endDate: endDate,
-  //   key: 'selection',
-  // };
-
-  // const resetInput = () => {
-  //   setSearchInput('');
-  // };
-
-  // const search = () => {
-  //   router.push({
-  //     pathname: '/cars',
-  //     query: {
-  //       location: searchInput,
-  //       startDate: startDate.toISOString(),
-  //       endDate: endDate.toISOString(),
-  //     },
-  //   });
-  // };
+  const { user } = props;
+  console.log('from Nav', user);
+  // console.log('from Nav user id', user.id);
 
   return (
     <div css={container}>
@@ -237,7 +214,7 @@ function Navigation(props) {
               <a>Contact</a>
             </Link>
 
-            <Link href={`/users/${props.username}`}>
+            <Link href={`/users/${props.user}`}>
               <a>Profile</a>
             </Link>
 

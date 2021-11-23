@@ -151,9 +151,9 @@ const mapContainer = css`
   }
 `;
 
-function SingleCar({ cardata, username }) {
+function SingleCar({ cardata, username, user }) {
   // console.log(cardata);
-
+  console.log('from cars', user);
   // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());

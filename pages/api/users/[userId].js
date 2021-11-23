@@ -4,9 +4,9 @@ import { deleteUserByUsername, getUser } from '../../../util/database';
 export default async function handler(req, res) {
   if (req.method === 'GET') {
     const user = await getUser(Number(req.query.userId));
-    console.log('from API query', req.query.userId);
+    // console.log('from API query', req.query.userId);
     res.status(200).json(user);
-    console.log('from API user', user);
+    // console.log('from API user', user);
   } else if (req.method === 'DELETE') {
     // console.log('query', req.query);
     const deletedUser = await deleteUserByUsername(req.query.userId);

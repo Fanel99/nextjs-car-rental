@@ -1,7 +1,8 @@
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import Head from 'next/head';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import CookieConsent from 'react-cookie-consent';
 import Features from '../components/Features';
 import Hero from '../components/Hero';
 import Latestcar from '../components/Latestcar';
@@ -10,6 +11,9 @@ import Navigation from '../components/Navigation';
 import Newsletter from '../components/Newsletter';
 
 export default function Home(props) {
+  const { user } = props;
+  console.log('from index.js', user);
+
   useEffect(() => {
     props.refreshUsername();
     AOS.init({
@@ -27,11 +31,20 @@ export default function Home(props) {
         <Head>
           <title>Home | Oldie but goodie</title>
         </Head>
-        <Navigation />
+        <Navigation user={props.user} />
         <Hero />
         <Features />
         <Latestcar />
         <Newsletter />
+        <CookieConsent
+          debug={true}
+          expires={2}
+          style={{ background: '##FFFFF7', textAlign: 'center' }}
+          buttonStyle={{ color: 'blue', background: '', fontSize: '14px' }}
+          buttonText="Sure!"
+        >
+          This site uses cookies
+        </CookieConsent>
       </main>
     </Layout>
   );

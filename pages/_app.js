@@ -10,7 +10,7 @@ const progress = new ProgressBar({
   size: 4,
   color: '#c59e47',
   className: 'z-50',
-  delay: 150,
+  delay: 2000,
 });
 
 // detectd when router change and action the progress bar

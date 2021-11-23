@@ -142,11 +142,13 @@ const formStyless = css`
 function CreateAds(props) {
   const userId = props.userId;
   const router = useRouter();
+  const { user } = props;
+  console.log('from host', user);
 
   // console.log(userId);
 
   const [carList, setCarList] = useState(props.car);
-  console.log(carList);
+  // console.log(carList);
 
   const [carName, setCarName] = useState('');
   const [description, setDescription] = useState('');
@@ -384,7 +386,7 @@ function CreateAds(props) {
 
               <div className="input-box button">
                 <button
-                  onClick={() =>
+                  onClick={() => {
                     createCar(
                       userId,
                       carName,
@@ -396,8 +398,9 @@ function CreateAds(props) {
                       phone,
                       seats,
                       fuel,
-                    )
-                  }
+                    );
+                    router.push('/cars');
+                  }}
                 >
                   Money Maker
                 </button>
