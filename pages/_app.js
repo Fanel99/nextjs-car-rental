@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
 
   const router = useRouter();
-  console.log('from _App state', user);
+  // console.log('from _App state', user);
 
   const refreshUsername = useCallback(async () => {
     const response = await fetch('/api/profile');

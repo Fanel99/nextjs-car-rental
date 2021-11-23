@@ -288,7 +288,7 @@ function CreateAds(props) {
         <Head>
           <title>Host | Oldie but goodie</title>
         </Head>
-        <Navigation user={props.user} />
+        <Navigation />
         <div css={formStyless}>
           <form>
             <div className="container">

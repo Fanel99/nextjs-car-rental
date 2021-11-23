@@ -1,7 +1,6 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
-import { loadStripe } from '@stripe/stripe-js';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
@@ -151,9 +150,8 @@ const mapContainer = css`
   }
 `;
 
-function SingleCar({ cardata, username, user }) {
-  // console.log(cardata);
-  console.log('from cars', user);
+function SingleCar({ cardata, username, carsdata }) {
+  console.log(carsdata);
   // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -199,7 +197,7 @@ function SingleCar({ cardata, username, user }) {
 
   return (
     <Layout username={username}>
-      <Navigation user={user} />
+      <Navigation />
 
       <div css={container}>
         <div className="itemsWrapper">
@@ -296,7 +294,6 @@ function SingleCar({ cardata, username, user }) {
             </div>
           </div>
         </div>
-        <div>{/* <CommentsRatings /> */}</div>
         <div css={mapContainer}>{/* <Map /> */}</div>
       </div>
     </Layout>
@@ -307,8 +304,6 @@ export default SingleCar;
 
 export async function getServerSideProps(context) {
   const { getCarData } = await import('../../util/database');
-
-  // console.log(context.query);
 
   const cardata = await getCarData(Number(context.query.carsid));
 

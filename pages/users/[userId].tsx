@@ -179,7 +179,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   }
 
   const user = await getUser(Number(context.query.userId));
-  console.log('from gSSP', user);
+  // console.log('from gSSP', user);
 
   return {
     props: {

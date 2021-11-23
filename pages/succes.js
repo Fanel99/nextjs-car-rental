@@ -21,7 +21,7 @@ function succes(props) {
   return (
     <div>
       <Layout username={props.username} />
-      <Navigation user={props.user} />
+      <Navigation />
       <div css={container}>
         <div className="succes">
           {' '}

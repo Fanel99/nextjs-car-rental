@@ -77,7 +77,7 @@ const items = css`
   }
 `;
 
-function Cars({ carsdata, username, user }) {
+function Cars({ carsdata, username }) {
   const router = useRouter();
 
   // destructuring from URL and  combine start and end Date
@@ -117,7 +117,7 @@ function Cars({ carsdata, username, user }) {
       <Head>
         <title>Deals | Oldie but goodie</title>
       </Head>
-      <Navigation user={user} />
+      <Navigation />
       <div css={headerWrapper}>
         <p>
           Search results for {location} from {range}{' '}

@@ -28,7 +28,7 @@ export default function Home(props) {
         <Head>
           <title>Home | Oldie but goodie</title>
         </Head>
-        <Navigation user={props.user} />
+        <Navigation />
         <Hero />
         <Features />
         <Latestcar />
