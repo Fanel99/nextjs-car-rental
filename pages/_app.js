@@ -20,8 +20,12 @@ Router.events.on('routeChangeComplete', progress.finish);
 Router.events.on('routeChangeError', progress.finish);
 
 function MyApp({ Component, pageProps }) {
-  const [username, setUsername] = useState();
+  const [user, setUser] = useState();
+  const [userId, setUserId] = useState();
+
   const router = useRouter();
+  console.log(user);
+  console.log(userId);
 
   const refreshUsername = useCallback(async () => {
     const response = await fetch('/api/profile');
@@ -30,11 +34,12 @@ function MyApp({ Component, pageProps }) {
     // console.log(profile);
 
     if ('errors' in profile) {
-      setUsername(undefined);
+      setUser(undefined);
       // console.log(profile.errors);
       return;
     }
-    setUsername(profile.user.username);
+    setUser(profile.user.username);
+    setUserId(profile.user.id);
   }, []);
 
   useEffect(() => {
@@ -73,7 +78,8 @@ function MyApp({ Component, pageProps }) {
 
       <Component
         {...pageProps}
-        username={username}
+        username={user}
+        userId={userId}
         refreshUsername={refreshUsername}
       />
       <Footer />
