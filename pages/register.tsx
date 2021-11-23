@@ -164,6 +164,7 @@ const formStyless = css`
 `;
 
 type Props = {
+  user?: string;
   refreshUsername: () => void;
   csrfToken: string;
 };
@@ -177,7 +178,7 @@ export default function RegisterPage(props: Props) {
 
   return (
     <Layout>
-      <Navigation />
+      <Navigation user={props.user} />
       <Head>
         <title>Registration | Oldie but goodie</title>
       </Head>

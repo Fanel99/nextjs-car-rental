@@ -310,7 +310,7 @@ function Becomeahost(props) {
       <Head>
         <title>Become a host </title>
       </Head>
-      <Navigation />
+      <Navigation user={props.user} />
       <div css={container}>
         <div css={hostContainer}>
           <div className="centerHeader">

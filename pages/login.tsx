@@ -130,6 +130,7 @@ const formStyless = css`
 export default function LoginPage(props: {
   refreshUsername: () => void;
   username?: string;
+  user?: string;
 }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -141,7 +142,7 @@ export default function LoginPage(props: {
       <Head>
         <title>Login | Oldie but goodie</title>
       </Head>
-      <Navigation />
+      <Navigation user={props.user} />
       <form
         css={formStyles}
         onSubmit={async (event) => {

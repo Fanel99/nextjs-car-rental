@@ -199,7 +199,7 @@ function SingleCar({ cardata, username, user }) {
 
   return (
     <Layout username={username}>
-      <Navigation />
+      <Navigation user={user} />
 
       <div css={container}>
         <div className="itemsWrapper">

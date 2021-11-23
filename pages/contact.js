@@ -149,7 +149,7 @@ export default function Form(props) {
   return (
     <div css={formStyle}>
       <Layout username={props.username} />
-      <Navigation />
+      <Navigation user={props.user} />
       <div css={formContainer}>
         <h2>
           Contact <span>US</span>

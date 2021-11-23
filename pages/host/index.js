@@ -142,8 +142,6 @@ const formStyless = css`
 function CreateAds(props) {
   const userId = props.userId;
   const router = useRouter();
-  const { user } = props;
-  console.log('from host', user);
 
   // console.log(userId);
 
@@ -290,7 +288,7 @@ function CreateAds(props) {
         <Head>
           <title>Host | Oldie but goodie</title>
         </Head>
-        <Navigation />
+        <Navigation user={props.user} />
         <div css={formStyless}>
           <form>
             <div className="container">
