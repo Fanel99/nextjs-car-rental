@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { DateRangePicker } from 'react-date-range';
 import Layout from '../../components/Layout';
-import Map from '../../components/Map';
 import Navigation from '../../components/Navigation';
 import canister from '../../public/pictures/canister1.png';
 import city from '../../public/pictures/city.png';
@@ -156,8 +155,8 @@ function SingleCar({ cardata, username, carsdata }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-  const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+  //  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  // const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
 
   // console.log(diffDays);
   // console.log(startDate);

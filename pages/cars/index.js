@@ -1,7 +1,6 @@
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { css } from '@emotion/react';
-import { format } from 'date-fns';
 import moment from 'moment';
 import Head from 'next/head';
 import Link from 'next/link';

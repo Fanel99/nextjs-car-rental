@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "migrate": "dotenv ley"
+    "migrate": "dotenv ley",
+    "heroku-postbuild": "yarn migrate up && yarn build"
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
@@ -36,24 +37,20 @@
     "dotenv-cli": "^4.0.0",
     "dotenv-safe": "^8.2.0",
     "emotion": "^11.0.0",
-    "framer-motion": "^4.1.17",
-    "geolib": "^3.3.3",
     "hamburger-react": "^2.4.1",
-    "i": "^0.3.7",
     "js-cookie": "^3.0.1",
     "ley": "^0.7.1",
+    "mapbox-gl": "^2.6.1",
     "moment": "^2.29.1",
     "next": "^11.0.3",
     "next-images": "^1.8.1",
-    "next-transpile-modules": "^8.0.0",
     "next-videos": "1.4.0",
-    "npm": "^8.1.0",
+    "pg-connection-string": "^2.5.0",
     "postgres": "2.0.0-beta.10",
     "react": "^17.0.2",
     "react-cookie-consent": "^6.4.1",
     "react-date-range": "^1.4.0",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
     "react-map-gl": "^6.1.17",
     "sharp": "^0.29.1",
     "stripe": "^8.188.0"
@@ -87,5 +84,8 @@
   "resolutions": {
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-testing-library": "4.6.0"
-  }
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ]
 }
