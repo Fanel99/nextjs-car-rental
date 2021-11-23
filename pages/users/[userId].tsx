@@ -9,6 +9,8 @@ import profilePic from '../../public/pictures/profile.png';
 
 type Props = {
   username: string;
+  userId: string;
+  email: string;
   user: {
     name: string | null;
     id: number;
@@ -92,16 +94,16 @@ const singleUserWrapper = css`
 const SingleUser = (props: Props) => {
   const router = useRouter();
 
-  console.log('from dynamic page', props.user);
-
   return (
     <Layout username={props.username}>
-      <Navigation user={props.user} />
+      <Navigation userId={props.userId} />
       <div css={container}>
         <div className="containerItems">
           <div css={singleUserWrapper}>
             <h1>Welcome {props.username}!</h1>
-            <p>{/* <span> Email: {props.user.email} </span> */}</p>
+            <p>
+              <span> Email: {props.email} </span>
+            </p>
 
             {/* DELETE Account */}
             <div className="buttonsWrapper">

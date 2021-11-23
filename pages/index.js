@@ -11,9 +11,6 @@ import Navigation from '../components/Navigation';
 import Newsletter from '../components/Newsletter';
 
 export default function Home(props) {
-  const { user } = props;
-  console.log('from index.js', user);
-
   useEffect(() => {
     props.refreshUsername();
     AOS.init({
@@ -38,10 +35,10 @@ export default function Home(props) {
         <Newsletter />
         <CookieConsent
           debug={true}
-          expires={2}
-          style={{ background: '##FFFFF7', textAlign: 'center' }}
-          buttonStyle={{ color: 'blue', background: '', fontSize: '14px' }}
-          buttonText="Sure!"
+          expires={1}
+          style={{ background: '#000', textAlign: 'center' }}
+          buttonStyle={{ color: '#c59e47', background: '', fontSize: '14px' }}
+          buttonText="Accept all"
         >
           This site uses cookies
         </CookieConsent>

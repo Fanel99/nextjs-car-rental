@@ -112,8 +112,6 @@ function Cars({ carsdata, username, user }) {
 
   const range = `${formattedStartDate} -  ${formattedEnddate} `;
 
-  //    <p>Search results for {location} from {range} </p>
-
   return (
     <Layout username={username}>
       <Head>

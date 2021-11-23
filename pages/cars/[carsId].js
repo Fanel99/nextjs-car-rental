@@ -208,7 +208,7 @@ function SingleCar({ cardata, username, user }) {
               <Image src={cardata.imageUrl} layout="fill" objectFit="cover" />
             </div>
             <h4> {cardata.carName}</h4>
-            <h3>HOSTED BY {username}</h3>
+            <h3>HOSTED BY</h3>
             <div className="iconsWrapper">
               <div className="iconsSingle">
                 <p>
@@ -296,10 +296,7 @@ function SingleCar({ cardata, username, user }) {
             </div>
           </div>
         </div>
-        <div>
-          Review Section
-          {/* <CommentsRatings /> */}
-        </div>
+        <div>{/* <CommentsRatings /> */}</div>
         <div css={mapContainer}>{/* <Map /> */}</div>
       </div>
     </Layout>

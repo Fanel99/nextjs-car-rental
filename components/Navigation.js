@@ -188,9 +188,9 @@ const navHost = css`
 
 function Navigation(props) {
   const [showMenu, setShowMenu] = useState(false);
-  const { user } = props;
-  console.log('from Nav', user);
-  // console.log('from Nav user id', user.id);
+  const { userId } = props;
+
+  // console.log('from Nav Component', userId);
 
   return (
     <div css={container}>
@@ -214,7 +214,7 @@ function Navigation(props) {
               <a>Contact</a>
             </Link>
 
-            <Link href={`/users/${props.user}`}>
+            <Link href={`/users/${userId}`}>
               <a>Profile</a>
             </Link>
 
