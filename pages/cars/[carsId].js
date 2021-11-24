@@ -192,8 +192,6 @@ function SingleCar({ cardata, username }) {
     }
   }, []);
 
-  // Map box
-
   return (
     <Layout username={username}>
       <Navigation />

@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     return res.status(200).json(carsdata);
   } else if (req.method === 'POST') {
     const body = req.body;
-    console.log('from API', req.body);
+    // console.log('from API', req.body);
 
     const createCardata = await createAds({
       carName: body.carname,

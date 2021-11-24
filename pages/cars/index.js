@@ -151,7 +151,7 @@ function Cars({ carsdata, username }) {
 export default Cars;
 
 export async function getServerSideProps() {
-  const carsdataResponse = await fetch('http://localhost:3000/api/cars');
+  const carsdataResponse = await fetch(`${process.env.BASE_URL}/api/cars`);
   const carsdata = await carsdataResponse.json();
   // console.log('from gSSP', carsdata);
   return {
