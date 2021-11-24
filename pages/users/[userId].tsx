@@ -11,12 +11,13 @@ type Props = {
   username: string;
   userId: string;
   email: string;
-  user: {
-    name: string | null;
-    id: number;
-    username: string;
-    email: string;
-  };
+
+  // user: {
+  //   name: string | null;
+  //   id: number;
+  //   username: string;
+  //   email: string;
+  // };
 };
 
 const container = css`
@@ -119,7 +120,7 @@ const SingleUser = (props: Props) => {
                   }
 
                   const response = await fetch(
-                    `http://localhost:3000/api/users/${props.user.id}`,
+                    `http://localhost:3000/api/users/${props.userId}`,
                     {
                       method: 'DELETE',
                       headers: {
