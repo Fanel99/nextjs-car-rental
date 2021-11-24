@@ -1,6 +1,9 @@
 import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
 import postgres from 'postgres';
+import setPostgresDefaultsOnHeroku from './node-heroku-postgres-env-vars';
+
+setPostgresDefaultsOnHeroku();
 
 export type User = {
   id: number;
@@ -323,20 +326,6 @@ export async function createAds({
   seats: number;
   fuel: string;
 }) {
-  // console.log(
-  //   'from DB',
-  //   carName,
-  //   userid,
-  //   description,
-  //   dayPrice,
-  //   pickUpAdress,
-  //   city,
-  //   imageUrl,
-  //   phone,
-  //   seats,
-  //   fuel,
-  // );
-
   const [cardata] = await sql`
     INSERT INTO carsdata
       ( car_name, user_id, description, day_price, pick_up_adress,city, image_url,phone, seats, fuel)
