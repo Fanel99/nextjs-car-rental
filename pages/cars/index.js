@@ -23,6 +23,17 @@ const headerWrapper = css`
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  @media (max-width: 1024px) {
+    margin-top: 140px;
+  }
+
+  p {
+    @media (max-width: 1024px) {
+      margin-left: 50px;
+      margin-right: 50px;
+      text-align: center;
+    }
+  }
 `;
 
 const containerAll = css`
@@ -40,16 +51,17 @@ const container = css`
   width: 100%;
   position: relative;
   padding: 0 20px;
+  @media (max-width: 1024px) {
+    margin-top: -40px;
+  }
 `;
 
 const wrapperItems = css`
   display: flex;
   grid-gap: 20px;
   justify-content: center;
-
   @media (max-width: 1024px) {
-    grid-template-columns: auto;
-    margin-left: 0;
+    flex-direction: column;
   }
 
   h2 {
@@ -73,6 +85,9 @@ const items = css`
     flex: 0 1 48%;
     display: flex;
     flex-wrap: wrap;
+    @media (max-width: 1024px) {
+      flex: 100%;
+    }
   }
 `;
 

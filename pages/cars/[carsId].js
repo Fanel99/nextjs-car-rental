@@ -19,6 +19,10 @@ const container = css`
   width: 100%;
   margin-bottom: 150px;
 
+  @media (max-width: 1024px) {
+    margin-bottom: 0;
+  }
+
   .itemsWrapper {
     display: flex;
     align-items: center;
@@ -126,6 +130,10 @@ const imgWrapper = css`
   width: 700px;
   height: 400px;
 
+  img {
+    border-radius: 5px;
+  }
+
   @media (max-width: 1024px) {
     width: 350px;
     height: 250px;
@@ -134,18 +142,6 @@ const imgWrapper = css`
   p {
     display: flex;
     align-items: center;
-  }
-`;
-
-const mapContainer = css`
-  height: 300px;
-  max-width: 100%;
-  margin-top: 100px;
-
-  @media (max-width: 1024px) {
-    width: 300px;
-    height: 400px;
-    margin: 0 auto;
   }
 `;
 
@@ -203,7 +199,7 @@ function SingleCar({ cardata, username }) {
               <Image src={cardata.imageUrl} layout="fill" objectFit="cover" />
             </div>
             <h4> {cardata.carName}</h4>
-            <h3>HOSTED BY</h3>
+            <h3>HOSTED BY {username}</h3>
             <div className="iconsWrapper">
               <div className="iconsSingle">
                 <p>
@@ -291,7 +287,6 @@ function SingleCar({ cardata, username }) {
             </div>
           </div>
         </div>
-        <div css={mapContainer}>{/* <Map /> */}</div>
       </div>
     </Layout>
   );
@@ -303,6 +298,9 @@ export async function getServerSideProps(context) {
   const { getCarData } = await import('../../util/database');
 
   const cardata = await getCarData(Number(context.query.carsid));
+
+  // const cardataResponse = await fetch(`${process.env.BASE_URL}/api/carsId`);
+  // const cardata = await cardataResponse(Number(context.query.carsid));
 
   const { getUserBySessionToken } = await import('../../util/database');
   const sessionToken = context.req.cookies.sessionToken;

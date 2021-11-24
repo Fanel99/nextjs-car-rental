@@ -2,8 +2,14 @@ import ProgressBar from '@badrap/bar-of-progress';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
 import { Router, useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import Footer from '../components/Footer';
+
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  const axe = require('@axe-core/react');
+  axe(React, ReactDOM, 1000);
+}
 
 // create the progress bar
 const progress = new ProgressBar({
