@@ -299,10 +299,8 @@ export async function getServerSideProps(context) {
 
   const cardata = await getCarData(Number(context.query.carsid));
 
-  // const cardataResponse = await fetch(`${process.env.BASE_URL}/api/carsId`);
-  // const cardata = await cardataResponse(Number(context.query.carsid));
-
   const { getUserBySessionToken } = await import('../../util/database');
+
   const sessionToken = context.req.cookies.sessionToken;
   const sessionUser = await getUserBySessionToken(sessionToken);
 
