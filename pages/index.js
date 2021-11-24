@@ -37,10 +37,15 @@ export default function Home(props) {
           debug={true}
           expires={1}
           style={{ background: '#000', textAlign: 'center' }}
-          buttonStyle={{ color: '#c59e47', background: '', fontSize: '14px' }}
-          buttonText="Accept all"
+          buttonStyle={{
+            color: '#000',
+            background: '',
+            fontSize: '14px',
+          }}
+          buttonText="Allow all"
         >
-          This site uses cookies
+          This website uses cookies We use cookies to personalise content and
+          ads, to provide social media features and to analyse our traffic.
         </CookieConsent>
       </main>
     </Layout>

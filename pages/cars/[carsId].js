@@ -149,8 +149,8 @@ const mapContainer = css`
   }
 `;
 
-function SingleCar({ cardata, username, carsdata }) {
-  console.log(carsdata);
+function SingleCar({ cardata, username }) {
+  // console.log(carsdata);
   // const [searchInput, setSearchInput] = useState('');
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
