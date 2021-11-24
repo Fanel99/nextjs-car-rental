@@ -297,7 +297,7 @@ export default SingleCar;
 export async function getServerSideProps(context) {
   const { getCarData } = await import('../../util/database');
 
-  const cardata = await getCarData(Number(context.query.carsid));
+  const cardata = await getCarData(Number(context.query.carsId));
 
   const { getUserBySessionToken } = await import('../../util/database');
 

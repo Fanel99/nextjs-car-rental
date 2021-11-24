@@ -4,7 +4,7 @@ import { getCarData, updateAddById } from '../../util/database';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const cardata = await getCarData(Number(req.query.carsid));
+    const cardata = await getCarData(Number(req.query.carsId));
     // console.log('from api routes', await getCarData(Number(req.query.carsId)));
 
     res.status(200).json(cardata);
