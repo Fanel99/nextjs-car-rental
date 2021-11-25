@@ -6,7 +6,7 @@ describe('Header', () => {
     cy.get('[data-cy="header-register-link"]').should('be.visible').click();
     cy.contains('Login');
     cy.contains('Register');
-    cy.wait(10000);
+    cy.wait(1000);
     cy.get('[data-cy="signup-email"]').should('be.visible');
     cy.get('[data-cy="signup-username"]').should('be.visible');
     cy.get('[data-cy="signup-password"]').should('be.visible');
