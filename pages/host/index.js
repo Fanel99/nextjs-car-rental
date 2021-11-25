@@ -146,7 +146,7 @@ function CreateAds(props) {
   // console.log(userId);
 
   const [carList, setCarList] = useState(props.car);
-  // console.log(carList);
+  console.log(carList);
 
   const [carName, setCarName] = useState('');
   const [description, setDescription] = useState('');
@@ -226,26 +226,26 @@ function CreateAds(props) {
   }
 
   // Delete a car Add
-  // async function deleteCar(id) {
-  //   const carsResponse = await fetch(
-  //     `${props.baseUrl}/api/cars/${carList.id}`,
-  //     {
-  //       method: 'DELETE',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({}),
-  //     },
-  //   );
-  //   const deletedCar = carsResponse.json();
+  async function deleteCar(id) {
+    const carsResponse = await fetch(
+      `${props.baseUrl}/api/cars/${carList.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      },
+    );
+    const deletedCar = carsResponse.json();
 
-  //   const newState = carList.filter();
-  //   console.log('new State', newState);
-  //   console.log(id);
+    const newState = carList.filter();
+    console.log('new State', newState);
+    console.log(id);
 
-  // const outdateCar = newState.find((car) => car.id === updateNewCar.id);
-  //   setCarList(newState);
-  // }
+    const outdateCar = newState.find((car) => car.id === deletedCar.id);
+    setCarList(newState);
+  }
 
   //  Updating the car specs
   async function updateCar(
