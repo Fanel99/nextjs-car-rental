@@ -6,9 +6,10 @@ describe('Header', () => {
     cy.get('[data-cy="header-register-link"]').should('be.visible').click();
     cy.contains('Login');
     cy.contains('Register');
-    cy.get('[data-cy="signup-username"]').type('Username');
-    cy.get('[data-cy="signup-password"]').type('Enter your password');
-    cy.get('[data-cy="submit-button"]').type('submit');
-    cy.get('[data-cy="search"]').type('Search...');
+    cy.get('[data-cy="signup-email"]').should('be.visible');
+    cy.get('[data-cy="signup-username"]').should('be.visible');
+    cy.get('[data-cy="signup-password"]').should('be.visible');
+    cy.get('[data-cy="submit-button"]').should('be.visible');
+    cy.get('[data-cy="search"]').should('be.visible');
   });
 });
