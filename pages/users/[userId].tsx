@@ -78,6 +78,7 @@ const singleUserWrapper = css`
     padding: 4px;
     background-color: #fff;
     border-radius: 4px;
+    cursor: pointer;
     &:hover {
       background-color: #c59e47;
       color: #fff;

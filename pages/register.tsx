@@ -223,6 +223,7 @@ export default function RegisterPage(props: Props) {
             <div className=" title titleRegister">Sign Up</div>
             <div className="input-box">
               <input
+                data-cy="signup-email"
                 placeholder="E-mail"
                 required
                 value={email}
@@ -232,6 +233,7 @@ export default function RegisterPage(props: Props) {
             </div>
             <div className="input-box">
               <input
+                data-cy="signup-username"
                 placeholder="Username"
                 required
                 value={username}
@@ -241,6 +243,7 @@ export default function RegisterPage(props: Props) {
             </div>
             <div className="input-box">
               <input
+                data-cy="signup-password"
                 value={password}
                 onChange={(event) => setPassword(event.currentTarget.value)}
                 type="password"
@@ -251,7 +254,11 @@ export default function RegisterPage(props: Props) {
             </div>
 
             <div className="input-box button">
-              <input type="submit" value="Create Account" />
+              <input
+                data-cy="submit-button"
+                type="submit"
+                value="Create Account"
+              />
             </div>
           </div>
         </div>

@@ -190,6 +190,7 @@ function Header(props) {
           </div>
           <div>
             <input
+              data-cy="search"
               className="headerInput"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
@@ -227,10 +228,10 @@ function Header(props) {
               <div>
                 <div css={registerLogout}>
                   <Link href="/register">
-                    <a>Register</a>
+                    <a data-cy="header-register-link">Register</a>
                   </Link>
                   <Link href="/login">
-                    <a>Login</a>
+                    <a data-cy="header-login-link">Login</a>
                   </Link>
                 </div>
               </div>
