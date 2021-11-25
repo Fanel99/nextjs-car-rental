@@ -121,7 +121,7 @@ const SingleUser = (props: Props) => {
                   }
 
                   const response = await fetch(
-                    `http://localhost:3000/api/users/${props.userId}`,
+                    `http://localhost:3000/api/users/${props.user.id}`,
                     {
                       method: 'DELETE',
                       headers: {

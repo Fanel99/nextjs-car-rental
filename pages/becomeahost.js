@@ -159,6 +159,23 @@ const buildBusiness = css`
   }
 `;
 
+const lastButton = css`
+  display: flex;
+  justify-content: center;
+  button {
+    border: solid 2px #c59e47;
+    font-size: 18px;
+    padding: 10px;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      background: #c59e47;
+      color: #fff;
+    }
+  }
+`;
+
 const testimonialWrapper = css`
   .testimonials-section {
     background: #fff;
@@ -469,7 +486,7 @@ function Becomeahost(props) {
             </div>
           </div>
         </section>
-        <div className="buttonWrapper">
+        <div css={lastButton}>
           <button onClick={() => router.push('/host')}>Get started</button>
         </div>
       </div>

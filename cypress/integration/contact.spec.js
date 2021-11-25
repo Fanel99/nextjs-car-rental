@@ -21,6 +21,7 @@ describe('Contact', () => {
     cy.get('[data-cy="contact-button"]').should('be.visible').click();
     cy.contains('Contact Us');
     cy.contains('Submit').click();
+
     cy.request({
       method: 'POST',
       url: 'http://localhost:3000/api/sendgrid',
