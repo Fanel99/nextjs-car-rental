@@ -36,7 +36,6 @@ jobs:
           CSRF_SECRET: ${{ secrets.CSRF_SECRET }}
           MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}}
-
           STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY}}
 
       # Store any Cypress screenshots on test failure
