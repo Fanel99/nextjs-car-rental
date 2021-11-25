@@ -12,12 +12,12 @@ type Props = {
   userId: string;
   email: string;
 
-  // user: {
-  //   name: string | null;
-  //   id: number;
-  //   username: string;
-  //   email: string;
-  // };
+  user: {
+    name: string | null;
+    id: number;
+    username: string;
+    email: string;
+  };
 };
 
 const container = css`
