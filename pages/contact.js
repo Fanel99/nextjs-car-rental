@@ -144,7 +144,7 @@ export default function Form(props) {
       setMessage('');
       setSubject('');
     }
-    console.log(name, email, subject, message);
+    // console.log(name, email, subject, message);
   };
   return (
     <div css={formStyle}>
@@ -156,6 +156,7 @@ export default function Form(props) {
         </h2>
         <form css={formWraper} onSubmit={handleSubmit}>
           <input
+            data-cy="contact-subject"
             css={inputStyle}
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
@@ -164,6 +165,7 @@ export default function Form(props) {
             required
           />
           <input
+            data-cy="contact-fullname"
             css={inputStyle}
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -172,6 +174,7 @@ export default function Form(props) {
             required
           />
           <input
+            data-cy="contact-email"
             css={inputStyle}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -181,6 +184,7 @@ export default function Form(props) {
             required
           />
           <textarea
+            data-cy="contact-textarea"
             className="textarea"
             css={inputStyle}
             value={message}
@@ -189,7 +193,7 @@ export default function Form(props) {
             name="message"
             required
           />
-          <button>Submit</button>
+          <button data-cy="contact-button">Submit</button>
           <div>
             {showSuccessMessage && (
               <p>Thank you! Your Message has been delivered.</p>
