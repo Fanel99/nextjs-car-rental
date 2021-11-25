@@ -34,6 +34,10 @@ jobs:
           PGPASSWORD: ${{ secrets.PGPASSWORD }}
           BASE_URL: ${{ secrets.BASE_URL }}
           CSRF_SECRET: ${{ secrets.CSRF_SECRET }}
+          MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY}}
+         NEXT_PUBLIC_MAPBOX_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_MAPBOX_PUBLISHABLE_KEY }}
       # Store any Cypress screenshots on test failure
       - uses: actions/upload-artifact@v2
         if: failure()
