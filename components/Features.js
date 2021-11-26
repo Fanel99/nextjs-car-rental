@@ -88,6 +88,7 @@ const cardText = css`
     color: #fff;
     letter-spacing: 3px;
     padding: 8px;
+    cursor: pointer;
 
     &:hover {
       transition: all 0.2s ease-in;

@@ -57,6 +57,7 @@ const container = css`
     margin-right: 50px;
     margin-top: 20px;
     cursor: pointer;
+    border-radius: 4px;
     &:hover {
       background-color: #c59e47;
       color: #fff;
@@ -69,6 +70,8 @@ const container = css`
     margin-left: 50px;
     margin-top: 20px;
     cursor: pointer;
+    border-radius: 4px;
+
     &:hover {
       background-color: #c59e47;
       color: #fff;
