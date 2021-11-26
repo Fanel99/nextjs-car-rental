@@ -40,6 +40,7 @@ const container = css`
     height: 200px;
     @media (max-width: 1024px) {
       width: 270px;
+      margin-top: -100px;
     }
   }
 
@@ -121,7 +122,7 @@ const SingleUser = (props: Props) => {
                   }
 
                   const response = await fetch(
-                    `http://localhost:3000/api/users/${props.userId}`,
+                    `${process.env.BASE_URL}/api/users/${props.userId}`,
                     {
                       method: 'DELETE',
                       headers: {

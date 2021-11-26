@@ -405,7 +405,7 @@ function CreateAds(props) {
               </div>
             </div>
           </form>
-          <button onClick={deleteCar}>Delete</button>
+          {/* <button onClick={deleteCar}>Delete</button> */}
         </div>
 
         {/* Update Car SECTION */}
