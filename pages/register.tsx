@@ -228,6 +228,7 @@ export default function RegisterPage(props: Props) {
               <input
                 data-cy="signup-email"
                 placeholder="E-mail"
+                type="email"
                 required
                 value={email}
                 onChange={(event) => setEmail(event.currentTarget.value)}
