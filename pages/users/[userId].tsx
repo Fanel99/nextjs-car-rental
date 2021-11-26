@@ -121,15 +121,12 @@ const SingleUser = (props: Props) => {
                     return;
                   }
 
-                  const response = await fetch(
-                    `${process.env.BASE_URL}/api/users/${props.userId}`,
-                    {
-                      method: 'DELETE',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
+                  const response = await fetch(`/api/users/${props.userId}`, {
+                    method: 'DELETE',
+                    headers: {
+                      'Content-Type': 'application/json',
                     },
-                  );
+                  });
 
                   await response.json();
 
