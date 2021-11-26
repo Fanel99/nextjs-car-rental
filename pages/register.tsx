@@ -13,9 +13,12 @@ const formStyles = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 75vh;
   label {
     display: block;
+  }
+  div {
+    width: 400px;
   }
 `;
 

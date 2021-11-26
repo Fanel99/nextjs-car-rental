@@ -16,8 +16,8 @@ export default function Home(props) {
     AOS.init({
       //  once: true,
       easing: 'ease-in-sine',
-      disable: 'mobile',
       offset: 250,
+      mirror: false,
     });
     AOS.refresh();
   }, []);
