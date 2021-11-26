@@ -7,8 +7,17 @@ import {
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const user = await getUser(Number(req.query.userId));
     // console.log('from API query', req.query.userId);
+    const token = req.cookies.sessionToken;
+    const session = await getValidSessionByToken(token);
+
+    if (!session) {
+      res.status(404).send({
+        errors: [{ message: 'Not a valid Session' }],
+      });
+      return;
+    }
+    const user = await getUser(Number(req.query.userId));
     res.status(200).json(user);
   } else if (req.method === 'DELETE') {
     const deletedUser = await deleteUserByUsername(req.query.userId);

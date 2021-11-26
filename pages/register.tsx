@@ -13,12 +13,16 @@ const formStyles = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 75vh;
+  height: 72vh;
   label {
     display: block;
   }
   div {
     width: 400px;
+    @media (max-width: 1024px) {
+      width: 300px;
+      margin-top: 35px;
+    }
   }
 `;
 

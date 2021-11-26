@@ -44,6 +44,12 @@ const container = css`
     background: #fff;
     border: 2px solid grey;
     z-index: 4;
+    @media (max-width: 1024px) {
+      margin-top: 50px;
+      .rdrDefinedRangesWrapper {
+        display: none;
+      }
+    }
   }
 
   .wrapperButtons {
