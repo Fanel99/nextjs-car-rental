@@ -384,7 +384,8 @@ function CreateAds(props) {
 
               <div className="input-box button">
                 <button
-                  onClick={() => {
+                  onClick={(event) => {
+                    event.preventDefault();
                     createCar(
                       userId,
                       carName,
@@ -514,7 +515,8 @@ function CreateAds(props) {
 
                 <div className="input-box button">
                   <button
-                    onClick={() =>
+                    onClick={(event) => {
+                      event.preventDefault();
                       updateCar(
                         updateCarName,
                         updateDescription,
@@ -525,8 +527,9 @@ function CreateAds(props) {
                         updatePhone,
                         updateSeats,
                         updateFuel,
-                      )
-                    }
+                      );
+                      router.push('/cars');
+                    }}
                   >
                     Update It
                   </button>
