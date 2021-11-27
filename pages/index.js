@@ -33,7 +33,7 @@ export default function Home(props) {
         <Features />
         <Latestcar />
         <Newsletter />
-        <CookieConsent
+        {/* <CookieConsent
           debug={true}
           expires={1}
           style={{ background: '#000', textAlign: 'center' }}
@@ -46,7 +46,7 @@ export default function Home(props) {
         >
           This website uses cookies We use cookies to personalise content and
           ads, to provide social media features and to analyse our traffic.
-        </CookieConsent>
+        </CookieConsent> */}
       </main>
     </Layout>
   );

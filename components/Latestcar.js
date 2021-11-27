@@ -39,6 +39,10 @@ const imageWrapper = css`
 
 const imageText = css`
   position: relative;
+
+  .opacity {
+    cursor: pointer;
+  }
   :hover .opacity {
     opacity: 1;
   }
@@ -52,6 +56,7 @@ const imageText = css`
 
   div {
     height: 100%;
+    cursor: pointer;
   }
 `;
 
@@ -81,6 +86,7 @@ const imageTextHoverText = css`
   pointer-events: none;
   transform: translateY(100%);
   transition-delay: 2s;
+  cursor: pointer;
 
   .spanTop {
     border: 1px solid #e7e7e7;

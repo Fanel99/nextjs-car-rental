@@ -110,7 +110,7 @@ function Cars({ carsdata, username }) {
     endDate = new Date();
   }
 
-  if (location === 'undefined') {
+  if (typeof location === 'undefined') {
     location = 'Viena';
   }
   // console.log('from query location', location);
