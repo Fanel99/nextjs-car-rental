@@ -5,7 +5,6 @@ const footer = css`
   background-color: #252525;
   color: #fff;
   padding-top: 50px;
-  margin-top: 50px;
 `;
 
 const containerFooter = css`

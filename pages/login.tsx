@@ -9,19 +9,24 @@ import { Errors } from '../util/types';
 import { LoginResponse } from './api/login';
 
 const formStyles = css`
+  background-image: url('/pictures/vintage1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
   h1 {
     text-align: center;
   }
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 72vh;
+  height: 83vh;
   flex-direction: column;
   label {
     display: block;
   }
   div {
-    width: 400px;
+    width: 350px;
     @media (max-width: 1024px) {
       width: 300px;
       margin-top: 35px;

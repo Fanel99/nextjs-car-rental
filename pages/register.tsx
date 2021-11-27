@@ -9,16 +9,20 @@ import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
 const formStyles = css`
+  background-image: url('/pictures/vintage1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 72vh;
+  height: 83vh;
   label {
     display: block;
   }
   div {
-    width: 400px;
+    width: 350px;
     @media (max-width: 1024px) {
       width: 300px;
       margin-top: 35px;
