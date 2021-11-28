@@ -57,6 +57,9 @@ const imageText = css`
   div {
     height: 100%;
     cursor: pointer;
+    @media (max-width: 769px) {
+      width: 100%;
+    }
   }
 `;
 

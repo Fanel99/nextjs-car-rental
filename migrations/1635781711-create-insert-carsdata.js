@@ -66,7 +66,7 @@ const carsdata = [
       'A timeless design, a contemporary interpretation. The unmistakable silhouette of the 911 is characterised by its iconic flyline. It has barely changed since 1963, and has shaped the DNA of all Porsche models. Including, of course, the 911 Cabriolet and Targa models.',
     day_price: '170',
     pick_up_adress: 'Herbortgasse 28',
-    city: 'Viena',
+    city: 'Vienna',
     image_url:
       'https://rennlist.com/wp-content/uploads/2018/07/Porsche-911.jpg',
     phone: '06606333225',

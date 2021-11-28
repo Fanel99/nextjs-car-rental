@@ -108,7 +108,7 @@ export default function Footer() {
 
         <div data-aos="fade-right" css={thirdDiv}>
           <h4>Contact</h4>
-          <p>Adress: Wolfengasse 3, Viena</p>
+          <p>Adress: Wolfengasse 3, Vienna</p>
           <p>Phone: +43 1 515 23</p>
           <p>Email: office@google.at</p>
         </div>

@@ -111,7 +111,7 @@ function Cars({ carsdata, username }) {
   }
 
   if (typeof location === 'undefined') {
-    location = 'Viena';
+    location = 'Vienna';
   }
   // console.log('from query location', location);
   // console.log('from query', startDate);
