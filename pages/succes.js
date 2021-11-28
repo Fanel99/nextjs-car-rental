@@ -3,17 +3,21 @@ import Layout from '../components/Layout';
 import Navigation from '../components/Navigation';
 
 const container = css`
-  max-width: 1366px;
   margin: 0 auto;
   width: 100%;
-  margin-bottom: 150px;
 
   .succes {
+    background-image: url('/pictures/vintage1.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
     text-align: center;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
+    font-size: 42px;
   }
 `;
 
@@ -25,7 +29,7 @@ function succes(props) {
       <div css={container}>
         <div className="succes">
           {' '}
-          Order placed! You will receive an email confirmation.
+          Order placed! <br /> You will receive an email confirmation soon.
         </div>
       </div>
     </div>
