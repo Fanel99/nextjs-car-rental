@@ -97,6 +97,8 @@ const singleUserWrapper = css`
 const SingleUser = (props: Props) => {
   const router = useRouter();
 
+  console.log(props.userId);
+
   return (
     <Layout username={props.username}>
       <Navigation userId={props.userId} />

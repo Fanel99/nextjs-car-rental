@@ -214,7 +214,7 @@ function Navigation(props) {
               <a>Contact</a>
             </Link>
 
-            <Link href={`/users/${userId}`}>
+            <Link href={`/users/${!userId}`}>
               <a>Profile</a>
             </Link>
 
