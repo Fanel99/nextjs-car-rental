@@ -7,10 +7,10 @@ const container = css`
   width: 100%;
 
   .succes {
-    background-image: url('/pictures/vintage1.jpeg');
+    background-image: url('/pictures/bg5.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: bottom;
+    background-position: top;
     text-align: center;
     min-height: 100vh;
     display: flex;
