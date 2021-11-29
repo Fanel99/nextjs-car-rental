@@ -1,5 +1,38 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Description
+
+asdasd
+Oldie but goodie gives budding entrepreneurs the tools and resources they need to build a small, successful portfolio of cars to share on the marketplace, and the opportunity to add thousands to their annual income.
+
+List your first car now to get started, then build your business plan and scale how you want!
+
+## Functionalities
+
+- User authentication (registration + login)
+- Registered users are able to add their own car to the page.
+- A user can edit and delete their Ad
+- The website is fully responsive, so access on the mobile phone is possible
+- User authorization (only the owner of items is allowed to modify or delete Ad
+  and to see private account details)
+- The website is fully responsive, so access on the mobile phone is possible
+- Functional Contact Form
+
+## Technologies
+
+- Next.js
+- React.js
+- PostgreSQL
+- Emotion
+- TypeScript
+- Cypress tests
+
+![Hero](./public/pictures/hero.png)
+![Login](./public/pictures/login.png)
+![Deals Overview](./public/pictures/deals.png)
+![Contact](./public/pictures/contact.png)
+![Host](./public/pictures/host.png)
+
 ## Getting Started
 
 First, run the development server:
