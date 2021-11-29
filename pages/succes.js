@@ -29,7 +29,8 @@ function succes(props) {
       <div css={container}>
         <div className="succes">
           {' '}
-          Order placed! <br /> You will receive an email confirmation soon.
+          Order number 9210 placed! <br /> You will receive an email
+          confirmation soon.
         </div>
       </div>
     </div>
